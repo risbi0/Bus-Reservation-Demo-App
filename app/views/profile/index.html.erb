@@ -1,0 +1,6 @@
+<div class="m-lg-4">
+    <h2>Profile</h2><br>
+    <p>Name: <%= Current.user.firstname %> <%= Current.user.lastname %></p>
+    <p>Email: <%= Current.user.email %></p>
+    <%= link_to 'Edit Password', edit_password_path, class: "btn btn-primary" %>
+</div>

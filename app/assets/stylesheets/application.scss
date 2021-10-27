@@ -10,31 +10,47 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
-#main-height { height: 100vh; }
-#navcon a:hover { color: #FFF !important; }
-#nav-logged-in { padding: 0rem 1rem; }
+@import "bootstrap";
+
+#main-height {
+	height: 100vh;
+}
+#navcon {
+	a {
+		&:hover {
+			color: #FFF !important;
+		}
+	}
+}
+.nav-logged-in {
+	padding: 0rem 1rem;
+}
 #nav-logged-out {
-    margin: 0px 5px 0px 5px;
-    color: #6C757D; 
-    text-decoration: none; 
+	margin: 0px 5px 0px 5px;
+	color: #6C757D;
+	text-decoration: none;
 }
 #close {
-    text-decoration: none;
-    color: #000;
-    opacity: 0.5;
+	text-decoration: none;
+	color: #000;
+	opacity: 0.5;
 }
 #container-signin {
-    width: 350px;
-    margin-top: 30vh;
+	width: 350px;
+	margin-top: 30vh;
 }
-#container-form { width: 350px; }
-#btn-signin { width: 80px; }
-.dropdown-menu { min-width: 0rem !important; }
+#container-form {
+	width: 350px;
+}
+#btn-signin {
+	width: 80px;
+}
+.dropdown-menu {
+	min-width: 0rem !important;
+}
 .dropdown-menu[data-bs-popper] {
-    margin-top: 0.4rem !important;
-    margin-right: 0.5rem;
+	margin-top: 0.4rem !important;
+	margin-right: 0.5rem;
 }

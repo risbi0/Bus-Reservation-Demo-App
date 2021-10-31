@@ -9,7 +9,8 @@ class PasswordsController < ApplicationController
             flash[:success] = 'Password Updated'
             redirect_to root_path
         else
-            render :edit
+            flash[:danger] = 'All forms aren\'t filled out'
+            redirect_to edit_password_path
         end
     end
 

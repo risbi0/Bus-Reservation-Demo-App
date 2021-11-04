@@ -88,6 +88,7 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.4-x64-mingw32)
+    filterrific (5.2.2)
     globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.10)
@@ -203,6 +204,9 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
+    will_paginate-bootstrap-style (0.2.4)
+      will_paginate (~> 3.0, >= 3.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.0)
@@ -216,6 +220,7 @@ DEPENDENCIES
   bootstrap (~> 5.1.0)
   byebug
   capybara (>= 3.26)
+  filterrific
   jbuilder (~> 2.7)
   jquery-rails
   pg
@@ -232,6 +237,8 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
+  will_paginate
+  will_paginate-bootstrap-style
 
 RUBY VERSION
    ruby 3.0.2p107

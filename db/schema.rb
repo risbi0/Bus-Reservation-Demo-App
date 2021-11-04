@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_104320) do
+ActiveRecord::Schema.define(version: 2021_10_31_160552) do
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+  create_table "schedules", force: :cascade do |t|
+    t.string "station", null: false
+    t.string "destination", null: false
+    t.datetime "date_time", null: false
+    t.integer "seats_available", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "firstname"
-    t.string "lastname"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "firstname", null: false
+    t.string "lastname", null: false
   end
 
 end

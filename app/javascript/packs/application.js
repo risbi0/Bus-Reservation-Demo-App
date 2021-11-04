@@ -6,6 +6,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require filterrific/filterrific-jquery
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

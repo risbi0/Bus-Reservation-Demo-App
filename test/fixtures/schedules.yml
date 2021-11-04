@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  station: MyString
+  destination: MyString
+  date_time: 2021-10-31 21:38:04
+  seats_available: 1
+
+two:
+  station: MyString
+  destination: MyString
+  date_time: 2021-10-31 21:38:04
+  seats_available: 1

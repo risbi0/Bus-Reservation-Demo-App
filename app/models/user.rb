@@ -1,3 +1,13 @@
+# == Schema Information
+# 
+# Table name: users
+#
+# id            :integer        primary key
+# email         :string
+# firstname     :string
+# lastname      :string
+# password      :string
+
 class User < ApplicationRecord
     # adds vitual attributes for authentication
     has_secure_password

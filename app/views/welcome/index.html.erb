@@ -1,1 +1,34 @@
-hey
+<%= form_for_filterrific @filterrific do |f| %>
+    <div class="container row bg-dark mt-5 p-3 border border-dark rounded w-900">    
+        <div class="form-group col-3">
+            <%= f.label :departure, class: "h5 heading" %>
+            <%= f.select(:by_departure,
+                        @filterrific.select_options[:by_departure],
+                        { include_blank: 'Default' },
+                        { class: "form-control", onchange: "this.form.submit();" }) %>
+        </div>
+        <div class="form-group col-3">
+            <%= f.label :destination, class: "h5 heading" %>
+            <%= f.select(:by_destination,
+                        @filterrific.select_options[:by_destination],
+                        { include_blank: 'Default'},
+                        { class: "form-control", onchange: "this.form.submit();" }) %>
+        </div>
+        <div class="form-group col-3">
+            <%= f.label :date_and_time, class: "h5 heading" %>
+            <%= f.select(:by_date_time,
+                        @filterrific.select_options[:by_date_time],
+                        { include_blank: 'Default' },
+                        { class: "form-control", onchange: "this.form.submit();" }) %>
+        </div>
+        <div class="form-group col-3">
+            <%= f.label :sort_by, class: "h5 heading" %>
+            <%= f.select(:sorted_by,
+                        @filterrific.select_options[:sorted_by],
+                        { include_blank: 'Default' },
+                        { class: "form-control", onchange: "this.form.submit();" }) %>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'schedule', schedule: @schedule %>

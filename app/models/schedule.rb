@@ -3,13 +3,13 @@
 # Table name: schedules
 #
 # id                :integer        primary key
-# station           :string
+# departure           :string
 # destination       :string
 # date_time         :datetime
 # seats_available   :integer
 
 class Schedule < ApplicationRecord
-    scope :by_departure, -> (station) { where(:station => [*station]) }
+    scope :by_departure, -> (departure) { where(:departure => [*departure]) }
     scope :by_destination, -> (destination) { where(:destination => [*destination]) }
     scope :by_date_time, -> (date_time) { where(:date_time => [*date_time]) }
     scope :sorted_by, -> (sort_option) {
@@ -18,8 +18,8 @@ class Schedule < ApplicationRecord
         case sort_option.to_s
         when /^id_/
             order(schedules[:id].send(direction))
-        when /^station_/
-            order(schedules[:station].send(direction))
+        when /^departure_/
+            order(schedules[:departure].send(direction))
         when /^destination_/
             order(schedules[:destination].send(direction))
         when /^date_time_/
@@ -44,7 +44,7 @@ class Schedule < ApplicationRecord
     @schedule_table = Schedule.arel_table
 
     def self.options_for_departure
-        order(@schedule_table[:station]).distinct.pluck(:station)
+        order(@schedule_table[:departure]).distinct.pluck(:departure)
     end
 
     def self.options_for_destination
@@ -57,7 +57,7 @@ class Schedule < ApplicationRecord
 
     def self.options_for_sorted_by
         [
-            ['Departure', 'station_asc'],
+            ['Departure', 'departure_asc'],
             ['Destination', 'destination_asc'],
             ['Date and Time', 'date_time_asc'],
             ['Available Seats', 'seats_available_desc']

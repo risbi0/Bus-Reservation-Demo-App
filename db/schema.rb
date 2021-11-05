@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_160552) do
+ActiveRecord::Schema.define(version: 2021_11_05_132551) do
 
   create_table "schedules", force: :cascade do |t|
-    t.string "station", null: false
+    t.string "departure", null: false
     t.string "destination", null: false
     t.datetime "date_time", null: false
     t.integer "seats_available", null: false

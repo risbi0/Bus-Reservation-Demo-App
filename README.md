@@ -1,26 +1,18 @@
-# README
+# README [WIP]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Glossary
+[Introduction](#introduction)\
+[Prerequisites](#prerequisites)\
+[Configuration](#configuration)\
+[Deployment Instructions](#deplyment-instructions)\
+[Services](#services)
 
-Things you may want to cover:
+## Introduction
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+## Configuration
 
-* Configuration
+## Deployment Instructions
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-test
+## Services

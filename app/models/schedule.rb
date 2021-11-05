@@ -65,6 +65,6 @@ class Schedule < ApplicationRecord
     end
 
     def formatted_date_time
-        date_time.strftime('%m/%d/%Y %H:%M')
+        date_time.strftime('%m/%d/%Y %l:%M %p')
     end
 end

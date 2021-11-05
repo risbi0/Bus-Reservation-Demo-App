@@ -1,10 +1,10 @@
 # README [WIP]
 
 ## Glossary
-[Introduction](#introduction)
-[Prerequisites](#prerequisites)
-[Configuration](#configuration)
-[Deployment Instructions](#deplyment-instructions)
+[Introduction](#introduction)__
+[Prerequisites](#prerequisites)__
+[Configuration](#configuration)__
+[Deployment Instructions](#deplyment-instructions)__
 [Services](#services)
 
 ## Introduction

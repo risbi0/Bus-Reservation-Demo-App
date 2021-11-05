@@ -1,17 +1,18 @@
 # README [WIP]
 
-## Ruby Version
+## Glossary
+[Introduction](#introduction)
+[Prerequisites](#prerequisites)
+[Configuration](#configuration)
+[Deployment Instructions](#deplyment-instructions)
+[Services](#services)
 
-## System Dependencies
+## Introduction
+
+## Prerequisites
 
 ## Configuration
 
-## Database Creation
-
-## Database Initialization
-
-## How to run the test suite
-
-## Services (job queues, cache servers, search engines, etc.)
-
 ## Deployment Instructions
+
+## Services

@@ -1,17 +1,17 @@
 # README [WIP]
 
-* Ruby version
+## Ruby Version
 
-## System dependencies
+## System Dependencies
 
-* Configuration
+## Configuration
 
-* Database creation
+## Database Creation
 
-* Database initialization
+## Database Initialization
 
-* How to run the test suite
+## How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Deployment Instructions

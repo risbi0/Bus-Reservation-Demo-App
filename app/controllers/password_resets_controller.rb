@@ -10,7 +10,6 @@ class PasswordResetsController < ApplicationController
     end
 
     def update
-        # updates user's password
         @user = User.find_signed!(params[:token], purpose: 'password_reset')
         if @user.update(password_params)
             flash[:success] = 'Your password was reset successfully'
@@ -23,9 +22,7 @@ class PasswordResetsController < ApplicationController
     def create
         @user = User.find_by(email: params[:email])
         if @user.present?
-            # send mail
-            PasswordMailer.with(user: @user).reset.deliver_later
-            # deliver_later is provided by ActiveJob
+            # PasswordMailer.with(user: @user).reset.deliver_later
         end
         flash[:info] = 'Please check your email to reset the password'
         redirect_to root_path

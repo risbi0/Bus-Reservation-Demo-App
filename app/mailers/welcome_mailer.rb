@@ -1,5 +1,4 @@
 class WelcomeMailer < ApplicationMailer
-    # sends a welcome email
     def welcome_email
         @user = params[:user]
         @url = '127.0.0.1:3000/sign_in'

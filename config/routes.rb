@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create', as: 'log_in'
-
   delete 'logout', to: 'sessions#destroy'
 
   get 'password', to: 'passwords#edit', as: 'edit_password'
@@ -19,4 +18,5 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: 'password_resets#update'
 
   get 'profile', to: 'profile#index'
+  delete 'account', to: 'profile#destroy', as: 'del_acc'
 end

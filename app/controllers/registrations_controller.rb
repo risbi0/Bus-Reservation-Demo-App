@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
             flash[:success] = 'Successfully created account. Log in to access your account'
             redirect_to root_path
         else
-            flash[:danger] = 'Invalid email, email already has an account made, or all forms aren\'t filled out'
+            flash[:danger] = @user.errors.full_messages.to_sentence
             redirect_to sign_up_path
         end
     end

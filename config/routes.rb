@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profile#index'
   delete 'account', to: 'profile#destroy', as: 'del_acc'
+
+  get 'booking', to: 'bookings#new'
 end

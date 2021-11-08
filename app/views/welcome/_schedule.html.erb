@@ -15,19 +15,21 @@
     </div>
     <table class="table table-dark table-strpied text-light mt-4">
         <tr>
-            <th style="width: 20%;">Departure</th>
-            <th style="width: 20%;">Destination</th>
+            <th style="width: 15%; padding-left: 20px !important;">Departure</th>
+            <th style="width: 15%;">Destination</th>
             <th style="width: 20%;">Date and Time</th>
-            <th style="width: 20%;">Available Seats</th>
-            <th style="width: 20%;">Price (&#8369;)</th>
+            <th style="width: 15%;">Available Seats</th>
+            <th style="width: 10%;">Price (&#8369;)</th>
+            <th style="width: 15%;"></th>
         </tr>
         <% schedule.each do |data| %>
             <tr>
-                <td><%= data.departure %></td>
+                <td style="padding-left: 20px !important;"><%= data.departure %></td>
                 <td><%= data.destination %></td>
                 <td><%= data.formatted_date_time %></td>
                 <td><%= data.seats_available %></td>
                 <td><%= data.price %></td>
+                <td style="padding-right: 20px !important;"><%= link_to 'Book', booking_path, class: "btn btn-primary float-end" %></td>
             </tr>
         <% end %>
     </table>

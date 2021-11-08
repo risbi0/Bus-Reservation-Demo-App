@@ -3,10 +3,11 @@
 # Table name: schedules
 #
 # id                :integer        primary key
-# departure           :string
+# departure         :string
 # destination       :string
 # date_time         :datetime
 # seats_available   :integer
+# price             :integer
 
 class Schedule < ApplicationRecord
     scope :by_departure, -> (departure) { where(:departure => [*departure]) }

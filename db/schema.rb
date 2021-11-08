@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_065433) do
+ActiveRecord::Schema.define(version: 2021_11_08_162455) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "departure", null: false

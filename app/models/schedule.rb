@@ -26,6 +26,8 @@ class Schedule < ApplicationRecord
             order(schedules[:date_time].send(direction))
         when /^seats_available_/
             order(schedules[:seats_available].send(direction))
+        when /^price_/
+            order(schedules[:price].send(direction))
         else
             raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
         end
@@ -60,7 +62,8 @@ class Schedule < ApplicationRecord
             ['Departure', 'departure_asc'],
             ['Destination', 'destination_asc'],
             ['Date and Time', 'date_time_asc'],
-            ['Available Seats', 'seats_available_desc']
+            ['Available Seats', 'seats_available_desc'],
+            ['Price', 'price_asc']
         ]
     end
 

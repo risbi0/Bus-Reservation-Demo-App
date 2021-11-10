@@ -1,7 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :require_user_logged_in!
-
     def new
-        
+        @books = Schedule.where(id: params[:book_id])
     end
 end

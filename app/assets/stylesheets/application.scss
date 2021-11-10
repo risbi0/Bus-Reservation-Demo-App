@@ -69,3 +69,14 @@ th, td {
 	vertical-align: middle;
 	padding: 10px !important;
 }
+.table {
+	border: 2px solid #000;
+	border-radius: 10px;
+}
+input[type="number"] {
+    outline: none;
+    width:  50px;
+    border: 2px solid black;
+    border-radius: 4px;
+    text-align: center;
+}

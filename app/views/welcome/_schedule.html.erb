@@ -13,7 +13,7 @@
         <%# not working
         <%= render_filterrific_spinner %>
     </div>
-    <table class="table table-dark table-strpied text-light mt-4">
+    <table class="table table-dark table-striped text-light mt-4">
         <tr>
             <th style="width: 15%; padding-left: 20px !important;">Departure</th>
             <th style="width: 15%;">Destination</th>
@@ -29,7 +29,10 @@
                 <td><%= data.formatted_date_time %></td>
                 <td><%= data.seats_available %></td>
                 <td><%= data.price %></td>
-                <td style="padding-right: 20px !important;"><%= link_to 'Book', booking_path, class: "btn btn-primary float-end" %></td>
+                <td style="padding-right: 20px !important;"><%= link_to 'Book',
+                                                                    booking_path(book_id: data.id),
+                                                                    class: "btn btn-primary float-end" %>
+                </td>
             </tr>
         <% end %>
     </table>

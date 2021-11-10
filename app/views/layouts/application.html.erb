@@ -47,4 +47,16 @@
       <%= yield %>
     </div>
   </body>
+  <script>
+    var basePrice = parseInt(document.getElementById('basePrice').textContent);
+    var numberSlider = document.querySelector('#numberSlider');
+    var totalPriceField = document.querySelector('#totalPrice');
+    numberSlider.addEventListener('input', function() {
+        totalPriceField.innerHTML = basePrice * parseInt(numberSlider.value);
+    });
+    document.querySelector('#numberSlider').addEventListener('keydown', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  </script>
 </html>

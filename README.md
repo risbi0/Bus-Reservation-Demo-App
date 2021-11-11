@@ -1,19 +1,51 @@
-# README [WIP]
+## README [WIP]
 
-## Glossary
+### Anchor Links
 [Introduction](#introduction)\
 [Prerequisites](#prerequisites)\
-[Configuration](#configuration)\
-[Deployment Instructions](#deplyment-instructions)\
+[Deployment Instructions](#deployment-instructions)\
 [Services](#services)
 
-## Introduction
-
-## Prerequisites
-
-## Configuration
-
-## Deployment Instructions
-
-## Services
+### Introduction
+This application is built using:
+* [Rails 6](https://rubyonrails.org/) - server-side web application framework written in Ruby
+* [Bootstrap 5](https://getbootstrap.com/) - CSS framework
+### Prerequisites
+If you want to deploy this application locally in your machine, these are the required softwares:
+* [Git](https://git-scm.com/) - version control system
+* [Ruby](https://www.ruby-lang.org/en/) - interpreted, high-level programming language
+* [SQLite](https://www.sqlite.org/) - relational database management system
+* [Node.js](https://nodejs.org/) - Javascript runtime environment
+* [Yarn](https://classic.yarnpkg.com/en/) - Javascript package manager
+### Deployment Instructions
+Clone the repository:
+```
+git clone https://github.com/teduniq/bus_app.git
+``` 
+Move into the directory. Tell `Bundler` to ignore `:production` group gems:
+```
+bundle config set --local without production
+```
+Install the gems:
+```
+bundle install
+```
+Install the dependencies:
+```
+yarn install
+```
+Run migrations:
+```
+rails db:migrate
+```
+Load the seed data:
+```
+rails db:seed
+```
+Start the server:
+```
+rails server
+```
+Go to `localhost:3000` in your browser to check out the application.
+### Services
  

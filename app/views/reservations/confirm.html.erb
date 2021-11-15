@@ -20,7 +20,7 @@
                 <%= f.hidden_field :id, value: data.id %>
                 <%= f.hidden_field :datetime, value: data.formatted_date_time_for_comparison %>
                 <div class="d-flex justify-content-between mt-3">
-                    <%= f.submit 'Cancel Booking', class: "btn btn-danger" %>
+                    <%= f.submit 'Confirm', class: "btn btn-danger" %>
                     <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
                 </div>
             <% end %>

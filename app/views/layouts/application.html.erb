@@ -17,7 +17,17 @@
         </div>
         <div class="navbar-right">
           <ul class="navbar-nav">
-            <%= link_to 'Reservations', reservations_path, class: "nav-link", style: "padding-bottom: 0px;" %>
+            <%= link_to 'Reservations', reservations_path, class: "nav-link" %>
+            <% if Current.user %>
+              <li class="nav-item-dropdown">
+                <a class="nav-link dropdown-toggle" id="profile" role="button" data-bs-toggle="dropdown">
+                  <%= Current.user.name %>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end navbar-right">
+                  <li><%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %></li>
+                </ul>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

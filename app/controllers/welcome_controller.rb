@@ -17,4 +17,15 @@ class WelcomeController < ApplicationController
       format.js
     end
   end
+
+  def destroy
+    old_records = Schedule.find_by(date_time: 1.week.ago..Date.today)
+    unless old_records.nil?
+      old_records.destroy
+      flash[:success] = 'Old records are destroyed'
+    else
+      flash[:info] = 'No old records found'
+    end
+    redirect_to root_path
+  end
 end

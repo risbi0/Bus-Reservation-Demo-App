@@ -1,14 +1,23 @@
 <div id="filterrific_results">
     <div class="bg-dark mt-4 p-3 border border-dark rounded w-900">
         <div class="row">
-            <div class="col-10 d-flex align-items-center">
-                <div><%= page_entries_info schedule %></div>
-            </div>
-            <div class="col-2 d-flex justify-content-around">
-                <div>
-                <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
+            <% if Current.user %>
+                <div class="col-5 d-flex align-items-center">
+                    <div><%= page_entries_info schedule %></div>
                 </div>
-            </div>
+                <div class="col-7 d-flex justify-content-end">
+                    <button class="btn btn-success" style="margin-right: 10px;">Add Records</button>
+                    <%= link_to 'Delete Old Records', del_rec_path, method: :delete, class: "btn btn-danger", style: "margin-right: 10px;" %>
+                    <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
+                </div>
+            <% else %>
+                <div class="col-10 d-flex align-items-center">
+                    <div><%= page_entries_info schedule %></div>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
+                </div>
+            <% end %>
         </div>
         <%# not working
         <%= render_filterrific_spinner %>
@@ -29,9 +38,12 @@
                 <td><%= data.formatted_date_time %></td>
                 <td><%= data.seats_available %></td>
                 <td><%= data.price %></td>
-                <td style="padding-right: 20px !important;"><%= link_to 'Book',
-                                                                booking_path(book_id: data.id),
-                                                                class: "btn btn-primary float-end" %>
+                <td style="padding-right: 20px !important;">
+                    <% if Current.user %>
+
+                    <% else %>
+                        <%= link_to 'Book', booking_path(book_id: data.id), class: "btn btn-primary float-end" %>
+                    <% end %>
                 </td>
             </tr>
         <% end %>

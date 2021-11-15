@@ -8,6 +8,8 @@
 
 puts "Seeding..."
 
+User.create(name: "ADMIN", email: "admin@example.com", password: "123")
+
 Schedule.create(departure: 'Manila', destination: 'Quezon City', date_time: '2021-12-21 12:30', seats_available: 45, price: 120)
 Schedule.create(departure: 'Pateros', destination: 'Pasig City', date_time: '2021-12-22 13:20', seats_available: 45, price: 80)
 Schedule.create(departure: 'Makati City', destination: 'Taguig City', date_time: '2021-12-25 14:45', seats_available: 45, price: 90)
@@ -20,5 +22,8 @@ Schedule.create(departure: 'Quezon City', destination: 'Marikina City', date_tim
 Schedule.create(departure: 'Manila', destination: 'Marikina City', date_time: '2021-12-31 08:30', seats_available: 35, price: 85)
 Schedule.create(departure: 'Pasig City', destination: 'Manila', date_time: '2021-12-28 20:10', seats_available: 35, price: 95)
 Schedule.create(departure: 'Pateros', destination: 'Manila', date_time: '2021-12-31 23:45', seats_available: 35, price: 130)
+Schedule.create(departure: 'Pasig City', destination: 'Quezon City', date_time: '2021-11-16 23:45', seats_available: 35, price: 150)
+Schedule.create(departure: 'Makati City', destination: 'Manila', date_time: '2021-11-15 23:45', seats_available: 35, price: 140)
+Schedule.create(departure: 'Manila', destination: 'Pasig City', date_time: '2021-11-14 23:45', seats_available: 35, price: 170)
 
 puts "Seeding done."

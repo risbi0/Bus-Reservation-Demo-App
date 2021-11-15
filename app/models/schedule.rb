@@ -10,9 +10,9 @@
 # price             :integer
 
 class Schedule < ApplicationRecord
-    scope :by_departure, -> (departure) { where(:departure => [*departure]) }
-    scope :by_destination, -> (destination) { where(:destination => [*destination]) }
-    scope :by_date_time, -> (date_time) { where(:date_time => [*date_time]) }
+    scope :by_departure, -> (departure) { where(departure: [*departure]) }
+    scope :by_destination, -> (destination) { where(destination: [*destination]) }
+    scope :by_date_time, -> (date_time) { where(date_time: [*date_time]) }
     scope :sorted_by, -> (sort_option) {
         direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
         schedules = Schedule.arel_table
@@ -34,7 +34,7 @@ class Schedule < ApplicationRecord
         end
     }
 
-    filterrific default_filter_params: { :sorted_by => 'id_asc' },
+    filterrific default_filter_params: { sorted_by: 'id_asc' },
                 available_filters: [
                     :by_departure,
                     :by_destination,

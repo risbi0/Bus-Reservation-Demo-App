@@ -7,9 +7,10 @@
 [Services](#services)
 
 ### Introduction
-This application is built using:
+This application is built and supported by:
 * [Rails 6](https://rubyonrails.org/) - server-side web application framework written in Ruby
 * [Bootstrap 5](https://getbootstrap.com/) - CSS framework
+* [Heroku](https://www.heroku.com/) - cloud platform as a service
 ### Prerequisites
 If you want to deploy this application locally in your machine, these are the required softwares:
 * [Git](https://git-scm.com/) - version control system

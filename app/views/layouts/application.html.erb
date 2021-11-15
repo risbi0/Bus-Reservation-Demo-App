@@ -10,30 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand bg-dark navbar-dark">
+    <nav class="navbar navbar-expand bg-dark navbar-dark top-nav">
       <div class="container-fluid">
         <div class="navbar-header" id="navcon">
           <%= link_to 'WebsiteName', root_path, class: "navbar-brand text-secondary" %>
         </div>
         <div class="navbar-right">
-        <ul class="navbar-nav ">
-        <% if Current.user %>
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-logged-in dropdown-toggle" id="idDropdown" role="button" data-bs-toggle="dropdown">
-              <%= Current.user.firstname %> <%= Current.user.lastname %>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end navbar-right">
-              <li><%= link_to 'Profile', profile_path, class: "dropdown-item" %>
-              <li><%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
-            </ul>
-          </li>
-        <% else %>
-          <ul class="container-dropdown" id="navcon">
-            <%= link_to 'Sign Up', sign_up_path, id: "nav-logged-out" %>
-            <%= link_to 'Login', sign_in_path, id: "nav-logged-out" %>
+          <ul class="navbar-nav">
+            <%= link_to 'Reservations', reservations_path, class: "nav-link", style: "padding-bottom: 0px;" %>
           </ul>
-        <% end %>
-        </ul>
         </div>
       </div>
     </nav>
@@ -57,6 +42,13 @@
     document.querySelector('#numberSlider').addEventListener('keydown', function(e) {
       e.preventDefault();
       return false;
+    });
+    document.getElementById('booking_total_price').value = parseInt(document.getElementById('totalPrice').innerHTML);
+    document.getElementById('booking_seats').value = parseInt(document.getElementById('numberSlider').value);
+    
+    document.getElementById('numberSlider').addEventListener('input', function(e) {
+      document.getElementById('booking_total_price').value = parseInt(document.getElementById('totalPrice').innerHTML);
+      document.getElementById('booking_seats').value = parseInt(document.getElementById('numberSlider').value);
     });
   </script>
 </html>

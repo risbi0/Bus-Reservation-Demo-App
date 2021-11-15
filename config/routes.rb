@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
-  get 'profile', to: 'profile#index'
-  delete 'account', to: 'profile#destroy', as: 'del_acc'
-
   get 'booking', to: 'bookings#new'
+  post 'booking', to: 'bookings#create'
+
+  get 'reservations', to: 'reservations#index'
+  get 'confirm', to: 'reservations#confirm'
+  post 'del_rsrv', to: 'reservations#destroy'
 end

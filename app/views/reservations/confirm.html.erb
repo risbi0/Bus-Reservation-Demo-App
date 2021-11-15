@@ -1,0 +1,29 @@
+<div style="height: 100vh; padding-top: 70px;">
+    <div class="bg-dark rounded p-3">
+        <h3>Confirm Cancellation</h3>
+        <hr>
+        Are you sure you want to cancel this booking?<br><br>
+        <h5>Booking Details:</h5>
+        <% @reservations.each do |data| %>
+            <strong>Booked on:</strong><%= data.formatted_created_at %><br>
+            <strong>Name: </strong><%= data.name %><br>
+            <strong>Email: </strong><%= data.email %><br>
+            <strong>Confirmation Code: </strong><%= data.confirmation %><br>
+            <strong>Departure: </strong><%= data.departure %><br>
+            <strong>Destination </strong><%= data.destination %><br>
+            <strong>Date and Time </strong><%= data.formatted_date_time %><br>
+            <strong>Base Price (&#8369;): </strong><%= data.base_price %><br>
+            <strong>Seats: </strong><%= data.seats %><br>
+            <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
+            <strong>Status </strong><%= data.status %>
+            <%= form_for @cancellation, url: del_rsrv_path do |f| %>
+                <%= f.hidden_field :id, value: data.id %>
+                <%= f.hidden_field :datetime, value: data.formatted_date_time_for_comparison %>
+                <div class="d-flex justify-content-between mt-3">
+                    <%= f.submit 'Cancel Booking', class: "btn btn-danger" %>
+                    <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

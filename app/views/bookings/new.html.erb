@@ -1,20 +1,25 @@
-<div style="width: 500px;">
+<div style="width: 500px; height: 100vh; padding-top: 70px;">
     <div class="bg-dark mt-4 p-3 rounded">
         <h3>Booking Details</h3>
     </div>
+    <%= form_for(@book, url: booking_path, local: true) do |f| %>
     <table class="table table-dark text-light mt-4">
-        <% @books.each do |data| %>
+        <% @schedules.each do |data| %>
         <tr>
+            <%= f.hidden_field :schedules_id, value: data.id %>
             <td style="width: 50%;">Departure</td>
             <td style="width: 50%;"><%= data.departure %></td>
+            <%= f.hidden_field :departure, value: data.departure %>
         </tr>
         <tr>
             <td>Destination</td>
             <td><%= data.destination %></td>
+            <%= f.hidden_field :destination, value: data.destination %>
         </tr>
         <tr>
             <td>Date and Time</td>
             <td><%= data.formatted_date_time %></td>
+            <%= f.hidden_field :date_time, value: data.date_time %>
         </tr>
         <tr>
             <td>Seats Available</td>
@@ -23,20 +28,31 @@
         <tr>
             <td>Price (&#8369;)</td>
             <td id="basePrice"><%= data.price %></td>
+            <%= f.hidden_field :base_price, value: data.price %>
         </tr>
         <tr>
             <td>No. of Seats</td>
             <td><input id="numberSlider" type="number" min="1" max="<%= data.seats_available %>" value="1"></td>
-            <%# number_field :number, params[:number], { value: 1, min: 1, max: data.seats_available, id: "numberSlider" } %>
+            <%= f.hidden_field :seats %>
         </tr>
         <tr>
             <td>Total Price (&#8369;)</td>
             <td id="totalPrice"><%= data.price %></td>
+            <%= f.hidden_field :total_price %>
         </tr>
         <tr>
+            <td>Name</td>
+            <td><%= f.text_field :name, class: "form-control", placeholder: "Firstname Lastname"%></td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Email</td>
+            <td><%= f.text_field :email, class: "form-control", placeholder: "email@example.com"%></td>
+        </tr>
             <td></td>
-            <td><button type="button" class="btn btn-primary">Submit</button></td>
+            <td><%= f.submit "Book", class: "btn btn-primary" %></td>
         </tr>
         <% end %>
     </table>
+    <% end %>
 </div>

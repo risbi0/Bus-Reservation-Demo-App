@@ -14,8 +14,13 @@
 
 @import "bootstrap";
 
+.top-nav {
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+}
 #main-height {
-	height: 100vh;
+	height: 100%;
 }
 #navcon {
 	a {
@@ -24,6 +29,9 @@
 		}
 	}
 }
+.margin-top {
+	margin-top: 80px;
+}
 #alert {
     position: absolute;
     width: auto;
@@ -31,12 +39,9 @@
     left: 50%;
     padding: 0.75rem 0.75rem;
     transform: translate(-50%, 0);
-  }
-.nav-logged-in {
-	padding: 0rem 1rem;
 }
-#nav-logged-out {
-	margin: 0px 5px 0px 5px;
+.nav-link {
+	padding: 0rem 1rem;
 	color: #6C757D;
 	text-decoration: none;
 }
@@ -79,4 +84,16 @@ input[type="number"] {
     border: 2px solid black;
     border-radius: 4px;
     text-align: center;
+}
+.card-header {
+	border-bottom: 1px solid rgb(200, 200, 200) !important;
+}
+.card-header:hover {
+	background-color: #5a5a5a !important;
+}
+.card-body {
+	background-color: #353535 !important;
+}
+.btn {
+	box-shadow: 0 0 0 0 rgb(0, 0, 0)!important;
 }

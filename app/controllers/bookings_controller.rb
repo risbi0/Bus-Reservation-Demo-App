@@ -1,16 +1,18 @@
 class BookingsController < ApplicationController
+    before_action :require_user_logged_in!
+
     def new
         @schedules = Schedule.where(id: params[:book_id])
-        @book = Booking.new
+        @booking = Booking.new
     end
 
     def create
-        @book = Booking.new(booking_params)
-        if @book.save
+        @user = Booking.new(booking_params)
+        if @user.save
             flash[:success] = 'Booking Successful'
             redirect_to reservations_path
         else
-            flash[:danger] = @book.errors.full_messages.to_sentence
+            flash[:danger] = @user.errors.full_messages.to_sentence
             redirect_to root_path
         end
     end
@@ -18,14 +20,6 @@ class BookingsController < ApplicationController
     private
 
     def booking_params
-        params.require(:booking).permit(:base_price,
-                                        :seats,
-                                        :total_price,
-                                        :departure,
-                                        :destination,
-                                        :date_time,
-                                        :name,
-                                        :email,
-                                        :schedules_id)
+        params.require(:booking).permit(:user_id, :schedule_id, :seats, :total_price)
     end
 end

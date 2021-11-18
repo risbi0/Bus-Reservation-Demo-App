@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = Booking.all
+        @reservations = Booking.where(user_id: Current.user.id) unless Current.user.nil?
         @cancellation = Booking.new
     end
 

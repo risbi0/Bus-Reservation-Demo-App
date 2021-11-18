@@ -1,0 +1,32 @@
+<div class="d-flex align-items-start" style="width: 100%; margin-top: 50px;">
+    <div class="m-lg-4">
+        <h2>Profile</h2><br>
+        <p>Name: <%= Current.user.name %></p>
+        <p>Email: <%= Current.user.email %></p>
+
+        <div class="d-flex flex-column">
+            <%= link_to 'Edit Password', edit_password_path, class: "btn btn-primary", style: "width: 130px;" %>
+            <button type="button" class="btn btn-danger mt-2" style="width: 140px;" data-bs-toggle="modal" data-bs-target="#myModal">
+                Delete Account
+            </button>
+        </div>
+
+        <div class="modal fade text-dark" id="myModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Confirmation</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete your account? All records associated with your account will be deleted as well.
+                    </div>
+                    <div class="modal-footer">
+                        <%= link_to 'Confirm', del_acc_path, method: :delete, class: "btn btn-danger" %>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

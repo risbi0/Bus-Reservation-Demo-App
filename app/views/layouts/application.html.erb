@@ -16,18 +16,24 @@
           <%= link_to 'WebsiteName', root_path, class: "navbar-brand text-secondary" %>
         </div>
         <div class="navbar-right">
-          <ul class="navbar-nav">
-            <%= link_to 'Reservations', reservations_path, class: "nav-link" %>
-            <% if Current.user %>
-              <li class="nav-item-dropdown">
-                <a class="nav-link dropdown-toggle" id="profile" role="button" data-bs-toggle="dropdown">
-                  <%= Current.user.name %>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end navbar-right">
-                  <li><%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %></li>
-                </ul>
-              </li>
-            <% end %>
+          <ul class="navbar-nav ">
+          <%= link_to 'Reservations', reservations_path, class: "nav-link" %>
+          <% if Current.user %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" style="margin-left: 15px;" role="button" data-bs-toggle="dropdown">
+                <%= Current.user.name %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end navbar-right">
+                <li><%= link_to 'Profile', profile_path, class: "dropdown-item" %>
+                <li><%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
+              </ul>
+            </li>
+          <% else %>
+            <ul class="container-dropdown row" id="navcon">
+              <%= link_to 'Sign Up', sign_up_path, class: "nav-link col", style: "width: 90px;" %>
+              <%= link_to 'Login', sign_in_path, class: "nav-link col", style: "margin-right: -10px;" %>
+            </ul>
+          <% end %>
           </ul>
         </div>
       </div>
@@ -43,22 +49,17 @@
     </div>
   </body>
   <script>
-    var basePrice = parseInt(document.getElementById('basePrice').textContent);
-    var numberSlider = document.querySelector('#numberSlider');
-    var totalPriceField = document.querySelector('#totalPrice');
-    numberSlider.addEventListener('input', function() {
-        totalPriceField.innerHTML = basePrice * parseInt(numberSlider.value);
-    });
-    document.querySelector('#numberSlider').addEventListener('keydown', function(e) {
-      e.preventDefault();
-      return false;
-    });
-    document.getElementById('booking_total_price').value = parseInt(document.getElementById('totalPrice').innerHTML);
-    document.getElementById('booking_seats').value = parseInt(document.getElementById('numberSlider').value);
+    var basePrice = document.getElementById('booking_price').innerHTML;
+    var numberSlider = document.getElementById('booking_seats');
+    var priceField = document.getElementById('total_price');
+    var hiddenPriceField = document.getElementById('booking_total_price');
     
-    document.getElementById('numberSlider').addEventListener('input', function(e) {
-      document.getElementById('booking_total_price').value = parseInt(document.getElementById('totalPrice').innerHTML);
-      document.getElementById('booking_seats').value = parseInt(document.getElementById('numberSlider').value);
+    numberSlider.addEventListener('keydown', function(e) {
+      e.preventDefault();
+    });
+    numberSlider.addEventListener('input', function(e) {
+      priceField.innerHTML = numberSlider.value * basePrice;
+      hiddenPriceField.value = numberSlider.value * basePrice;
     });
   </script>
 </html>

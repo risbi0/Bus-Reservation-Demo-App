@@ -1,17 +1,9 @@
 class Booking < ApplicationRecord
+    belongs_to :schedule
+    belongs_to :user
+
     before_save :ensure_confirmation
     before_save :ensure_status
-
-    validates :name, presence: true
-    validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
-
-    def formatted_date_time
-        date_time.strftime('%m/%d/%Y %l:%M %p')
-    end
-
-    def formatted_date_time_for_comparison
-        date_time.strftime('%Y-%m-%d')
-    end
 
     def formatted_created_at
         created_at.strftime('%m/%d/%Y %l:%M %p')

@@ -1,0 +1,18 @@
+<div class="margin-top">    
+    <h2 class="text-center mt-5">Edit Password</h2>
+    <div class="container justify-content-center" id="container-form">
+        <%= form_with model: Current.user, url: edit_password_path do |f| %>
+            <form>
+                <div class="form-floating mb-4 mt-4 text-muted">
+                    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+                    <%= f.label :password %>
+                </div>
+                <div class="form-floating mb-4 mt-4 text-muted">
+                    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+                    <%= f.label :confirm_password %>
+                </div>
+                <%= f.submit "Update", class: "btn btn-primary" %>
+            </form>
+        <% end %>
+    </div>
+</div>

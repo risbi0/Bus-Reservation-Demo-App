@@ -10,6 +10,9 @@
 # price             :integer
 
 class Schedule < ApplicationRecord
+    has_many :bookings
+    has_many :users, through: :bookings
+
     scope :by_departure, -> (departure) { where(departure: [*departure]) }
     scope :by_destination, -> (destination) { where(destination: [*destination]) }
     scope :by_date_time, -> (date_time) { where(date_time: [*date_time]) }
@@ -66,6 +69,10 @@ class Schedule < ApplicationRecord
             ['Available Seats', 'seats_available_desc'],
             ['Price', 'price_asc']
         ]
+    end
+
+    def formatted_date_time_for_comparison
+        created_at.strftime('%Y-%m-%d')
     end
 
     def formatted_date_time

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_144553) do
+ActiveRecord::Schema.define(version: 2021_11_18_094651) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "confirmation"
@@ -18,32 +18,31 @@ ActiveRecord::Schema.define(version: 2021_11_15_144553) do
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "base_price"
-    t.string "name"
-    t.string "departure"
-    t.string "destination"
-    t.datetime "date_time"
     t.string "status"
-    t.string "email"
-    t.integer "schedules_id"
+    t.integer "schedule_id"
+    t.integer "user_id"
+    t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "departure", null: false
-    t.string "destination", null: false
-    t.datetime "date_time", null: false
-    t.integer "seats_available", null: false
+    t.string "departure"
+    t.string "destination"
+    t.datetime "date_time"
+    t.integer "seats_available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password_digest", null: false
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
   end
 
+  add_foreign_key "bookings", "schedules"
+  add_foreign_key "bookings", "users"
 end

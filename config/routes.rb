@@ -25,5 +25,6 @@ Rails.application.routes.draw do
 
   get 'reservations', to: 'reservations#index'
   get 'confirm', to: 'reservations#confirm'
+  post 'confirm_rsrv', to: 'reservations#update'
   post 'del_rsrv', to: 'reservations#destroy'
 end

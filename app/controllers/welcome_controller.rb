@@ -19,9 +19,9 @@ class WelcomeController < ApplicationController
   end
 
   def destroy
-    old_records = Schedule.find_by(date_time: 1.week.ago..Date.today)
-    unless old_records.nil?
-      old_records.destroy
+    old_records = Schedule.where(date_time: 1.week.ago..Date.today)
+    unless old_records.empty?
+      old_records.destroy_all
       flash[:success] = 'Old records are destroyed'
     else
       flash[:info] = 'No old records found'

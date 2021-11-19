@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+# id                :integer        primary key
+# seats             :integer
+# total_price       :integer
+# confirmation      :string
+# status            :string
+# user_id           :integer        foreign key
+# schedule_id       :integer        foreign key
+
 class Booking < ApplicationRecord
     belongs_to :schedule
     belongs_to :user
@@ -5,11 +17,17 @@ class Booking < ApplicationRecord
     before_save :ensure_confirmation
     before_save :ensure_status
 
+    before_update :update_attr
+
     def formatted_created_at
         created_at.strftime('%m/%d/%Y %l:%M %p')
     end
 
     private
+
+    def update_attr
+        self.status = "Booked"
+    end
 
     def ensure_status
         self.status = "Reserved (to be payed)"

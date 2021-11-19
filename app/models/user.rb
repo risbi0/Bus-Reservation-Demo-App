@@ -4,8 +4,7 @@
 #
 # id            :integer        primary key
 # email         :string
-# firstname     :string
-# lastname      :string
+# name          :string
 # password      :string
 
 class User < ApplicationRecord

@@ -32,6 +32,7 @@
             <th style="width: 15%;"></th>
         </tr>
         <% schedule.each do |data| %>
+            <% if data.seats_available != 0 %>
             <tr>
                 <td style="padding-left: 20px !important;"><%= data.departure %></td>
                 <td><%= data.destination %></td>
@@ -39,14 +40,16 @@
                 <td><%= data.seats_available %></td>
                 <td><%= data.price %></td>
                 <td style="padding-right: 20px !important;">
-                    <% if (Current.user && Current.user.name == "ADMIN") ||
-                            Date.current.strftime('%Y-%m-%d') == data.formatted_date_time_for_comparison %>
+                    <% if Current.user && Current.user.name == "ADMIN" %>
                         <%#  %>
+                    <% elsif Date.current.strftime('%Y-%m-%d') == data.formatted_date_time_for_comparison %>
+                        <%# disable Book button for schedules having the same date as today %>
                     <% else %>
                         <%= link_to 'Book', booking_path(book_id: data.id), class: "btn btn-primary float-end" %>
                     <% end %>
                 </td>
             </tr>
+            <% end %>
         <% end %>
     </table>
 </div>

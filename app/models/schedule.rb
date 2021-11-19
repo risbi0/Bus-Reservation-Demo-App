@@ -74,7 +74,7 @@ class Schedule < ApplicationRecord
     end
 
     def formatted_date_time_for_comparison
-        created_at.strftime('%Y-%m-%d')
+        date_time.strftime('%Y-%m-%d')
     end
 
     def formatted_date_time

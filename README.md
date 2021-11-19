@@ -1,4 +1,5 @@
-## README [WIP]
+## J-STAR Bus Reservations [WIP]
+[Link](https://j-star-bus.herokuapp.com) to the website. Hosted by Heroku.
 
 ### Anchor Links
 [Introduction](#introduction)\
@@ -7,6 +8,8 @@
 [Services](#services)
 
 ### Introduction
+The J-STAR Bus Reservations app is a project made for my 3rd year Computer Science course, Human Computer Interaction.
+
 This application is built and supported by:
 * [Rails 6](https://rubyonrails.org/) - server-side web application framework written in Ruby
 * [Bootstrap 5](https://getbootstrap.com/) - CSS framework

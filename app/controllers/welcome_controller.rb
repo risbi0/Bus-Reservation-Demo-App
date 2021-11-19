@@ -18,8 +18,23 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def new
+    @schedule = Schedule.new
+  end
+
+  def create
+    @schedule = Schedule.new(sched_params)
+    if @schedule.save
+      flash[:success] = 'Schedule created'
+      redirect_to root_path
+    else
+      flash[:danger] = @schedule.errors.full_messages.to_sentence
+      redirect_to add_schedule_path
+    end
+  end
+
   def destroy
-    old_records = Schedule.where(date_time: 1.week.ago..Date.today)
+    old_records = Schedule.where(date_time: 1.year.ago..Date.today)
     unless old_records.empty?
       old_records.destroy_all
       flash[:success] = 'Old records are destroyed'
@@ -27,5 +42,11 @@ class WelcomeController < ApplicationController
       flash[:info] = 'No old records found'
     end
     redirect_to root_path
+  end
+
+  private
+
+  def sched_params
+    params.require(:schedule).permit(:departure, :destination, :date_time, :seats_available, :price)
   end
 end

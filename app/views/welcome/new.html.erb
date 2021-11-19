@@ -1,0 +1,45 @@
+<div class="margin-top" style="width: 500px;">
+    <div class="bg-dark mt-4 p-3 rounded">
+        <h3>Add Booking</h3>
+    </div>
+    <%= form_for @schedule, url: add_schedule_path do |form| %>
+    <table class="table table-dark text-light mt-4">
+        <tr>
+            <td style="width: 50%;">Departure</td>
+            <td style="width: 50%;">
+                <%= form.text_field :departure, class: "form-control" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Destination</td>
+            <td>
+                <%= form.text_field :destination, class: "form-control" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date and Time</td>
+            <td>
+                <%= form.text_field :date_time, class: "form-control", placeholder: "YYYY-MM-DD HH-MM" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Seats Available</td>
+            <td>
+                <%= form.text_field :seats_available, class: "form-control" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Base Price</td>
+            <td>
+                <%= form.text_field :price, class: "form-control" %>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <%= form.submit 'Create Booking', class: "btn btn-primary" %>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+</div>

@@ -10,8 +10,10 @@
 # price             :integer
 
 class Schedule < ApplicationRecord
-    has_many :bookings
-    has_many :users, through: :bookings
+    has_many :bookings, dependent: :delete_all
+    has_many :users, through: :bookings, dependent: :delete_all
+
+    validates :departure, :destination, :date_time, :seats_available, :price, presence: true
 
     scope :by_departure, -> (departure) { where(departure: [*departure]) }
     scope :by_destination, -> (destination) { where(destination: [*destination]) }

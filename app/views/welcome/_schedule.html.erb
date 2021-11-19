@@ -6,7 +6,7 @@
                     <div><%= page_entries_info schedule %></div>
                 </div>
                 <div class="col-7 d-flex justify-content-end">
-                    <button class="btn btn-success" style="margin-right: 10px;">Add Records</button>
+                    <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" %>
                     <%= link_to 'Delete Old Records', del_rec_path, method: :delete, class: "btn btn-danger", style: "margin-right: 10px;" %>
                     <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
                 </div>

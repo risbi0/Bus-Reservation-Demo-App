@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  get 'add_schedule', to: 'welcome#new'
+  post 'add_schedule', to: 'welcome#create'
   delete 'del_rec', to: 'welcome#destroy'
 
   get 'sign_up', to: 'registrations#new'

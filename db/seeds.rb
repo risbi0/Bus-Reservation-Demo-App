@@ -8,8 +8,6 @@
 
 puts "Seeding..."
 
-User.create(name: "ADMIN", email: "admin@example.com", password: "123")
-
 Schedule.create(departure: 'Manila', destination: 'Quezon City', date_time: '2021-12-21 12:30', seats_available: 45, price: 120)
 Schedule.create(departure: 'Pateros', destination: 'Pasig City', date_time: '2021-12-22 13:20', seats_available: 45, price: 80)
 Schedule.create(departure: 'Makati City', destination: 'Taguig City', date_time: '2021-12-25 14:45', seats_available: 45, price: 90)

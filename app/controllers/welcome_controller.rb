@@ -33,6 +33,10 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def show
+    @bookings = Booking.where(schedule_id: params[:book_id])
+  end
+
   private
 
   def sched_params

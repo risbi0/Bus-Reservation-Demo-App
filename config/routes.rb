@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'add_schedule', to: 'welcome#new'
   post 'add_schedule', to: 'welcome#create'
+  get 'schedule_bookings', to: 'welcome#show'
 
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'

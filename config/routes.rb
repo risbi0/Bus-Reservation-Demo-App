@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'add_schedule', to: 'welcome#new'
   post 'add_schedule', to: 'welcome#create'
-  delete 'del_rec', to: 'welcome#destroy'
 
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'

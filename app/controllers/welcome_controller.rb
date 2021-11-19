@@ -33,17 +33,6 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def destroy
-    old_records = Schedule.where(date_time: 1.year.ago..Date.today)
-    unless old_records.empty?
-      old_records.destroy_all
-      flash[:success] = 'Old records are destroyed'
-    else
-      flash[:info] = 'No old records found'
-    end
-    redirect_to root_path
-  end
-
   private
 
   def sched_params

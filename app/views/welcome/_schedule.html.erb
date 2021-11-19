@@ -7,7 +7,6 @@
                 </div>
                 <div class="col-7 d-flex justify-content-end">
                     <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" %>
-                    <%= link_to 'Delete Old Records', del_rec_path, method: :delete, class: "btn btn-danger", style: "margin-right: 10px;" %>
                     <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
                 </div>
             <% else %>
@@ -32,7 +31,7 @@
             <th style="width: 15%;"></th>
         </tr>
         <% schedule.each do |data| %>
-            <% if data.seats_available != 0 %>
+            <% if data.seats_available != 0 && data.date_time.future? %>
             <tr>
                 <td style="padding-left: 20px !important;"><%= data.departure %></td>
                 <td><%= data.destination %></td>

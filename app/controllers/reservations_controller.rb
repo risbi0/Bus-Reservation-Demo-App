@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
     end
     
     def confirm
-        if Current.user.nil? || Current.user.name == "ADMIN"
+        if Current.user.nil?
             redirect_to root_path
         else
             @reservations = Booking.where(id: params[:rsrv_id])

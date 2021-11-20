@@ -20,7 +20,11 @@ class WelcomeController < ApplicationController
   end
 
   def new
-    @schedule = Schedule.new
+    if Current.user.nil? || Current.user.name != "ADMIN"
+      redirect_to root_path
+    else
+      @schedule = Schedule.new
+    end
   end
 
   def create
@@ -35,7 +39,11 @@ class WelcomeController < ApplicationController
   end
 
   def show
-    @bookings = Booking.where(schedule_id: params[:book_id])
+    if Current.user.nil? || Current.user.name != "ADMIN"
+      redirect_to root_path
+    else
+      @bookings = Booking.where(schedule_id: params[:book_id])
+    end
   end
 
   private

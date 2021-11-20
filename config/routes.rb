@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'sessions#create', as: 'log_in'
   delete 'logout', to: 'sessions#destroy'
 
-  get 'password', to: 'password#edit', as: 'edit_password'
+  get 'edit_password', to: 'password#edit'
   patch 'password', to: 'password#update'
   get 'password/reset', to: 'password_reset#new'
   post 'password/reset', to: 'password_reset#create'
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
 
   get 'reservations', to: 'reservations#index'
   get 'confirm', to: 'reservations#confirm'
-  post 'confirm_rsrv', to: 'reservations#update'
-  post 'del_rsrv', to: 'reservations#destroy'
+  post 'confirm_reservation', to: 'reservations#update'
+  post 'delete_reservation', to: 'reservations#destroy'
 end

@@ -43,7 +43,7 @@
                             <% if Current.user && Current.user.name == "ADMIN" %>
                                 <%= link_to 'Confirm Booking', confirm_path(rsrv_id: data.id), class: "btn btn-primary" if data.status == "Reserved (to be payed)" %>
                             <% else %>
-                                <%= form_for @confirmation, url: del_rsrv_path do |form| %>
+                                <%= form_for @confirmation, url: delete_reservation_path do |form| %>
                                     <%= form.hidden_field :id, value: data.id %>
                                     <%= form.hidden_field :datetime, value: data.schedule.formatted_date_for_comparison %>
                                     <% if data.status == "Reserved (to be payed)" %>

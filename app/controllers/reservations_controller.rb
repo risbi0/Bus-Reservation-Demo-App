@@ -5,8 +5,12 @@ class ReservationsController < ApplicationController
     end
     
     def confirm
-        @reservations = Booking.where(id: params[:rsrv_id])
-        @confirmation = Booking.new
+        if Current.user.nil? || Current.user.name == "ADMIN"
+            redirect_to root_path
+        else
+            @reservations = Booking.where(id: params[:rsrv_id])
+            @confirmation = Booking.new
+        end
     end
 
     def update

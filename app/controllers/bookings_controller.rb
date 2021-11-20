@@ -2,8 +2,12 @@ class BookingsController < ApplicationController
     before_action :require_user_logged_in!
 
     def new
-        @schedules = Schedule.where(id: params[:book_id])
-        @booking = Booking.new
+        if Current.user
+            redirect_to root_path
+        else
+            @schedules = Schedule.where(id: params[:book_id])
+            @booking = Booking.new
+        end
     end
 
     def create

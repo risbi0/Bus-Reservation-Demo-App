@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
-        if params[:booking][:datetime] == Date.current.strftime('%Y-%m-%d')
+        if params[:booking][:date] == Date.current.strftime('%Y-%m-%d')
             flash[:danger] = 'Can\'t cancel on the day of departure'
             redirect_to reservations_path
         else

@@ -16,7 +16,8 @@
             <strong>Confirmation Code: </strong><%= data.confirmation %><br>
             <strong>Departure: </strong><%= data.schedule.departure %><br>
             <strong>Destination: </strong><%= data.schedule.destination %><br>
-            <strong>Date and Time: </strong><%= data.schedule.formatted_date_time %><br>
+            <strong>Date: </strong><%= data.schedule.formatted_date %><br>
+            <strong>Time: </strong><%= data.schedule.formatted_time %><br>
             <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
             <strong>Seats: </strong><%= data.seats %><br>
             <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
@@ -35,7 +36,7 @@
             <% else %>
                 <%= form_for @confirmation, url: del_rsrv_path do |form| %>
                     <%= form.hidden_field :id, value: data.id %>
-                    <%= form.hidden_field :datetime, value: data.schedule.formatted_date_time_for_comparison %>
+                    <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
                     <div class="d-flex justify-content-between mt-3">
                         <%= form.submit 'Confirm', class: "btn btn-danger" %>
                         <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>

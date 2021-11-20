@@ -17,9 +17,15 @@
             </td>
         </tr>
         <tr>
-            <td>Date and Time</td>
+            <td>Date</td>
             <td>
-                <%= form.text_field :date_time, class: "form-control", placeholder: "YYYY-MM-DD HH-MM" %>
+                <%= form.text_field :date, class: "form-control", placeholder: "YYYY-MM-DD" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>
+                <%= form.text_field :time, class: "form-control", placeholder: "HH-MM" %>
             </td>
         </tr>
         <tr>

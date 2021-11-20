@@ -4,9 +4,10 @@ class WelcomeController < ApplicationController
       Schedule,
       params[:filterrific],
       select_options: {
-        by_departure: Schedule.options_for_departure,
-        by_destination: Schedule.options_for_destination,
-        by_date_time: Schedule.options_for_date_time,
+        by_departure: Schedule.options("departure"),
+        by_destination: Schedule.options("destination"),
+        by_date: Schedule.options("date"),
+        by_time: Schedule.options("time"),
         sorted_by: Schedule.options_for_sorted_by
       },
     )) || return
@@ -40,6 +41,6 @@ class WelcomeController < ApplicationController
   private
 
   def sched_params
-    params.require(:schedule).permit(:departure, :destination, :date_time, :seats_available, :price)
+    params.require(:schedule).permit(:departure, :destination, :date, :time, :seats_available, :price)
   end
 end

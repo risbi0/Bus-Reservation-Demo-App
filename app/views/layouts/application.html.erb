@@ -48,18 +48,18 @@
       <%= yield %>
     </div>
   </body>
+  <script src="https://momentjs.com/downloads/moment.js"></script>
   <script>
-    var basePrice = document.getElementById('booking_price').innerHTML;
-    var numberSlider = document.getElementById('booking_seats');
-    var priceField = document.getElementById('total_price');
-    var hiddenPriceField = document.getElementById('booking_total_price');
-    
-    numberSlider.addEventListener('keydown', function(e) {
-      e.preventDefault();
-    });
-    numberSlider.addEventListener('input', function(e) {
-      priceField.innerHTML = numberSlider.value * basePrice;
-      hiddenPriceField.value = numberSlider.value * basePrice;
-    });
+    document.getElementById('count').textContent = document.getElementById('table').rows.length - 1;
+    var dateDropdown = document.getElementById('filterrific_by_date');
+    for(i = 1; i < dateDropdown.options.length; i++) {
+      var convertedDate = new Date(dateDropdown.options[i].textContent);
+      dateDropdown.options[i].textContent = moment(convertedDate).format('MM/DD/YYYY');
+    }
+    var timeDropdown = document.getElementById('filterrific_by_time');
+    for(i = 1; i < timeDropdown.length; i++) {
+      var convertedTime = new Date(timeDropdown.options[i].textContent);
+      timeDropdown.options[i].textContent = moment(convertedTime).format('hh:mm A');
+    }
   </script>
 </html>

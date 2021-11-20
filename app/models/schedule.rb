@@ -5,7 +5,8 @@
 # id                :integer        primary key
 # departure         :string
 # destination       :string
-# date_time         :datetime
+# date              :date
+# time              :time
 # seats_available   :integer
 # price             :integer
 
@@ -13,11 +14,12 @@ class Schedule < ApplicationRecord
     has_many :bookings, dependent: :delete_all
     has_many :users, through: :bookings, dependent: :delete_all
 
-    validates :departure, :destination, :date_time, :seats_available, :price, presence: true
+    validates :departure, :destination, :date, :time, :seats_available, :price, presence: true
 
     scope :by_departure, -> (departure) { where(departure: [*departure]) }
     scope :by_destination, -> (destination) { where(destination: [*destination]) }
-    scope :by_date_time, -> (date_time) { where(date_time: [*date_time]) }
+    scope :by_date, -> (date) { where(date: [*date]) }
+    scope :by_time, -> (time) { where(time: [*time]) }
     scope :sorted_by, -> (sort_option) {
         direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
         schedules = Schedule.arel_table
@@ -28,8 +30,10 @@ class Schedule < ApplicationRecord
             order(schedules[:departure].send(direction))
         when /^destination_/
             order(schedules[:destination].send(direction))
-        when /^date_time_/
-            order(schedules[:date_time].send(direction))
+        when /^date_/
+            order(schedules[:date].send(direction))
+        when /^time_/
+            order(schedules[:time].send(direction))
         when /^seats_available_/
             order(schedules[:seats_available].send(direction))
         when /^price_/
@@ -43,7 +47,8 @@ class Schedule < ApplicationRecord
                 available_filters: [
                     :by_departure,
                     :by_destination,
-                    :by_date_time,
+                    :by_date,
+                    :by_time,
                     :sorted_by
                 ]
 
@@ -51,33 +56,30 @@ class Schedule < ApplicationRecord
 
     @schedule_table = Schedule.arel_table
 
-    def self.options_for_departure
-        order(@schedule_table[:departure]).distinct.pluck(:departure)
-    end
-
-    def self.options_for_destination
-        order(@schedule_table[:destination]).distinct.pluck(:destination)
-    end
-
-    def self.options_for_date_time
-        order(@schedule_table[:date_time]).distinct.pluck(:date_time)
+    def self.options(var)
+        order(@schedule_table[var.to_sym]).where("seats_available != ? AND date > ?", 0, Date.today).distinct.pluck(var.to_sym)
     end
 
     def self.options_for_sorted_by
         [
             ['Departure', 'departure_asc'],
             ['Destination', 'destination_asc'],
-            ['Date and Time', 'date_time_asc'],
+            ['Date', 'date_asc'],
+            ['Time', 'time_asc'],
             ['Available Seats', 'seats_available_desc'],
             ['Price', 'price_asc']
         ]
     end
 
-    def formatted_date_time_for_comparison
-        date_time.strftime('%Y-%m-%d')
+    def formatted_date_for_comparison
+        date.strftime('%Y-%m-%d')
     end
 
-    def formatted_date_time
-        date_time.strftime('%m/%d/%Y %l:%M %p')
+    def formatted_date
+        date.strftime('%m/%d/%Y')
+    end
+
+    def formatted_time
+        time.strftime('%l:%M %p')
     end
 end

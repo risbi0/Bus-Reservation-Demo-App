@@ -24,7 +24,7 @@
                     <div class="col">
                         <strong>Departure: </strong><%= data.schedule.departure %><br>
                         <strong>Destination: </strong><%= data.schedule.destination %><br>
-                        <strong>Date and Time: </strong><%= data.schedule.formatted_date_time %>
+                        <strong>Date: </strong><%= data.schedule.formatted_date %><strong> Time: </strong><%= data.schedule.formatted_time %>
                     </div>
                 </div>
             </a>
@@ -45,9 +45,9 @@
                             <% else %>
                                 <%= form_for @confirmation, url: del_rsrv_path do |form| %>
                                     <%= form.hidden_field :id, value: data.id %>
-                                    <%= form.hidden_field :datetime, value: data.schedule.formatted_date_time_for_comparison %>
+                                    <%= form.hidden_field :datetime, value: data.schedule.formatted_date_for_comparison %>
                                     <% if data.status == "Reserved (to be payed)" %>
-                                        <% if Date.current.strftime('%Y-%m-%d') == data.schedule.formatted_date_time_for_comparison %>
+                                        <% if Date.current.strftime('%Y-%m-%d') == data.schedule.formatted_date_for_comparison %>
                                             <%= form.submit 'Cancel Booking', class: "btn btn-danger" %>
                                         <% else %>
                                             <%= link_to 'Cancel Booking', confirm_path(rsrv_id: data.id), class: "btn btn-danger" %>

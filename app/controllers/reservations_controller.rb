@@ -2,7 +2,8 @@ class ReservationsController < ApplicationController
     before_action :require_user_logged_in!
 
     def index
-        @reservations = Booking.where(user_id: Current.user.id) unless Current.user.nil?
+        @admin_table = Booking.joins(:schedule).order(:date)
+        @user_table = Booking.where(user_id: Current.user.id).joins(:schedule).order(:date)
         @confirmation = Booking.new
     end
     

@@ -1,10 +1,17 @@
-<% reservations = Current.user.name == "ADMIN" ? Booking.all : @reservations %>
-<% link = Current.user.name == "ADMIN" ? "https://google.com" : "https://duckduckgo.com/" %>
+<% if Current.user.name == "ADMIN" %>
+    <% reservations, form_link = @admin_table, "https://google.com" %>
+<% else %>
+    <% reservations, form_link = @user_table, "https://duckduckgo.com/" %>
+<% end %>
 <div class="margin-top" style="width: 620px;">
     <div class="bg-dark p-3 rounded d-flex align-items-center justify-content-between">
-        <h3>Reservations</h3>
-        <form action=<%= link %> target="_blank">
-            <input type="submit" class="btn btn-warning" value="Google Forms">
+        <h2>Reservations</h2>
+        <form action=<%= form_link %> target="_blank">
+            <% if Current.user.name == "ADMIN" %>
+                <input type="submit" class="btn btn-warning" value="Google Forms">
+            <% else %>
+                <input type="submit" class="btn btn-warning" value="Payment Confirmation Form">
+            <% end %>
         </form>
     </div>
     <div class="mt-3"></div>

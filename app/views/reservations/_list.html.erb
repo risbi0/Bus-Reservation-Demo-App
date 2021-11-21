@@ -1,19 +1,22 @@
 <% tbp_or_appr_str = tbp_or_appr ? "Reserved (to be payed)" : "Booked" %>
 <% nothing_msg = tbp_or_appr ? "There are no bookings made." : "There are no bookings that have been approved." %>
-<% if reservations.empty? %>
+<% if reservations.where(status: tbp_or_appr_str).empty? %>
 <div class="bg-dark p-3 rounded-bottom d-flex align-items-center">
     <div><%= nothing_msg %></div>
 </div>
 <% else %>
 <div class="mb-4">
-    <% reservations.reverse().each do |data| %>
+    <% reservations.each do |data| %>
         <% if data.status == tbp_or_appr_str %>
         <div class="card bg-dark">
             <a class="btn text-light card-header" data-bs-toggle="collapse" href="#id-<%= data.id %>">
                 <div class="row" style="text-align: left;">
                     <div class="col">
                         <strong>Trip No: </strong><%= data.id %><br>
+                        <% if Current.user.name == "ADMIN" %>
                         <strong>Name: </strong><%= data.user.name %><br>
+                        <% end %>
+                        <% unless Current.user.name == "ADMIN" %><br><% end %>
                         <strong>Booked on: </strong><%= data.formatted_created_at %>
                     </div>
                     <div class="col">
@@ -30,7 +33,9 @@
                             <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
                             <strong>Selected Seats: </strong><%= data.seats %><br>
                             <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
+                            <% if Current.user.name == "ADMIN" %>
                             <strong>Email: </strong><%= data.user.email %><br>
+                            <% end %>
                             <strong>Confirmation Code: </strong><%= data.confirmation %><br>
                             <strong>Status: </strong><%= data.status %><br>
                         </div>

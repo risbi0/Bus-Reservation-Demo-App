@@ -62,12 +62,5 @@
       var convertedTime = new Date(timeDropdown.options[i].textContent);
       timeDropdown.options[i].textContent = moment(convertedTime).format('hh:mm A');
     }
-    window.addEventListener('resize', function() {
-      if(window.innerWidth < 1000){
-        document.querySelector('.d-flex').classList.remove('justify-content-center');
-      }else{
-        document.querySelector('.d-flex').classList.add('justify-content-center');
-      }
-    });
   </script>
 </html>

@@ -41,6 +41,7 @@ body {
 }
 #alert {
     position: absolute;
+	z-index: 2;
     width: auto;
     top: 5%;
     left: 50%;

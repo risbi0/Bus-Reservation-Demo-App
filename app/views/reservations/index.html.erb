@@ -1,4 +1,4 @@
-<% reservations = Current.user.name == "ADMIN" ? @admin_table, @user_table %>
+<% reservations = Current.user.name == "ADMIN" ? @admin_table : @user_table %>
 <div class="margin-top" style="width: 620px;">
     <div class="bg-dark p-3 rounded d-flex align-items-center justify-content-between">
         <h2>Reservations</h2>

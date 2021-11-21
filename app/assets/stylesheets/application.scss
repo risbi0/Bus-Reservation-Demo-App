@@ -17,6 +17,13 @@
 body {
 	background-color: #6C757D !important;
 }
+a {
+	text-decoration: none;
+	color: #F8F9FA;
+}
+a:hover {
+	color: rgba(255, 255, 255, 0.7);
+}
 .top-nav {
 	position: fixed;
 	z-index: 1;
@@ -129,6 +136,9 @@ input[type="number"] {
 .nav-link:hover, .nav-link:focus {
     color: #F8F9FA;
 }
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+.nav-tabs .nav-link:hover {
 	border-color: rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.7) transparent;
+}
+.btn-close:focus {
+	box-shadow: none;
 }

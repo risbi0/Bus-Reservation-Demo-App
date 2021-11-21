@@ -25,19 +25,19 @@ class Schedule < ApplicationRecord
         schedules = Schedule.arel_table
         case sort_option.to_s
         when /^id_/
-            order(schedules[:id].send(direction))
+            order(schedules[:id].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^departure_/
-            order(schedules[:departure].send(direction))
+            order(schedules[:departure].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^destination_/
-            order(schedules[:destination].send(direction))
+            order(schedules[:destination].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^date_/
-            order(schedules[:date].send(direction))
+            order(schedules[:date].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^time_/
-            order(schedules[:time].send(direction))
+            order(schedules[:time].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^seats_available_/
-            order(schedules[:seats_available].send(direction))
+            order(schedules[:seats_available].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         when /^price_/
-            order(schedules[:price].send(direction))
+            order(schedules[:price].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
         else
             raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
         end

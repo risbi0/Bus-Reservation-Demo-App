@@ -1,0 +1,61 @@
+<% tbp_or_appr_str = tbp_or_appr ? "Reserved (to be payed)" : "Booked" %>
+<% nothing_msg = tbp_or_appr ? "There are no bookings made." : "There are no bookings that have been approved." %>
+<% if reservations.empty? %>
+<div class="bg-dark p-3 rounded-bottom d-flex align-items-center">
+    <div><%= nothing_msg %></div>
+</div>
+<% else %>
+<div class="mb-4">
+    <% reservations.reverse().each do |data| %>
+        <% if data.status == tbp_or_appr_str %>
+        <div class="card bg-dark">
+            <a class="btn text-light card-header" data-bs-toggle="collapse" href="#id-<%= data.id %>">
+                <div class="row" style="text-align: left;">
+                    <div class="col">
+                        <strong>Trip No: </strong><%= data.id %><br>
+                        <strong>Name: </strong><%= data.user.name %><br>
+                        <strong>Booked on: </strong><%= data.formatted_created_at %>
+                    </div>
+                    <div class="col">
+                        <strong>Departure: </strong><%= data.schedule.departure %><br>
+                        <strong>Destination: </strong><%= data.schedule.destination %><br>
+                        <strong>Date: </strong><%= data.schedule.formatted_date %><strong> Time: </strong><%= data.schedule.formatted_time %>
+                    </div>
+                </div>
+            </a>
+            <div id="id-<%= data.id %>" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
+                            <strong>Selected Seats: </strong><%= data.seats %><br>
+                            <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
+                            <strong>Email: </strong><%= data.user.email %><br>
+                            <strong>Confirmation Code: </strong><%= data.confirmation %><br>
+                            <strong>Status: </strong><%= data.status %><br>
+                        </div>
+                        <div class="col d-flex align-items-end justify-content-end">
+                            <% if Current.user.name == "ADMIN" %>
+                                <%= link_to 'Confirm Booking', confirm_path(rsrv_id: data.id), class: "btn btn-primary" if data.status == "Reserved (to be payed)" %>
+                            <% else %>
+                                <%= form_for @confirmation, url: delete_reservation_path do |form| %>
+                                    <%= form.hidden_field :id, value: data.id %>
+                                    <%= form.hidden_field :datetime, value: data.schedule.formatted_date_for_comparison %>
+                                    <% if data.status == "Reserved (to be payed)" %>
+                                        <% if Date.current.strftime('%Y-%m-%d') == data.schedule.formatted_date_for_comparison %>
+                                            <%= form.submit 'Cancel Booking', class: "btn btn-danger" %>
+                                        <% else %>
+                                            <%= link_to 'Cancel Booking', confirm_path(rsrv_id: data.id), class: "btn btn-danger" %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+</div>
+<% end %>

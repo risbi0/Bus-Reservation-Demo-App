@@ -1,9 +1,9 @@
-<div class="margin-top">    
-    <h2 class="text-center mt-5">Edit Password</h2>
+<div class="margin-top bg-dark rounded p-3">    
+    <h2 class="text-center pt-4">Edit Password</h2>
     <div class="container justify-content-center" id="container-form">
         <%= form_with model: Current.user, url: edit_password_path do |f| %>
             <form>
-                <div class="form-floating mb-4 mt-4 text-muted">
+                <div class="form-floating mb-4 mt-5 text-muted">
                     <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
                     <%= f.label :password %>
                 </div>
@@ -11,7 +11,7 @@
                     <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
                     <%= f.label :confirm_password %>
                 </div>
-                <%= f.submit "Update", class: "btn btn-primary" %>
+                <%= f.submit "Update", class: "btn btn-primary mb-2" %>
             </form>
         <% end %>
     </div>

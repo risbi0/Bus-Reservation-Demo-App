@@ -10,6 +10,7 @@
         <br><br>
         <h5>Booking Details:</h5>
         <% @reservations.each do |data| %>
+            <strong>Trip No: </strong><%= data.id %><br>
             <strong>Booked on: </strong><%= data.formatted_created_at %><br>
             <strong>Name: </strong><%= data.user.name %><br>
             <strong>Email: </strong><%= data.user.email %><br>

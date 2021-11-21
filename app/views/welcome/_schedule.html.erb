@@ -1,22 +1,19 @@
 <% if Current.user && Current.user.name == "ADMIN" %>
-    <% val_1 = "5" %>
-    <% val_2 = "7" %>
+    <% val_1, val_2 = "5", "7" %>
+    <% col = "15" %>
 <% else %>
-    <% val_1 = "10" %>
-    <% val_2 = "2" %>
+    <% val_1, val_2 = "10", "2" %>
+    <% col = "5" %>
 <% end %>
-
 <div id="filterrific_results">
-    <div class="bg-dark mt-4 p-3 border border-dark rounded w-900">
+    <div class="bg-dark mt-4 p-3 border border-dark rounded w-1000">
         <div class="row">
             <div class="col-<%= val_1 %> d-flex align-items-center">
                 <div>Displaying <span id="count"></span> out of 
                 <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today).count %> records</div>
             </div>
             <div class="col-<%= val_2 %> d-flex justify-content-end">
-                <% if Current.user && Current.user.name == "ADMIN" %>
-                <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" %>
-                <% end %>
+                <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
                 <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
             </div>
         </div>
@@ -25,18 +22,19 @@
     </div>
     <table class="table table-dark table-striped text-light mt-4" id="table">
         <tr>
-            <th style="width: 15%; padding-left: 20px !important;">Departure</th>
-            <th style="width: 15%;">Destination</th>
+            <th style="width: 5%; padding-left: 20px !important;" class="text-center">Trip No.</th>
+            <th style="width: 12%;">Departure</th>
+            <th style="width: 12%;">Destination</th>
             <th style="width: 10%;">Date</th>
-            <th style="width: 10%;">Time</th>
+            <th style="width: 8%;">Time</th>
             <th style="width: 10%;" class="text-center">Available Seats</th>
             <th style="width: 10%;" class="text-center">Price (&#8369;)</th>
-            <th style="width: 20%;"></th>
+            <th style="width: <%= col %>%;"></th>
         </tr>
         <% schedule.each do |data| %>
-            <% if data.seats_available != 0 && data.date.future? %>
             <tr>
-                <td style="padding-left: 20px !important;"><%= data.departure %></td>
+                <td style="padding-left: 20px !important;" class="text-center"><%= data.id %></td>
+                <td><%= data.departure %></td>
                 <td><%= data.destination %></td>
                 <td><%= data.formatted_date %></td>
                 <td><%= data.formatted_time %></td>
@@ -45,14 +43,11 @@
                 <td style="padding-right: 20px !important;">
                     <% if Current.user && Current.user.name == "ADMIN" %>
                         <%= link_to 'View Passengers', schedule_bookings_path(book_id: data.id), class: "btn btn-primary float-end" %>
-                    <% elsif Date.current.strftime('%Y-%m-%d') == data.formatted_date_for_comparison %>
-                        <%# disable Book button for schedules having the same date as today %>
                     <% else %>
                         <%= link_to 'Book', booking_path(book_id: data.id), class: "btn btn-primary float-end" %>
                     <% end %>
                 </td>
             </tr>
-            <% end %>
         <% end %>
     </table>
 </div>

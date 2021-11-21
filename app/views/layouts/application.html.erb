@@ -12,15 +12,16 @@
   <body>
     <nav class="navbar navbar-expand bg-dark navbar-dark top-nav">
       <div class="container-fluid">
-        <div class="navbar-header" id="navcon">
+        <div class="navbar-header" id="navcon" style="margin-left: 10px;">
           <%= link_to 'J-STAR', root_path, class: "navbar-brand text-secondary" %>
         </div>
         <div class="navbar-right">
           <ul class="navbar-nav ">
-          <%= link_to 'Reservations', reservations_path, class: "nav-link" %>
           <% if Current.user %>
+            <%= link_to 'Schedule', root_path, class: "nav-link", style: "margin-right: 10px;" %>
+            <%= link_to 'Reservations', reservations_path, class: "nav-link", style: "margin-right: 10px;" %>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" style="margin-left: 15px;" role="button" data-bs-toggle="dropdown">
+              <a class="nav-link dropdown-toggle" style="margin: 0 10px;" role="button" data-bs-toggle="dropdown">
                 <%= Current.user.name %>
               </a>
               <ul class="dropdown-menu dropdown-menu-end navbar-right">
@@ -31,7 +32,7 @@
           <% else %>
             <ul class="container-dropdown row" id="navcon">
               <%= link_to 'Sign Up', sign_up_path, class: "nav-link col", style: "width: 90px;" %>
-              <%= link_to 'Login', sign_in_path, class: "nav-link col", style: "margin-right: -10px;" %>
+              <%= link_to 'Login', sign_in_path, class: "nav-link col" %>
             </ul>
           <% end %>
           </ul>
@@ -44,7 +45,7 @@
         <a href="#" class="close text-right" id="close" data-dismiss="alert" aria-label="close">&times;</a>
       </div>
     <% end %>
-    <div class="container-fluid text-light d-flex flex-column align-items-center" id="main-height">
+    <div class="container-fluid text-light d-flex align-items-center justify-content-center" id="main-height">
       <%= yield %>
     </div>
   </body>
@@ -61,5 +62,12 @@
       var convertedTime = new Date(timeDropdown.options[i].textContent);
       timeDropdown.options[i].textContent = moment(convertedTime).format('hh:mm A');
     }
+    window.addEventListener('resize', function() {
+      if(window.innerWidth < 1000){
+        document.querySelector('.d-flex').classList.remove('justify-content-center');
+      }else{
+        document.querySelector('.d-flex').classList.add('justify-content-center');
+      }
+    });
   </script>
 </html>

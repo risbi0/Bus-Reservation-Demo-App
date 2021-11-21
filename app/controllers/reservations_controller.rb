@@ -1,16 +1,14 @@
 class ReservationsController < ApplicationController
+    before_action :require_user_logged_in!
+
     def index
         @reservations = Booking.where(user_id: Current.user.id) unless Current.user.nil?
         @confirmation = Booking.new
     end
     
     def confirm
-        if Current.user.nil?
-            redirect_to root_path
-        else
-            @reservations = Booking.where(id: params[:rsrv_id])
-            @confirmation = Booking.new
-        end
+        @reservations = Booking.where(id: params[:rsrv_id])
+        @confirmation = Booking.new
     end
 
     def update

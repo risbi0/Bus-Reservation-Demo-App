@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
     validates :email, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
     validates :email, :name, presence: true
+    validates_with UserValidator
     has_secure_password # adds vitual attributes for authentication
     validates :password, :password_confirmation, presence: true
 end

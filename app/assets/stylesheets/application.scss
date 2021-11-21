@@ -22,6 +22,10 @@ body {
 	z-index: 1;
 	width: 100%;
 }
+.container-fluid {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
 #main-height {
 	height: 100%;
 }
@@ -54,7 +58,7 @@ body {
 	opacity: 0.5;
 }
 #container-signin {
-	width: 350px;
+	width: 400px;
 	margin-top: 30vh;
 }
 #container-form {
@@ -70,8 +74,8 @@ body {
 	margin-top: 0rem !important;
 	margin-right: 0.5rem;
 }
-.w-900 {
-	min-width: 900px;
+.w-1000 {
+	min-width: 1000px;
 }
 th, td {
 	vertical-align: middle;
@@ -92,11 +96,38 @@ input[type="number"] {
 	border-bottom: 1px solid rgb(200, 200, 200) !important;
 }
 .card-header:hover {
-	background-color: #5a5a5a !important;
+	background-color: #333638 !important;
 }
 .card-body {
-	background-color: #353535 !important;
+	background-color: #333638 !important;
 }
 .btn {
 	box-shadow: 0 0 0 0 rgb(0, 0, 0)!important;
+}
+.tab {
+	padding: 12px !important;
+}
+.tab-left {
+	border-radius: 5px 0 0 0 !important;
+}
+.tab-right {
+	border-radius: 0 5px 0 0 !important;
+}
+.nav-tabs {
+	border-bottom: 2px solid #F8F9FA;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+	background-color: #212529;
+	color: #F8F9FA;
+	border: 1px solid transparent;
+}
+.nav-tabs .nav-link {
+	background-color: #333638;
+	color: rgba(255, 255, 255, 0.5);
+}
+.nav-link:hover, .nav-link:focus {
+    color: #F8F9FA;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+	border-color: rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.7) transparent;
 }

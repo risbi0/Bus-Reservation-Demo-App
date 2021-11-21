@@ -18,19 +18,18 @@ class ReservationsController < ApplicationController
         schedule = Schedule.find(params[:booking][:schedule_id])
         schedule.update(seats_available: params[:booking][:seats_available].to_i - params[:booking][:seats].to_i)
         flash[:success] = 'Booking confirmed'
-        redirect_to root_path
+        redirect_to reservations_path
     end
 
     def destroy
-        if params[:booking][:date] == Date.current.strftime('%Y-%m-%d')
-            flash[:danger] = 'Can\'t cancel on the day of departure'
-            redirect_to reservations_path
+        if Date.parse(params[:booking][:date]) - 2 == Date.parse(Date.current.strftime('%Y-%m-%d'))
+            flash[:danger] = 'Can\'t cancel from two days until departure'
         else
             booking = Booking.find_by(id: params[:booking][:id])
             booking.destroy
             flash[:success] = 'Reservation successfully cancelled'
-            redirect_to reservations_path
         end
+        redirect_to reservations_path
     end
 
     private

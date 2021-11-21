@@ -45,9 +45,9 @@
                             <% else %>
                                 <%= form_for @confirmation, url: delete_reservation_path do |form| %>
                                     <%= form.hidden_field :id, value: data.id %>
-                                    <%= form.hidden_field :datetime, value: data.schedule.formatted_date_for_comparison %>
+                                    <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
                                     <% if data.status == "Reserved (to be payed)" %>
-                                        <% if Date.current.strftime('%Y-%m-%d') == data.schedule.formatted_date_for_comparison %>
+                                        <% if Date.parse(data.schedule.formatted_date_for_comparison) - 2 == Date.parse(Date.current.strftime('%Y-%m-%d'))%>
                                             <%= form.submit 'Cancel Booking', class: "btn btn-danger" %>
                                         <% else %>
                                             <%= link_to 'Cancel Booking', confirm_path(rsrv_id: data.id), class: "btn btn-danger" %>

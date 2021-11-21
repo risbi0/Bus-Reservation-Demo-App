@@ -32,7 +32,7 @@
             <th style="width: <%= col %>%;"></th>
         </tr>
         <% schedule.each do |data| %>
-            <% if Date.parse(data.formatted_date_for_comparison).future? %>
+            <% if (Date.parse(data.formatted_date_for_comparison) - 2).future? %>
             <tr>
                 <td style="padding-left: 20px !important;" class="text-center"><%= data.id %></td>
                 <td><%= data.departure %></td>

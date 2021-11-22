@@ -7,7 +7,6 @@ class WelcomeController < ApplicationController
         by_departure: Schedule.options("departure"),
         by_destination: Schedule.options("destination"),
         by_date: Schedule.options("date"),
-        by_time: Schedule.options("time"),
         sorted_by: Schedule.options_for_sorted_by
       },
     )) || return

@@ -1,3 +1,4 @@
+<% reservations = Current.user.name == "ADMIN" ? @admin_table : @user_table %>
 <% tbp_or_appr_str = tbp_or_appr ? "Reserved (to be payed)" : "Booked" %>
 <% nothing_msg = tbp_or_appr ? "There are no bookings made." : "There are no bookings that have been approved." %>
 <% if reservations.where(status: tbp_or_appr_str).empty? %>

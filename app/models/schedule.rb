@@ -19,7 +19,6 @@ class Schedule < ApplicationRecord
     scope :by_departure, -> (departure) { where(departure: [*departure]) }
     scope :by_destination, -> (destination) { where(destination: [*destination]) }
     scope :by_date, -> (date) { where(date: [*date]) }
-    scope :by_time, -> (time) { where(time: [*time]) }
     scope :sorted_by, -> (sort_option) {
         direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
         schedules = Schedule.arel_table

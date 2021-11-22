@@ -6,11 +6,11 @@
     <% col = "5" %>
 <% end %>
 <div id="filterrific_results">
-    <div class="bg-dark mt-4 p-3 border border-dark rounded w-1000">
+    <div class="bg-dark mt-4 p-3 border border-dark rounded">
         <div class="row">
             <div class="col-<%= val_1 %> d-flex align-items-center">
                 <div>Displaying <span id="count"></span> out of 
-                <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today).count %> records</div>
+                <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today + 2).count %> records</div>
             </div>
             <div class="col-<%= val_2 %> d-flex justify-content-end">
                 <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
@@ -20,7 +20,7 @@
         <%# not working
         <%= render_filterrific_spinner %>
     </div>
-    <table class="table table-dark table-striped text-light mt-4" id="table">
+    <table class="table table-dark table-striped text-light mt-4 w-1000" id="table">
         <tr>
             <th style="width: 5%; padding-left: 20px !important;" class="text-center">Trip No.</th>
             <th style="width: 12%;">Departure</th>

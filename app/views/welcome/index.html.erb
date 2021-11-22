@@ -1,35 +1,28 @@
-<div class="d-flex flex-column align-items-center" style="height: 100vh;">
+<div class="d-flex flex-column align-items-center vh-100">
     <%= form_for_filterrific @filterrific do |f| %>
-        <div class="container row bg-dark p-3 border border-dark rounded w-1000 margin-top">    
-            <div class="form-group col-3">
+        <div class="margin-top container row d-flex justify-content-center bg-dark p-3 border border-dark rounded w-1000">    
+            <div class="form-group form-dropdown col">
                 <%= f.label :departure, class: "h5 heading" %>
                 <%= f.select(:by_departure,
                             @filterrific.select_options[:by_departure],
                             { include_blank: 'Default' },
                             { class: "form-control", onchange: "this.form.submit();" }) %>
             </div>
-            <div class="form-group col-3">
+            <div class="form-group form-dropdown col">
                 <%= f.label :destination, class: "h5 heading" %>
                 <%= f.select(:by_destination,
                             @filterrific.select_options[:by_destination],
                             { include_blank: 'Default'},
                             { class: "form-control", onchange: "this.form.submit();" }) %>
             </div>
-            <div class="form-group col-2">
+            <div class="form-group form-dropdown col">
                 <%= f.label :date, class: "h5 heading" %>
                 <%= f.select(:by_date,
                             @filterrific.select_options[:by_date],
                             { include_blank: 'Default' },
                             { class: "form-control", onchange: "this.form.submit();" }) %>
             </div>
-            <div class="form-group col-2">
-                <%= f.label :time, class: "h5 heading" %>
-                <%= f.select(:by_time,
-                            @filterrific.select_options[:by_time],
-                            { include_blank: 'Default' },
-                            { class: "form-control", onchange: "this.form.submit();" }) %>
-            </div>
-            <div class="form-group col-2">
+            <div class="form-group form-dropdown col">
                 <%= f.label :sort_by, class: "h5 heading" %>
                 <%= f.select(:sorted_by,
                             @filterrific.select_options[:sorted_by],

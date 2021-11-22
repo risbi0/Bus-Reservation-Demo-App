@@ -1,11 +1,15 @@
-<% reservations = Current.user.name == "ADMIN" ? @admin_table : @user_table %>
 <div class="margin-top" style="width: 620px;">
     <div class="bg-dark p-3 rounded d-flex align-items-center justify-content-between">
         <h2>Reservations</h2>
         <% if Current.user.name == "ADMIN" %>
-        <form action="https://google.com" target="_blank">
-            <input type="submit" class="btn btn-warning" value="Google Forms">
-        </form>
+        <div class="d-flex">
+            <form action="https://docs.google.com/spreadsheets/d/1JUe_vmlZnSrEAcZjuI8uVPTY4ZbB9udaCgtNSWozsl0/edit?fbclid=IwAR08Qjy8ySkp2kpongoJLNdbYtjbVucdKDr2NmKec4tE1Noead6fOTJDy74#gid=33817135" target="_blank">
+                <input type="submit" class="btn btn-success" value="Responses" style="margin-right: 15px;">
+            </form>
+            <form action="https://docs.google.com/forms/d/1nEuQ3Fj_9G3Snse89evq_K2oDQLNVpqmLUXTSMxibaE/edit?fbclid=IwAR3WAMcEMBmdX0qz6t-ph2tY4P15EuJ2hWsfUpKJgeP9cO08S9wS12th7Hs" target="_blank">
+                <input type="submit" class="btn btn-warning" value="Edit Form">
+            </form>
+        </div>
         <% else %>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Payment Methods</button>
             <%= render 'payment_methods' %>
@@ -24,10 +28,10 @@
     <% end %>
     <div class="tab-content" id="accordion">
         <div class="tab-pane fade show active" id="pills-tbp" role="tabpanel" aria-labelledby="pills-tbp-tab">
-            <%= render 'list', reservations: reservations, tbp_or_appr: true %>
+            <%= render 'list', tbp_or_appr: true %>
         </div>
         <div class="tab-pane fade" id="pills-approved" role="tabpanel" aria-labelledby="pills-approved-tab">
-            <%= render 'list', reservations: reservations, tbp_or_appr: false %>
+            <%= render 'list', tbp_or_appr: false %>
         </div>
     </div>
 </div>

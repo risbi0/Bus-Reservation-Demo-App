@@ -24,19 +24,19 @@ class Schedule < ApplicationRecord
         schedules = Schedule.arel_table
         case sort_option.to_s
         when /^id_/
-            order(schedules[:id].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:id].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^departure_/
-            order(schedules[:departure].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:departure].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^destination_/
-            order(schedules[:destination].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:destination].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^date_/
-            order(schedules[:date].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:date].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^time_/
-            order(schedules[:time].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:time].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^seats_available_/
-            order(schedules[:seats_available].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:seats_available].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         when /^price_/
-            order(schedules[:price].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today)
+            order(schedules[:price].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
         else
             raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
         end
@@ -56,7 +56,7 @@ class Schedule < ApplicationRecord
     @schedule_table = Schedule.arel_table
 
     def self.options(var)
-        order(@schedule_table[var.to_sym]).where("seats_available != ? AND date > ?", 0, Date.today).distinct.pluck(var.to_sym)
+        order(@schedule_table[var.to_sym]).where("seats_available != ? AND date > ?", 0, Date.today + 2).distinct.pluck(var.to_sym)
     end
 
     def self.options_for_sorted_by

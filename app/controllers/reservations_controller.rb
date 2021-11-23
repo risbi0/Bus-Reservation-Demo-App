@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
     before_action :require_user_logged_in!
 
     def index
-        @admin_table = Booking.joins(:schedule).order(:date)
+        @admin_table = Booking.where("date > ?", Date.today + 2).joins(:schedule).order(:date)
         @user_table = Booking.where(user_id: Current.user.id).joins(:schedule).order(:date)
         @confirmation = Booking.new
     end
@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
-        if Date.parse(params[:booking][:date]) - 2 == Date.parse(Date.current.strftime('%Y-%m-%d'))
+        if Date.parse(params[:booking][:date]) - 2 <= Date.parse(Date.current.strftime('%Y-%m-%d'))
             flash[:danger] = 'Can\'t cancel from two days until departure'
         else
             booking = Booking.find_by(id: params[:booking][:id])

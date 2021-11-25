@@ -1,14 +1,17 @@
+<% case status %>
+<% when "tbp" then status_str, nothing_msg = "Reserved (to be payed)", "There are no bookings made." %>
+<% when "appr" then status_str, nothing_msg = "Booked", "There are no bookings that have been approved." %>
+<% when "ss" then status_str, nothing_msg = "Seats Reserved", "No seats have been selected." %>
+<% end %>
 <% reservations = Current.user.name == "ADMIN" ? @admin_table : @user_table %>
-<% tbp_or_appr_str = tbp_or_appr ? "Reserved (to be payed)" : "Booked" %>
-<% nothing_msg = tbp_or_appr ? "There are no bookings made." : "There are no bookings that have been approved." %>
-<% if reservations.where(status: tbp_or_appr_str).empty? %>
+<% if reservations.where(status: status_str).empty? %>
 <div class="bg-dark p-3 rounded-bottom d-flex align-items-center">
     <div><%= nothing_msg %></div>
 </div>
 <% else %>
 <div class="mb-4">
     <% reservations.each do |data| %>
-        <% if data.status == tbp_or_appr_str %>
+        <% if data.status == status_str %>
         <div class="card bg-dark">
             <a class="btn text-light card-header" data-bs-toggle="collapse" href="#id-<%= data.id %>">
                 <div class="row" style="text-align: left;">
@@ -39,6 +42,9 @@
                             <% end %>
                             <strong>Confirmation Code: </strong><%= data.confirmation %><br>
                             <strong>Status: </strong><%= data.status %><br>
+                            <% if data.status == "Seats Reserved" %>
+                            <strong>Selected Seats: </strong><span class="selected_seats"><%= data.selected_seats %></span><br>
+                            <% end %>
                         </div>
                         <div class="col d-flex align-items-end justify-content-end">
                             <% if Current.user.name == "ADMIN" %>
@@ -53,6 +59,10 @@
                                         <% else %>
                                             <%= link_to 'Cancel Booking', confirm_path(rsrv_id: data.id), class: "btn btn-danger" %>
                                         <% end %>
+                                    <% elsif data.status == "Booked" %>
+                                            <%= link_to 'Select Seats', select_seats_path(sched_id: data.schedule.id, book_id: data.id, limit: data.seats), class: "btn btn-primary" %>
+                                    <% elsif data.status == "Seats Reserved" %>
+                                            <%= link_to 'View Seat Occupancy', select_seats_path(sched_id: data.schedule.id, view: true, seats: data.selected_seats), class: "btn btn-primary" %>
                                     <% end %>
                                 <% end %>
                             <% end %>
@@ -65,3 +75,65 @@
     <% end %>
 </div>
 <% end %>
+<script>
+    var conversions = {
+        'zero': 0,
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9,
+        'ten': 10,
+        'eleven': 11,
+        'twelve': 12,
+        'thirteen': 13,
+        'fourteen': 14,
+        'fifteen': 15,
+        'sixteen': 16,
+        'seventeen': 17,
+        'eighteen': 18,
+        'nineteen': 19,
+        'twenty': 20,
+        'thirty': 30,
+        'forty': 40
+    }
+
+    var arr, result;
+
+    function convertToNumeral(i) {
+        let append = conversions[i];
+        if (append != null) {
+            result += append;
+        }
+    }
+    
+    var selectedSeats = document.getElementsByClassName('selected_seats');
+
+    if (!selectedSeats[0].innerHTML.includes(',')) {
+        for (let i = 0; i < selectedSeats.length; i++) {
+            // spelled to numeral
+            var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
+                arr = s.toString().split(/[\s_]+/);
+                result = 0;
+                arr.forEach(convertToNumeral);
+                return result;
+            });
+            // remove zeros in array
+            array = array.filter(function(attr) {
+                return attr != 0;
+            });
+            // sort ascending
+            array = array.sort(function(a, b) {
+                return a - b;
+            });
+
+            array = array.join(', ');
+
+            selectedSeats[i].innerHTML = array;
+        }
+    }
+</script>

@@ -10,6 +10,7 @@ gem 'bootstrap', '~> 5.1.0'
 gem 'filterrific'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap-style'
+gem 'humanize'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'

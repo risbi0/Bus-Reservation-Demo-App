@@ -1,0 +1,86 @@
+<div class="margin-top">
+    <div class="bg-dark p-3 rounded text-center">
+        <% if params[:view] %>
+            <h3>Seat Occupancy</h3>
+            <%= hidden_field_tag :seats, params[:seats] %>
+        <% else %>
+            <h3>Select Seats</h3>
+        <% end %>
+    </div>
+    <div class="mt-3 row">
+        <div class="bg-dark p-4 rounded col">
+            <% @seatings.each do |data| %>
+                <%= form_for @book_seats, url: select_seats_path do |form| %>
+                    <%= form.hidden_field :limit, value: params[:limit] %>
+                    <%= form.hidden_field :book_id, value: params[:book_id] %>
+                    <%= form.hidden_field :sched_id, value: data.id %>
+                    <%= form.hidden_field :selected_seats, value: '' %>
+                    <div class="grid-container">
+                        <% @seatings.column_names.each_with_index do |col_name, i| %>
+                            <% if ['id', 'created_at', 'updated_at', 'schedule_id'].exclude?(col_name) %>
+                                <div class="<%= col_name.tr('_', '-') %>">
+                                    <%= form.check_box col_name.to_sym, { disabled: !(data.send("#{col_name}")) }, false, true %>
+                                    <%= form.label col_name.to_sym, "#{i}" %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <% unless params[:view] %>
+                    <%= form.submit 'Confirm Seats', class: "btn btn-primary mt-4" %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
+        <div class='my-legend bg-dark p-3 rounded col'>
+            <h5>Legend</h5>
+                <div class='legend-scale'>
+                    <ul class='legend-labels'>
+                        <li><span style='background:#333638;'></span>Available</li>
+                        <li><span style='background:#FF0000;'></span>Reserved</li>
+                        <li><span style='background:#32CD32;'></span>Selected</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var selectLimit = parseInt(document.getElementById('seating_limit').value);
+    var seats = document.querySelectorAll('input[type="checkbox"]');
+    var seatsSelected = document.getElementById('seating_selected_seats');
+
+    for (let i = 0; i < seats.length; i++) {
+        seats[i].onclick = function() {
+            <% if params[:view] %>
+            return false;
+            <% else %>
+            // prevent selecting more seats
+            let selectedSeats = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            if (selectedSeats > selectLimit) return false;
+            <% end %>
+
+            seatNumber = seats[i].id.substring('seating_'.indexOf('_') + 1);
+            
+            if (seats[i].checked) {
+                seatsSelected.value = seatsSelected.value + ' ' + seatNumber + '  ';
+            } else {
+                seatsSelected.value = seatsSelected.value.replace(seatNumber, ' ');
+            }
+
+            seatsSelected.value = seatsSelected.value.replace(/\s+/g,' ').trim();
+        }
+    }
+    <% if params[:view] %>
+    function prepend(str) {
+        return 'seating_' + str;
+    }
+    var selectedSeats = document.getElementsByName('seats')[0].defaultValue.split(' ').map(prepend);
+    
+    for (let i = 0; i < selectedSeats.length; i++) {
+        for (let j = 0; j < seats.length; j++) {
+            if (selectedSeats[i] == seats[j].id) {
+                [seats[j].disabled, seats[j].checked] = [false, true];
+            }
+        }
+    }
+    <% end %>
+</script>

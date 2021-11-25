@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     end
 
     def create
+        Booking.set_callback(:save, :before, :ensure_status)
         @user = Booking.new(booking_params)
         if @user.save
             flash[:success] = 'Booking Successful'

@@ -7,6 +7,7 @@
 # total_price       :integer
 # confirmation      :string
 # status            :string
+# selected_seats    :string
 # user_id           :integer        foreign key
 # schedule_id       :integer        foreign key
 
@@ -17,7 +18,8 @@ class Booking < ApplicationRecord
     before_save :ensure_confirmation
     before_save :ensure_status
 
-    before_update :update_attr
+    before_update :update_attr_one
+    before_update :update_attr_two
 
     def formatted_created_at
         created_at.strftime('%m/%d/%Y %l:%M %p')
@@ -25,12 +27,16 @@ class Booking < ApplicationRecord
 
     private
 
-    def update_attr
-        self.status = "Booked"
+    def ensure_status
+        self.status = 'Reserved (to be payed)'
     end
 
-    def ensure_status
-        self.status = "Reserved (to be payed)"
+    def update_attr_one
+        self.status = 'Booked'
+    end
+
+    def update_attr_two
+        self.status = 'Seats Reserved'
     end
 
     def ensure_confirmation

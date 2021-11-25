@@ -1,6 +1,7 @@
-<% if Current.user && Current.user.name == "ADMIN" %>
+<% admin = Current.user && Current.user.name == "ADMIN" %>
+<% if admin %>
     <% val_1, val_2 = "5", "7" %>
-    <% col = "15" %>
+    <% col = "12" %>
 <% else %>
     <% val_1, val_2 = "10", "2" %>
     <% col = "5" %>
@@ -10,7 +11,11 @@
         <div class="row">
             <div class="col-<%= val_1 %> d-flex align-items-center">
                 <div>Displaying <span id="count"></span> out of 
-                <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today + 2).count %> records</div>
+                <% if admin %>
+                <%= Schedule.all.count %>
+                <% else %>
+                <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today + 2).count %>
+                <% end %> records</div>
             </div>
             <div class="col-<%= val_2 %> d-flex justify-content-end">
                 <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
@@ -32,7 +37,12 @@
             <th style="width: <%= col %>%;"></th>
         </tr>
         <% schedule.each do |data| %>
-            <% if (Date.parse(data.formatted_date_for_comparison) - 2).future? && data.seats_available != 0 %>
+            <% if admin %>
+                <% view = true %>
+            <% else %>
+                <% view = (Date.parse(data.formatted_date_for_comparison) - 2).future? && data.seats_available != 0 %>
+            <% end %>
+            <% if view %>
             <tr>
                 <td style="padding-left: 20px !important;" class="text-center"><%= data.id %></td>
                 <td><%= data.departure %></td>
@@ -42,8 +52,8 @@
                 <td class="text-center"><%= data.seats_available %></td>
                 <td class="text-center"><%= data.price %></td>
                 <td style="padding-right: 20px !important;">
-                    <% if Current.user && Current.user.name == "ADMIN" %>
-                        <%= link_to 'View Passengers', schedule_bookings_path(book_id: data.id), class: "btn btn-primary float-end" %>
+                    <% if admin %>
+                        <%= link_to 'View Details', schedule_bookings_path(book_id: data.id), class: "btn btn-primary float-end" %>
                     <% else %>
                         <%= link_to 'Book', booking_path(book_id: data.id), class: "btn btn-primary float-end" %>
                     <% end %>
@@ -55,3 +65,14 @@
 </div>
 
 <%= will_paginate schedule, previous_label: 'Previous', next_label: 'Next'  %>
+
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script>
+    document.getElementById('count').textContent = document.getElementById('table').rows.length - 1;
+    var dateDropdown = document.getElementById('filterrific_by_date');
+    
+    for(let i = 1; i < dateDropdown.options.length; i++) {
+        var convertedDate = new Date(dateDropdown.options[i].textContent);
+        dateDropdown.options[i].textContent = moment(convertedDate).format('MM/DD/YYYY');
+    }
+</script>

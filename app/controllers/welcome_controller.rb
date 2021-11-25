@@ -28,6 +28,7 @@ class WelcomeController < ApplicationController
 
   def create
     @schedule = Schedule.new(sched_params)
+    Seating.make
     if @schedule.save
       flash[:success] = 'Schedule created'
       redirect_to root_path
@@ -42,6 +43,7 @@ class WelcomeController < ApplicationController
       redirect_to root_path
     else
       @bookings = Booking.where(schedule_id: params[:book_id])
+      @seatings = Seating.where(schedule_id: params[:book_id])
     end
   end
 

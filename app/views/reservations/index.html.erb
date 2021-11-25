@@ -22,16 +22,22 @@
             <button class="nav-link tab tab-left active" id="tbp" data-bs-toggle="pill" data-bs-target="#pills-tbp" type="button" role="tab" aria-controls="pills-tbp" aria-selected="true">To Be Payed</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link tab tab-right" id="appr" data-bs-toggle="pill" data-bs-target="#pills-approved" type="button" role="tab" aria-controls="pills-approved" aria-selected="false">Approved</button>
+            <button class="nav-link tab tab-middle" id="appr" data-bs-toggle="pill" data-bs-target="#pills-approved" type="button" role="tab" aria-controls="pills-approved" aria-selected="false">Approved</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link tab tab-right" id="appr" data-bs-toggle="pill" data-bs-target="#pills-selected" type="button" role="tab" aria-controls="pills-selected" aria-selected="false">Seats Selected</button>
         </li>
     </ul>
     <% end %>
     <div class="tab-content" id="accordion">
         <div class="tab-pane fade show active" id="pills-tbp" role="tabpanel" aria-labelledby="pills-tbp-tab">
-            <%= render 'list', tbp_or_appr: true %>
+            <%= render 'list', status: 'tbp' %>
         </div>
         <div class="tab-pane fade" id="pills-approved" role="tabpanel" aria-labelledby="pills-approved-tab">
-            <%= render 'list', tbp_or_appr: false %>
+            <%= render 'list', status: 'appr' %>
+        </div>
+        <div class="tab-pane fade" id="pills-selected" role="tabpanel" aria-labelledby="pills-selected-tab">
+            <%= render 'list', status: 'ss' %>
         </div>
     </div>
 </div>

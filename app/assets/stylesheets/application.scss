@@ -127,6 +127,9 @@ input[type="number"] {
 .tab-left {
 	border-radius: 5px 0 0 0 !important;
 }
+.tab-middle {
+	border-radius: 0 !important;
+}
 .tab-right {
 	border-radius: 0 5px 0 0 !important;
 }
@@ -151,3 +154,104 @@ input[type="number"] {
 .btn-close:focus {
 	box-shadow: none;
 }
+.my-legend {
+	width: 120px;
+	height: 150px;
+	margin-left: 15px;
+}
+.my-legend .legend-scale ul {
+    margin: 0;
+    padding: 0;
+}
+.my-legend .legend-scale ul li {
+	display: flex;
+	list-style: none;
+    margin-bottom: 2px;
+    line-height: 25px;
+    font-size: 80%;
+}
+.my-legend ul.legend-labels li span {
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    border: 1px solid rgb(209, 209, 209);
+}
+/********************************************************************/
+.grid-container {
+	width: 290px;
+	height: 710px;
+	display: grid;
+	grid-template-columns: repeat(5, 50px);
+	grid-template-rows: repeat(12, 50px);
+	gap: 10px;
+}
+input[type="checkbox"]:not(:checked), 
+	input[type="checkbox"]:checked {
+	position: absolute;
+	left: -9999%;
+}
+input[type="checkbox"] + label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	border: none;
+	background-color: #333638;
+	color: white;
+}
+input[type="checkbox"]:checked + label {
+	background-color: limegreen;
+}
+input[type="checkbox"]:disabled + label {
+	background-color: red;
+}
+.one          { grid-area: 1 / 1 / 2 / 2; }
+.two          { grid-area: 1 / 2 / 2 / 3; }
+.three        { grid-area: 1 / 4 / 2 / 5; }
+.four         { grid-area: 1 / 5 / 2 / 6; }
+.five         { grid-area: 2 / 1 / 3 / 2; }
+.six          { grid-area: 2 / 2 / 3 / 3; }
+.seven        { grid-area: 2 / 4 / 3 / 5; }
+.eight        { grid-area: 2 / 5 / 3 / 6; }
+.nine         { grid-area: 3 / 1 / 4 / 2; }
+.ten          { grid-area: 3 / 2 / 4 / 3; }
+.eleven       { grid-area: 3 / 4 / 4 / 5; }
+.twelve       { grid-area: 3 / 5 / 4 / 6; }
+.thirteen     { grid-area: 4 / 1 / 5 / 2; }
+.fourteen     { grid-area: 4 / 2 / 5 / 3; }
+.fifteen      { grid-area: 4 / 4 / 5 / 5; }
+.sixteen      { grid-area: 4 / 5 / 5 / 6; }
+.seventeen    { grid-area: 5 / 1 / 6 / 2; }
+.eighteen     { grid-area: 5 / 2 / 6 / 3; }
+.nineteen     { grid-area: 5 / 4 / 6 / 5; }
+.twenty       { grid-area: 5 / 5 / 6 / 6; }
+.twenty-one   { grid-area: 6 / 1 / 7 / 2; }
+.twenty-two   { grid-area: 6 / 2 / 7 / 3; }
+.twenty-three { grid-area: 6 / 4 / 7 / 5; }
+.twenty-four  { grid-area: 6 / 5 / 7 / 6; }
+.twenty-five  { grid-area: 7 / 1 / 8 / 2; }
+.twenty-six   { grid-area: 7 / 2 / 8 / 3; }
+.twenty-seven { grid-area: 8 / 1 / 9 / 2; }
+.twenty-eight { grid-area: 8 / 2 / 9 / 3; }
+.twenty-nine  { grid-area: 8 / 4 / 9 / 5; }
+.thirty       { grid-area: 8 / 5 / 9 / 6; }
+.thirty-one   { grid-area: 9 / 1 / 10 / 2; }
+.thirty-two   { grid-area: 9 / 2 / 10 / 3; }
+.thirty-three { grid-area: 9 / 4 / 10 / 5; }
+.thirty-four  { grid-area: 9 / 5 / 10 / 6; }
+.thirty-five  { grid-area: 10 / 1 / 11 / 2; }
+.thirty-six   { grid-area: 10 / 2 / 11 / 3; }
+.thirty-seven { grid-area: 10 / 4 / 11 / 5; }
+.thirty-eight { grid-area: 10 / 5 / 11 / 6; }
+.thirty-nine  { grid-area: 11 / 1 / 12 / 2; }
+.forty        { grid-area: 11 / 2 / 12 / 3; }
+.forty-one    { grid-area: 11 / 4 / 12 / 5; }
+.forty-two    { grid-area: 11 / 5 / 12 / 6; }
+.forty-three  { grid-area: 12 / 1 / 13 / 2; }
+.forty-four   { grid-area: 12 / 2 / 13 / 3; }
+.forty-five   { grid-area: 12 / 3 / 13 / 4; }
+.forty-six    { grid-area: 12 / 4 / 13 / 5; }
+.forty-seven  { grid-area: 12 / 5 / 13 / 6; }

@@ -2,28 +2,118 @@
     <div class="bg-dark p-3 rounded">
         <h3>Schedule Passengers</h3>
     </div>
-    <% if @bookings.empty? || Booking.where(schedule_id: params[:book_id]).where(status: "Booked").empty? %>
+    <% if @bookings.empty? || Booking.where(schedule_id: params[:book_id]).where(status: "Seats Reserved").empty? %>
         <div class="bg-dark mt-3 p-3 rounded d-flex align-items-center">
             <div>There are no passengers booked in this schedule.</div>
         </div>
     <% else %>
-        <table class="table table-dark text-light mt-4">
+        <table class="table table-dark text-light mt-4" style="width: 750px;">
             <tr>
-                <th style="width: 30%;">Name</th>
+                <th style="width: 25%;">Name</th>
                 <th style="width: 30%;">Email</th>
-                <th style="width: 25%;">Confirmation</th>
-                <th style="width: 15%;" class="text-center">Seats Booked</th>
+                <th style="width: 15%;">Confirmation</th>
+                <th style="width: 10%;" class="text-center">Seats Booked</th>
+                <th style="width: 20%;">Seats Selected</th>
             </tr>
-        <% @bookings.each do |data| %>
-            <% if data.status == "Booked" %>
-            <tr>
-                <td><%= data.user.name %></td>
-                <td><%= data.user.email %></td>
-                <td><%= data.confirmation %></td>
-                <td class="text-center"><%= data.seats %></td>
-            </tr>
+            <% @bookings.each do |data| %>
+                <% if data.status == "Seats Reserved" %>
+                <tr>
+                    <td><%= data.user.name %></td>
+                    <td><%= data.user.email %></td>
+                    <td><%= data.confirmation %></td>
+                    <td class="text-center"><%= data.seats %></td>
+                    <td><span class="selected_seats"><%= data.selected_seats %></span></td>
+                </tr>
+                <% end %>
             <% end %>
-        <% end %>
         </table>
+        <div class="mt-5 d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="bg-dark p-4 rounded">
+                    <div class="grid-container">
+                        <% @seatings.each do |data| %>
+                            <% @seatings.column_names.each_with_index do |col_name, i| %>
+                                <% if ['id', 'created_at', 'updated_at', 'schedule_id'].exclude?(col_name) %>
+                                    <div class="<%= col_name.tr('_', '-') %>">
+                                        <%= check_box_tag col_name.to_sym, nil, !(data.send("#{col_name}")) %>
+                                        <%= label_tag "#{i}" %>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="my-legend bg-dark p-3 rounded" style="width: 140px; height: 120px;">
+                <h5>Legend</h5>
+                    <div class='legend-scale'>
+                        <ul class='legend-labels'>
+                            <li><span style='background:#333638;'></span>Not Reserved</li>
+                            <li><span style='background:#32CD32;'></span>Reserved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     <% end %>
 </div>
+<script>
+    var small = {
+        'zero': 0,
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9,
+        'ten': 10,
+        'eleven': 11,
+        'twelve': 12,
+        'thirteen': 13,
+        'fourteen': 14,
+        'fifteen': 15,
+        'sixteen': 16,
+        'seventeen': 17,
+        'eighteen': 18,
+        'nineteen': 19,
+        'twenty': 20,
+        'thirty': 30,
+        'forty': 40
+    }
+
+    var a, n, g;
+
+    function feach(w) {
+        let x = small[w];
+        if (x != null) {
+            g = g + x;
+        }
+    }
+    var selectedSeats = document.getElementsByClassName('selected_seats');
+
+    for (let i = 0; i < selectedSeats.length; i++) {
+        // spelled to number
+        var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
+            a = s.toString().split(/[\s_]+/);
+            n = 0;
+            g = 0;
+            a.forEach(feach);
+            return (n + g).toString();
+        });
+        // remove zeros in array
+        array = array.filter(function(attr) {
+            return attr != 0;
+        });
+        // sort ascending
+        array = array.sort(function(a, b) {
+            return a - b;
+        });
+
+        array = array.join(', ');
+
+        selectedSeats[i].innerHTML = array;
+    }
+</script>

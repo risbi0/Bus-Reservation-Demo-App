@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get 'confirm', to: 'reservations#confirm'
   post 'confirm_reservation', to: 'reservations#update'
   post 'delete_reservation', to: 'reservations#destroy'
+  get 'select_seats', to: 'reservations#choose'
+  post 'select_seats', to: 'reservations#seats'
 end

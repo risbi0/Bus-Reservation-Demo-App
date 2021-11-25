@@ -3,49 +3,45 @@
         <h3>Add Booking</h3>
     </div>
     <%= form_for @schedule, url: add_schedule_path do |form| %>
-    <table class="table table-dark text-light mt-4">
-        <tr>
-            <td style="width: 50%;">Departure</td>
-            <td style="width: 50%;">
-                <%= form.text_field :departure, class: "form-control" %>
-            </td>
-        </tr>
-        <tr>
-            <td>Destination</td>
-            <td>
-                <%= form.text_field :destination, class: "form-control" %>
-            </td>
-        </tr>
-        <tr>
-            <td>Date</td>
-            <td>
-                <%= form.text_field :date, class: "form-control", placeholder: "YYYY-MM-DD" %>
-            </td>
-        </tr>
-        <tr>
-            <td>Time</td>
-            <td>
-                <%= form.text_field :time, class: "form-control", placeholder: "HH-MM" %>
-            </td>
-        </tr>
-        <tr>
-            <td>Seats Available</td>
-            <td>
-                <%= form.text_field :seats_available, class: "form-control" %>
-            </td>
-        </tr>
-        <tr>
-            <td>Base Price (&#8369;)</td>
-            <td>
-                <%= form.text_field :price, class: "form-control" %>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <%= form.submit 'Create Booking', class: "btn btn-primary" %>
-            </td>
-        </tr>
-    </table>
+        <%= form.hidden_field :id, value: Schedule.all.count + 1 %>
+        <%= form.hidden_field :seats_available, value: 47 %>
+        <table class="table table-dark text-light mt-4">
+            <tr>
+                <td style="width: 50%;">Departure</td>
+                <td style="width: 50%;">
+                    <%= form.text_field :departure, class: "form-control" %>
+                </td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td>
+                    <%= form.text_field :destination, class: "form-control" %>
+                </td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>
+                    <%= form.text_field :date, class: "form-control", placeholder: "YYYY-MM-DD" %>
+                </td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>
+                    <%= form.text_field :time, class: "form-control", placeholder: "HH-MM" %>
+                </td>
+            </tr>
+            <tr>
+                <td>Base Price (&#8369;)</td>
+                <td>
+                    <%= form.text_field :price, class: "form-control" %>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <%= form.submit 'Create Booking', class: "btn btn-primary" %>
+                </td>
+            </tr>
+        </table>
     <% end %>
 </div>

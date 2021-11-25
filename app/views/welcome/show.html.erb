@@ -2,7 +2,8 @@
     <div class="bg-dark p-3 rounded">
         <h3>Schedule Passengers</h3>
     </div>
-    <% if @bookings.empty? || Booking.where(schedule_id: params[:book_id]).where(status: "Seats Reserved").empty? %>
+    <% if @bookings.empty? || (Booking.where(schedule_id: params[:book_id]).where(status: "Seats Reserved").empty? &&
+        Booking.where(schedule_id: params[:book_id]).where(status: "Booked").empty?) %>
         <div class="bg-dark mt-3 p-3 rounded d-flex align-items-center">
             <div>There are no passengers booked in this schedule.</div>
         </div>
@@ -16,7 +17,7 @@
                 <th style="width: 20%;">Seats Selected</th>
             </tr>
             <% @bookings.each do |data| %>
-                <% if data.status == "Seats Reserved" %>
+                <% if data.status == "Seats Reserved" || data.status == "Booked" %>
                 <tr>
                     <td><%= data.user.name %></td>
                     <td><%= data.user.email %></td>

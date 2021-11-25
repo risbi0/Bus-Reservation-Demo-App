@@ -50,6 +50,6 @@ class WelcomeController < ApplicationController
   private
 
   def sched_params
-    params.require(:schedule).permit(:departure, :destination, :date, :time, :seats_available, :price)
+    params.require(:schedule).permit(:id, :departure, :destination, :date, :time, :seats_available, :price)
   end
 end

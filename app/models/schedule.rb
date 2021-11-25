@@ -12,8 +12,8 @@
 
 class Schedule < ApplicationRecord
     has_one :seating, dependent: :delete
-    has_many :bookings, dependent: :delete
-    has_many :users, through: :bookings, dependent: :delete
+    has_many :bookings, dependent: :delete_all
+    has_many :users, through: :bookings, dependent: :delete_all
 
     validates :departure, :destination, :date, :time, :seats_available, :price, presence: true
 

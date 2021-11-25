@@ -9,7 +9,7 @@
 puts "Seeding..."
 
 Booking.delete_all
-Schedule.delete_all
+Schedule.delete
 Seating.delete_all
 
 Schedule.create(departure: 'Manila', destination: 'Quezon City', date: '2021-12-21', time: '12:30', seats_available: 47, price: 120).update_column(:id, 1)

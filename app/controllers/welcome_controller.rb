@@ -28,8 +28,8 @@ class WelcomeController < ApplicationController
 
   def create
     @schedule = Schedule.new(sched_params)
-    Seating.make
     if @schedule.save
+      Seating.make
       flash[:success] = 'Schedule created'
       redirect_to root_path
     else

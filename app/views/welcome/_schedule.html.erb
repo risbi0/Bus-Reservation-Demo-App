@@ -10,12 +10,7 @@
     <div class="bg-dark mt-4 p-3 border border-dark rounded">
         <div class="row">
             <div class="col-<%= val_1 %> d-flex align-items-center">
-                <div>Displaying <span id="count"></span> out of 
-                <% if admin %>
-                <%= Schedule.all.count %>
-                <% else %>
-                <%= Schedule.where("seats_available != ? AND date > ?", 0, Date.today + 2).count %>
-                <% end %> records</div>
+                <div><%= page_entries_info schedule %></div>
             </div>
             <div class="col-<%= val_2 %> d-flex justify-content-end">
                 <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
@@ -64,7 +59,7 @@
     </table>
 </div>
 
-<%= will_paginate schedule, previous_label: 'Previous', next_label: 'Next'  %>
+<%= will_paginate schedule, previous_label: 'Previous', next_label: 'Next', inner_window: 1, outer_window: 0 %>
 
 <script src="https://momentjs.com/downloads/moment.js"></script>
 <script>

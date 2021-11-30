@@ -58,6 +58,7 @@ Schedule.create(departure: 'San Fernando', destination: 'Baguio', date: '2022-01
 Schedule.create(departure: 'San Fernando', destination: 'Baler', date: '2022-01-01', time: '15:00', seats_available: 47, price: 733).update_column(:id, 38)
 Schedule.create(departure: 'San Fernando', destination: 'Balanga', date: '2022-01-01', time: '8:00', seats_available: 47, price: 180).update_column(:id, 39)
 Schedule.create(departure: 'San Fernando', destination: 'Maliveres', date: '2022-01-01', time: '15:00', seats_available: 47, price: 130).update_column(:id, 40)
+
 Schedule.create(departure: 'San Fernando', destination: 'Cabanatuan', date: '2022-01-01', time: '6:00', seats_available: 47, price: 287).update_column(:id, 41)
 Schedule.create(departure: 'San Fernando', destination: 'San Jose', date: '2022-01-01', time: '6:00', seats_available: 47, price: 465).update_column(:id, 42)
 Schedule.create(departure: 'Cabanatuan', destination: 'Manila', date: '2022-01-01', time: '11:45', seats_available: 47, price: 271).update_column(:id, 43)
@@ -74,7 +75,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-01
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-01', time: '13:00', seats_available: 47, price: 465).update_column(:id, 54)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-01', time: '1:00', seats_available: 47, price: 365).update_column(:id, 55)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-01', time: '12:00', seats_available: 47, price: 345).update_column(:id, 56)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-02', time: '6:00', seats_available: 47, price: 600).update_column(:id, 57)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-02', time: '6:30', seats_available: 47, price: 488).update_column(:id, 58)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-01', time: '7:00', seats_available: 47, price: 315).update_column(:id, 59)
@@ -99,6 +99,7 @@ Schedule.create(departure: 'Baler', destination: 'San Jose', date: '2022-01-02',
 Schedule.create(departure: 'Maliveres', destination: 'Manila', date: '2022-01-02', time: '11:00', seats_available: 47, price: 315).update_column(:id, 78)
 Schedule.create(departure: 'Maliveres', destination: 'Baguio', date: '2022-01-02', time: '14:00', seats_available: 47, price: 522).update_column(:id, 79)
 Schedule.create(departure: 'Maliveres', destination: 'Baler', date: '2022-01-02', time: '14:00', seats_available: 47, price: 733).update_column(:id, 80)
+
 Schedule.create(departure: 'Maliveres', destination: 'Balanga', date: '2022-01-02', time: '6:00', seats_available: 47, price: 180).update_column(:id, 81)
 Schedule.create(departure: 'Maliveres', destination: 'San Fernando', date: '2022-01-02', time: '6:00', seats_available: 47, price: 350).update_column(:id, 82)
 Schedule.create(departure: 'Maliveres', destination: 'Cabanatuan', date: '2022-01-02', time: '6:00', seats_available: 47, price: 300).update_column(:id, 83)
@@ -131,7 +132,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-02
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-02', time: '13:00', seats_available: 47, price: 465).update_column(:id, 110)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-02', time: '1:00', seats_available: 47, price: 365).update_column(:id, 111)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-02', time: '12:00', seats_available: 47, price: 345).update_column(:id, 112)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-03', time: '6:00', seats_available: 47, price: 600).update_column(:id, 113)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-03', time: '6:30', seats_available: 47, price: 488).update_column(:id, 114)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-03', time: '7:00', seats_available: 47, price: 315).update_column(:id, 115)
@@ -140,6 +140,7 @@ Schedule.create(departure: 'Manila', destination: 'San Fernando', date: '2022-01
 Schedule.create(departure: 'Manila', destination: 'Cabanatuan', date: '2022-01-03', time: '8:30', seats_available: 47, price: 271).update_column(:id, 118)
 Schedule.create(departure: 'Manila', destination: 'San Jose', date: '2022-01-03', time: '9:00', seats_available: 47, price: 370).update_column(:id, 119)
 Schedule.create(departure: 'Baguio', destination: 'Manila', date: '2022-01-03', time: '13:00', seats_available: 47, price: 600).update_column(:id, 120)
+
 Schedule.create(departure: 'Baguio', destination: 'Baler', date: '2022-01-03', time: '6:30', seats_available: 47, price: 400).update_column(:id, 121)
 Schedule.create(departure: 'Baguio', destination: 'Maliveres', date: '2022-01-03', time: '6:00', seats_available: 47, price: 522).update_column(:id, 122)
 Schedule.create(departure: 'Baguio', destination: 'Balanga', date: '2022-01-03', time: '6:00', seats_available: 47, price: 600).update_column(:id, 123)
@@ -180,6 +181,7 @@ Schedule.create(departure: 'Cabanatuan', destination: 'Baler', date: '2022-01-03
 Schedule.create(departure: 'Cabanatuan', destination: 'Balanga', date: '2022-01-03', time: '10:00', seats_available: 47, price: 300).update_column(:id, 158)
 Schedule.create(departure: 'Cabanatuan', destination: 'Maliveres', date: '2022-01-03', time: '11:00', seats_available: 47, price: 287).update_column(:id, 159)
 Schedule.create(departure: 'Cabanatuan', destination: 'San Fernando', date: '2022-01-03', time: '10:00', seats_available: 47, price: 330).update_column(:id, 160)
+
 Schedule.create(departure: 'Cabanatuan', destination: 'San Jose', date: '2022-01-03', time: '6:00', seats_available: 47, price: 345).update_column(:id, 161)
 Schedule.create(departure: 'San Jose', destination: 'Manila', date: '2022-01-03', time: '13:00', seats_available: 47, price: 370).update_column(:id, 162)
 Schedule.create(departure: 'San Jose', destination: 'Baguio', date: '2022-01-03', time: '11:30', seats_available: 47, price: 784).update_column(:id, 163)
@@ -188,7 +190,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-03
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-03', time: '13:00', seats_available: 47, price: 465).update_column(:id, 166)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-03', time: '1:00', seats_available: 47, price: 365).update_column(:id, 167)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-03', time: '12:00', seats_available: 47, price: 345).update_column(:id, 168)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-04', time: '6:00', seats_available: 47, price: 600).update_column(:id, 169)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-04', time: '6:30', seats_available: 47, price: 488).update_column(:id, 170)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-04', time: '7:00', seats_available: 47, price: 315).update_column(:id, 171)
@@ -221,6 +222,7 @@ Schedule.create(departure: 'Balanga', destination: 'Manila', date: '2022-01-04',
 Schedule.create(departure: 'Balanga', destination: 'Baguio', date: '2022-01-04', time: '14:00', seats_available: 47, price: 600).update_column(:id, 198)
 Schedule.create(departure: 'Balanga', destination: 'Baler', date: '2022-01-04', time: '13:30', seats_available: 47, price: 723).update_column(:id, 199)
 Schedule.create(departure: 'Balanga', destination: 'San Fernando', date: '2022-01-04', time: '6:00', seats_available: 47, price: 180).update_column(:id, 200)
+
 Schedule.create(departure: 'Balanga', destination: 'Maliveres', date: '2022-01-04', time: '6:50', seats_available: 47, price: 350).update_column(:id, 201)
 Schedule.create(departure: 'Balanga', destination: 'Cabanatuan', date: '2022-01-04', time: '6:00', seats_available: 47, price: 300).update_column(:id, 202)
 Schedule.create(departure: 'Balanga', destination: 'San Jose', date: '2022-01-04', time: '6:00', seats_available: 47, price: 600).update_column(:id, 203)
@@ -245,7 +247,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-04
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-04', time: '13:00', seats_available: 47, price: 465).update_column(:id, 222)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-04', time: '1:00', seats_available: 47, price: 365).update_column(:id, 223)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-04', time: '12:00', seats_available: 47, price: 345).update_column(:id, 224)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-05', time: '6:00', seats_available: 47, price: 600).update_column(:id, 225)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-05', time: '6:30', seats_available: 47, price: 488).update_column(:id, 226)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-05', time: '7:00', seats_available: 47, price: 315).update_column(:id, 227)
@@ -262,6 +263,7 @@ Schedule.create(departure: 'Baguio', destination: 'Cabanatuan', date: '2022-01-0
 Schedule.create(departure: 'Baguio', destination: 'San Jose', date: '2022-01-05', time: '6:00', seats_available: 47, price: 784).update_column(:id, 238)
 Schedule.create(departure: 'Baler', destination: 'Manila', date: '2022-01-05', time: '15:00', seats_available: 47, price: 488).update_column(:id, 239)
 Schedule.create(departure: 'Baler', destination: 'Baguio', date: '2022-01-05', time: '16:00', seats_available: 47, price: 400).update_column(:id, 240)
+
 Schedule.create(departure: 'Baler', destination: 'Maliveres', date: '2022-01-05', time: '6:00', seats_available: 47, price: 733).update_column(:id, 241)
 Schedule.create(departure: 'Baler', destination: 'Balanga', date: '2022-01-05', time: '6:00', seats_available: 47, price: 723).update_column(:id, 242)
 Schedule.create(departure: 'Baler', destination: 'San Fernando', date: '2022-01-05', time: '6:00', seats_available: 47, price: 710).update_column(:id, 243)
@@ -343,6 +345,7 @@ Schedule.create(departure: 'San Fernando', destination: 'Baguio', date: '2022-01
 Schedule.create(departure: 'San Fernando', destination: 'Baler', date: '2022-01-06', time: '15:00', seats_available: 47, price: 733).update_column(:id, 318)
 Schedule.create(departure: 'San Fernando', destination: 'Balanga', date: '2022-01-06', time: '8:00', seats_available: 47, price: 180).update_column(:id, 319)
 Schedule.create(departure: 'San Fernando', destination: 'Maliveres', date: '2022-01-06', time: '15:00', seats_available: 47, price: 130).update_column(:id, 320)
+
 Schedule.create(departure: 'San Fernando', destination: 'Cabanatuan', date: '2022-01-06', time: '6:00', seats_available: 47, price: 287).update_column(:id, 321)
 Schedule.create(departure: 'San Fernando', destination: 'San Jose', date: '2022-01-06', time: '6:00', seats_available: 47, price: 465).update_column(:id, 322)
 Schedule.create(departure: 'Cabanatuan', destination: 'Manila', date: '2022-01-06', time: '11:45', seats_available: 47, price: 271).update_column(:id, 323)
@@ -359,7 +362,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-06
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-06', time: '13:00', seats_available: 47, price: 465).update_column(:id, 334)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-06', time: '1:00', seats_available: 47, price: 365).update_column(:id, 335)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-06', time: '12:00', seats_available: 47, price: 345).update_column(:id, 336)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-07', time: '6:00', seats_available: 47, price: 600).update_column(:id, 337)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-07', time: '6:30', seats_available: 47, price: 488).update_column(:id, 338)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-07', time: '7:00', seats_available: 47, price: 315).update_column(:id, 339)
@@ -384,6 +386,7 @@ Schedule.create(departure: 'Baler', destination: 'San Jose', date: '2022-01-07',
 Schedule.create(departure: 'Maliveres', destination: 'Manila', date: '2022-01-07', time: '11:00', seats_available: 47, price: 315).update_column(:id, 358)
 Schedule.create(departure: 'Maliveres', destination: 'Baguio', date: '2022-01-07', time: '14:00', seats_available: 47, price: 522).update_column(:id, 359)
 Schedule.create(departure: 'Maliveres', destination: 'Baler', date: '2022-01-07', time: '14:00', seats_available: 47, price: 733).update_column(:id, 360)
+
 Schedule.create(departure: 'Maliveres', destination: 'Balanga', date: '2022-01-07', time: '6:00', seats_available: 47, price: 180).update_column(:id, 361)
 Schedule.create(departure: 'Maliveres', destination: 'San Fernando', date: '2022-01-07', time: '6:00', seats_available: 47, price: 350).update_column(:id, 362)
 Schedule.create(departure: 'Maliveres', destination: 'Cabanatuan', date: '2022-01-07', time: '6:00', seats_available: 47, price: 300).update_column(:id, 363)
@@ -416,7 +419,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-07
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-07', time: '13:00', seats_available: 47, price: 465).update_column(:id, 390)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-07', time: '1:00', seats_available: 47, price: 365).update_column(:id, 391)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-07', time: '12:00', seats_available: 47, price: 345).update_column(:id, 392)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-08', time: '6:00', seats_available: 47, price: 600).update_column(:id, 393)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-08', time: '6:30', seats_available: 47, price: 488).update_column(:id, 394)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-08', time: '7:00', seats_available: 47, price: 315).update_column(:id, 395)
@@ -425,6 +427,7 @@ Schedule.create(departure: 'Manila', destination: 'San Fernando', date: '2022-01
 Schedule.create(departure: 'Manila', destination: 'Cabanatuan', date: '2022-01-08', time: '8:30', seats_available: 47, price: 271).update_column(:id, 398)
 Schedule.create(departure: 'Manila', destination: 'San Jose', date: '2022-01-08', time: '9:00', seats_available: 47, price: 370).update_column(:id, 399)
 Schedule.create(departure: 'Baguio', destination: 'Manila', date: '2022-01-08', time: '13:00', seats_available: 47, price: 600).update_column(:id, 400)
+
 Schedule.create(departure: 'Baguio', destination: 'Baler', date: '2022-01-08', time: '6:30', seats_available: 47, price: 400).update_column(:id, 401)
 Schedule.create(departure: 'Baguio', destination: 'Maliveres', date: '2022-01-08', time: '6:00', seats_available: 47, price: 522).update_column(:id, 402)
 Schedule.create(departure: 'Baguio', destination: 'Balanga', date: '2022-01-08', time: '6:00', seats_available: 47, price: 600).update_column(:id, 403)
@@ -465,6 +468,7 @@ Schedule.create(departure: 'Cabanatuan', destination: 'Baler', date: '2022-01-08
 Schedule.create(departure: 'Cabanatuan', destination: 'Balanga', date: '2022-01-08', time: '10:00', seats_available: 47, price: 300).update_column(:id, 438)
 Schedule.create(departure: 'Cabanatuan', destination: 'Maliveres', date: '2022-01-08', time: '11:00', seats_available: 47, price: 287).update_column(:id, 439)
 Schedule.create(departure: 'Cabanatuan', destination: 'San Fernando', date: '2022-01-08', time: '10:00', seats_available: 47, price: 330).update_column(:id, 440)
+
 Schedule.create(departure: 'Cabanatuan', destination: 'San Jose', date: '2022-01-08', time: '6:00', seats_available: 47, price: 345).update_column(:id, 441)
 Schedule.create(departure: 'San Jose', destination: 'Manila', date: '2022-01-08', time: '13:00', seats_available: 47, price: 370).update_column(:id, 442)
 Schedule.create(departure: 'San Jose', destination: 'Baguio', date: '2022-01-08', time: '11:30', seats_available: 47, price: 784).update_column(:id, 443)
@@ -473,7 +477,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-08
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-08', time: '13:00', seats_available: 47, price: 465).update_column(:id, 446)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-08', time: '1:00', seats_available: 47, price: 365).update_column(:id, 447)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-08', time: '12:00', seats_available: 47, price: 345).update_column(:id, 448)
- 
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-09', time: '6:00', seats_available: 47, price: 600).update_column(:id, 449)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-09', time: '6:30', seats_available: 47, price: 488).update_column(:id, 450)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-09', time: '7:00', seats_available: 47, price: 315).update_column(:id, 451)
@@ -506,6 +509,7 @@ Schedule.create(departure: 'Balanga', destination: 'Manila', date: '2022-01-09',
 Schedule.create(departure: 'Balanga', destination: 'Baguio', date: '2022-01-09', time: '14:00', seats_available: 47, price: 600).update_column(:id, 478)
 Schedule.create(departure: 'Balanga', destination: 'Baler', date: '2022-01-09', time: '13:30', seats_available: 47, price: 723).update_column(:id, 479)
 Schedule.create(departure: 'Balanga', destination: 'San Fernando', date: '2022-01-09', time: '6:00', seats_available: 47, price: 180).update_column(:id, 480)
+
 Schedule.create(departure: 'Balanga', destination: 'Maliveres', date: '2022-01-09', time: '6:50', seats_available: 47, price: 350).update_column(:id, 481)
 Schedule.create(departure: 'Balanga', destination: 'Cabanatuan', date: '2022-01-09', time: '6:00', seats_available: 47, price: 300).update_column(:id, 482)
 Schedule.create(departure: 'Balanga', destination: 'San Jose', date: '2022-01-09', time: '6:00', seats_available: 47, price: 600).update_column(:id, 483)
@@ -530,7 +534,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-09
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-09', time: '13:00', seats_available: 47, price: 465).update_column(:id, 502)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-09', time: '1:00', seats_available: 47, price: 365).update_column(:id, 503)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-09', time: '12:00', seats_available: 47, price: 345).update_column(:id, 504)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-10', time: '6:00', seats_available: 47, price: 600).update_column(:id, 505)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-10', time: '6:30', seats_available: 47, price: 488).update_column(:id, 506)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-10', time: '7:00', seats_available: 47, price: 315).update_column(:id, 507)
@@ -547,6 +550,7 @@ Schedule.create(departure: 'Baguio', destination: 'Cabanatuan', date: '2022-01-1
 Schedule.create(departure: 'Baguio', destination: 'San Jose', date: '2022-01-10', time: '6:00', seats_available: 47, price: 784).update_column(:id, 518)
 Schedule.create(departure: 'Baler', destination: 'Manila', date: '2022-01-10', time: '15:00', seats_available: 47, price: 488).update_column(:id, 519)
 Schedule.create(departure: 'Baler', destination: 'Baguio', date: '2022-01-10', time: '16:00', seats_available: 47, price: 400).update_column(:id, 520)
+
 Schedule.create(departure: 'Baler', destination: 'Maliveres', date: '2022-01-10', time: '6:00', seats_available: 47, price: 733).update_column(:id, 521)
 Schedule.create(departure: 'Baler', destination: 'Balanga', date: '2022-01-10', time: '6:00', seats_available: 47, price: 723).update_column(:id, 522)
 Schedule.create(departure: 'Baler', destination: 'San Fernando', date: '2022-01-10', time: '6:00', seats_available: 47, price: 710).update_column(:id, 523)
@@ -628,6 +632,7 @@ Schedule.create(departure: 'San Fernando', destination: 'Baguio', date: '2022-01
 Schedule.create(departure: 'San Fernando', destination: 'Baler', date: '2022-01-11', time: '15:00', seats_available: 47, price: 733).update_column(:id, 598)
 Schedule.create(departure: 'San Fernando', destination: 'Balanga', date: '2022-01-11', time: '8:00', seats_available: 47, price: 180).update_column(:id, 599)
 Schedule.create(departure: 'San Fernando', destination: 'Maliveres', date: '2022-01-11', time: '15:00', seats_available: 47, price: 130).update_column(:id, 600)
+
 Schedule.create(departure: 'San Fernando', destination: 'Cabanatuan', date: '2022-01-11', time: '6:00', seats_available: 47, price: 287).update_column(:id, 601)
 Schedule.create(departure: 'San Fernando', destination: 'San Jose', date: '2022-01-11', time: '6:00', seats_available: 47, price: 465).update_column(:id, 602)
 Schedule.create(departure: 'Cabanatuan', destination: 'Manila', date: '2022-01-11', time: '11:45', seats_available: 47, price: 271).update_column(:id, 603)
@@ -644,7 +649,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-11
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-11', time: '13:00', seats_available: 47, price: 465).update_column(:id, 614)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-11', time: '1:00', seats_available: 47, price: 365).update_column(:id, 615)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-11', time: '12:00', seats_available: 47, price: 345).update_column(:id, 616)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-12', time: '6:00', seats_available: 47, price: 600).update_column(:id, 617)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-12', time: '6:30', seats_available: 47, price: 488).update_column(:id, 618)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-12', time: '7:00', seats_available: 47, price: 315).update_column(:id, 619)
@@ -669,6 +673,7 @@ Schedule.create(departure: 'Baler', destination: 'San Jose', date: '2022-01-12',
 Schedule.create(departure: 'Maliveres', destination: 'Manila', date: '2022-01-12', time: '11:00', seats_available: 47, price: 315).update_column(:id, 638)
 Schedule.create(departure: 'Maliveres', destination: 'Baguio', date: '2022-01-12', time: '14:00', seats_available: 47, price: 522).update_column(:id, 639)
 Schedule.create(departure: 'Maliveres', destination: 'Baler', date: '2022-01-12', time: '14:00', seats_available: 47, price: 733).update_column(:id, 640)
+
 Schedule.create(departure: 'Maliveres', destination: 'Balanga', date: '2022-01-12', time: '6:00', seats_available: 47, price: 180).update_column(:id, 641)
 Schedule.create(departure: 'Maliveres', destination: 'San Fernando', date: '2022-01-12', time: '6:00', seats_available: 47, price: 350).update_column(:id, 642)
 Schedule.create(departure: 'Maliveres', destination: 'Cabanatuan', date: '2022-01-12', time: '6:00', seats_available: 47, price: 300).update_column(:id, 643)
@@ -701,7 +706,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-12
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-12', time: '13:00', seats_available: 47, price: 465).update_column(:id, 670)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-12', time: '1:00', seats_available: 47, price: 365).update_column(:id, 671)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-12', time: '12:00', seats_available: 47, price: 345).update_column(:id, 672)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-13', time: '6:00', seats_available: 47, price: 600).update_column(:id, 673)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-13', time: '6:30', seats_available: 47, price: 488).update_column(:id, 674)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-13', time: '7:00', seats_available: 47, price: 315).update_column(:id, 675)
@@ -710,6 +714,7 @@ Schedule.create(departure: 'Manila', destination: 'San Fernando', date: '2022-01
 Schedule.create(departure: 'Manila', destination: 'Cabanatuan', date: '2022-01-13', time: '8:30', seats_available: 47, price: 271).update_column(:id, 678)
 Schedule.create(departure: 'Manila', destination: 'San Jose', date: '2022-01-13', time: '9:00', seats_available: 47, price: 370).update_column(:id, 679)
 Schedule.create(departure: 'Baguio', destination: 'Manila', date: '2022-01-13', time: '13:00', seats_available: 47, price: 600).update_column(:id, 680)
+
 Schedule.create(departure: 'Baguio', destination: 'Baler', date: '2022-01-13', time: '6:30', seats_available: 47, price: 400).update_column(:id, 681)
 Schedule.create(departure: 'Baguio', destination: 'Maliveres', date: '2022-01-13', time: '6:00', seats_available: 47, price: 522).update_column(:id, 682)
 Schedule.create(departure: 'Baguio', destination: 'Balanga', date: '2022-01-13', time: '6:00', seats_available: 47, price: 600).update_column(:id, 683)
@@ -750,6 +755,7 @@ Schedule.create(departure: 'Cabanatuan', destination: 'Baler', date: '2022-01-13
 Schedule.create(departure: 'Cabanatuan', destination: 'Balanga', date: '2022-01-13', time: '10:00', seats_available: 47, price: 300).update_column(:id, 718)
 Schedule.create(departure: 'Cabanatuan', destination: 'Maliveres', date: '2022-01-13', time: '11:00', seats_available: 47, price: 287).update_column(:id, 719)
 Schedule.create(departure: 'Cabanatuan', destination: 'San Fernando', date: '2022-01-13', time: '10:00', seats_available: 47, price: 330).update_column(:id, 720)
+
 Schedule.create(departure: 'Cabanatuan', destination: 'San Jose', date: '2022-01-13', time: '6:00', seats_available: 47, price: 345).update_column(:id, 721)
 Schedule.create(departure: 'San Jose', destination: 'Manila', date: '2022-01-13', time: '13:00', seats_available: 47, price: 370).update_column(:id, 722)
 Schedule.create(departure: 'San Jose', destination: 'Baguio', date: '2022-01-13', time: '11:30', seats_available: 47, price: 784).update_column(:id, 723)
@@ -758,7 +764,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-13
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-13', time: '13:00', seats_available: 47, price: 465).update_column(:id, 726)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-13', time: '1:00', seats_available: 47, price: 365).update_column(:id, 727)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-13', time: '12:00', seats_available: 47, price: 345).update_column(:id, 728)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-14', time: '6:00', seats_available: 47, price: 600).update_column(:id, 729)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-14', time: '6:30', seats_available: 47, price: 488).update_column(:id, 730)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-14', time: '7:00', seats_available: 47, price: 315).update_column(:id, 731)
@@ -791,6 +796,7 @@ Schedule.create(departure: 'Balanga', destination: 'Manila', date: '2022-01-14',
 Schedule.create(departure: 'Balanga', destination: 'Baguio', date: '2022-01-14', time: '14:00', seats_available: 47, price: 600).update_column(:id, 758)
 Schedule.create(departure: 'Balanga', destination: 'Baler', date: '2022-01-14', time: '13:30', seats_available: 47, price: 723).update_column(:id, 759)
 Schedule.create(departure: 'Balanga', destination: 'San Fernando', date: '2022-01-14', time: '6:00', seats_available: 47, price: 180).update_column(:id, 760)
+
 Schedule.create(departure: 'Balanga', destination: 'Maliveres', date: '2022-01-14', time: '6:50', seats_available: 47, price: 350).update_column(:id, 761)
 Schedule.create(departure: 'Balanga', destination: 'Cabanatuan', date: '2022-01-14', time: '6:00', seats_available: 47, price: 300).update_column(:id, 762)
 Schedule.create(departure: 'Balanga', destination: 'San Jose', date: '2022-01-14', time: '6:00', seats_available: 47, price: 600).update_column(:id, 763)
@@ -815,7 +821,6 @@ Schedule.create(departure: 'San Jose', destination: 'Balanga', date: '2022-01-14
 Schedule.create(departure: 'San Jose', destination: 'Maliveres', date: '2022-01-14', time: '13:00', seats_available: 47, price: 465).update_column(:id, 782)
 Schedule.create(departure: 'San Jose', destination: 'San Fernando', date: '2022-01-14', time: '1:00', seats_available: 47, price: 365).update_column(:id, 783)
 Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01-14', time: '12:00', seats_available: 47, price: 345).update_column(:id, 784)
-
 Schedule.create(departure: 'Manila', destination: 'Baguio', date: '2022-01-15', time: '6:00', seats_available: 47, price: 600).update_column(:id, 785)
 Schedule.create(departure: 'Manila', destination: 'Baler', date: '2022-01-15', time: '6:30', seats_available: 47, price: 488).update_column(:id, 786)
 Schedule.create(departure: 'Manila', destination: 'Maliveres', date: '2022-01-15', time: '7:00', seats_available: 47, price: 315).update_column(:id, 787)
@@ -832,6 +837,7 @@ Schedule.create(departure: 'Baguio', destination: 'Cabanatuan', date: '2022-01-1
 Schedule.create(departure: 'Baguio', destination: 'San Jose', date: '2022-01-15', time: '6:00', seats_available: 47, price: 784).update_column(:id, 798)
 Schedule.create(departure: 'Baler', destination: 'Manila', date: '2022-01-15', time: '15:00', seats_available: 47, price: 488).update_column(:id, 799)
 Schedule.create(departure: 'Baler', destination: 'Baguio', date: '2022-01-15', time: '16:00', seats_available: 47, price: 400).update_column(:id, 800)
+
 Schedule.create(departure: 'Baler', destination: 'Maliveres', date: '2022-01-15', time: '6:00', seats_available: 47, price: 733).update_column(:id, 801)
 Schedule.create(departure: 'Baler', destination: 'Balanga', date: '2022-01-15', time: '6:00', seats_available: 47, price: 723).update_column(:id, 802)
 Schedule.create(departure: 'Baler', destination: 'San Fernando', date: '2022-01-15', time: '6:00', seats_available: 47, price: 710).update_column(:id, 803)
@@ -875,7 +881,7 @@ Schedule.create(departure: 'San Jose', destination: 'Cabanatuan', date: '2022-01
 
 finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 diff = finish - start
-time_took = Time.at(diff).utc.strftime("%-M minute/s\n%S seconds")
+time_took = Time.at(diff).utc.strftime("%-M minute/s\n%-S seconds")
 
 puts 'Done. Time took:'
 puts time_took
@@ -894,7 +900,7 @@ end
 
 finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 diff = finish - start
-time_took = Time.at(diff).utc.strftime("%-M minute/s\n%S seconds")
+time_took = Time.at(diff).utc.strftime("%-M minute/s\n%-S seconds")
 
 puts 'Done. Time took:'
 puts time_took

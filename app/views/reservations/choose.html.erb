@@ -1,4 +1,4 @@
-<div class="margin-top">
+<div class="background padding-top">
     <div class="bg-dark p-3 rounded text-center">
         <% if params[:view] %>
             <h3>Seat Occupancy</h3>
@@ -33,16 +33,16 @@
         </div>
         <div class='my-legend bg-dark p-3 rounded col'>
             <h5>Legend</h5>
-                <div class='legend-scale'>
-                    <ul class='legend-labels'>
-                        <li><span style='background:#333638;'></span>Available</li>
-                        <li><span style='background:#FF0000;'></span>Reserved</li>
-                        <li><span style='background:#32CD32;'></span>Selected</li>
-                    </ul>
-                </div>
+            <div class='legend-scale'>
+                <ul class='legend-labels'>
+                    <li><span style='background:#333638;'></span>Available</li>
+                    <li><span style='background:#FF0000;'></span>Reserved</li>
+                    <li><span style='background:#32CD32;'></span>Selected</li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 <script>
     var selectLimit = parseInt(document.getElementById('seating_limit').value);
     var seats = document.querySelectorAll('input[type="checkbox"]');

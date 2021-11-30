@@ -1,4 +1,4 @@
-<div class="d-flex align-items-start" style="width: 100%; margin-top: 50px;">
+<div class="d-flex align-items-start" style="min-height: calc(100vh - 50px); width: 100%; margin-top: 50px;">
     <div class="m-lg-4">
         <h2>Profile</h2><br>
         <p>Name: <%= Current.user.name %></p>
@@ -11,19 +11,19 @@
             </button>
         </div>
 
-        <div class="modal fade text-dark" id="myModal">
+        <div class="modal fade " id="myModal">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <h3 class="modal-title">Confirmation</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete your account? All records associated with your account will be deleted as well.
                     </div>
                     <div class="modal-footer">
                         <%= link_to 'Confirm', del_acc_path, method: :delete, class: "btn btn-danger" %>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>

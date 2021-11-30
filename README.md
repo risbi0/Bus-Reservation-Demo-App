@@ -65,9 +65,9 @@ When the booking is approved, the users can now reserve their seats. Seats alrea
 #### Admin Side
 Admin account details:
 
-Email: 'admin@example.com'
+Email: `admin@example.com`
 
-Password: '123'
+Password: `123`
 
 The admins are the people on the company's side. They can make schedules, approve bookings, check and edit the form for the users that use the bank payment option, and see the details of every schedule, including the passengers details, their confirmation code, seats selected, and the seat plan.
 

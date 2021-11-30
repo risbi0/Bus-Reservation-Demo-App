@@ -71,4 +71,6 @@ Password: `123`
 
 The admins are the people on the company's side. They can make schedules, approve bookings, check and edit the form for the users that use the bank payment option, and see the details of every schedule, including the passengers details, their confirmation code, seats selected, and the seat plan.
 
+Admins don't have access to the profile, can't book and choose seats.
+
 Note: The Google Form link won't be available to any person aside from the ones in my group since it's restricted by Google accounts. These people (already logged in as admin) can only see a normal form that the normal user also sees. The Google Sheets link will only be in view-mode as well.

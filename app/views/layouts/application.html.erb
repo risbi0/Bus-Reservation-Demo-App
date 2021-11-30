@@ -25,7 +25,7 @@
                 <%= Current.user.name %>
               </a>
               <ul class="dropdown-menu dropdown-menu-end navbar-right">
-                <li><%= link_to 'Profile', profile_path, class: "dropdown-item" %>
+                <li><%= link_to 'Profile', profile_path, class: "dropdown-item" unless Current.user.name == "ADMIN" %>
                 <li><%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
               </ul>
             </li>

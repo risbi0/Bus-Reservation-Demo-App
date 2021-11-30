@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-    before_action :require_user_logged_in!
+    before_action :require_user_logged_in!, :restrict_to_profile
     
     def index; end
 

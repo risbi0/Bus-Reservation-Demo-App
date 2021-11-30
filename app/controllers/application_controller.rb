@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
             redirect_to sign_in_path
         end
     end
+
+    def restrict_to_profile
+        if Current.user.name == "ADMIN"
+            redirect_to root_path
+        end
+    end
 end

@@ -60,9 +60,9 @@
                                             <%= link_to 'Cancel Booking', confirm_path(rsrv_id: data.id), class: "btn btn-danger" %>
                                         <% end %>
                                     <% elsif data.status == "Booked" %>
-                                            <%= link_to 'Select Seats', select_seats_path(sched_id: data.schedule.id, book_id: data.id, limit: data.seats), class: "btn btn-primary" %>
+                                        <%= link_to 'Select Seats', select_seats_path(sched_id: data.schedule.id, book_id: data.id, limit: data.seats), class: "btn btn-primary" %>
                                     <% elsif data.status == "Seats Reserved" %>
-                                            <%= link_to 'View Seat Occupancy', select_seats_path(sched_id: data.schedule.id, view: true, seats: data.selected_seats), class: "btn btn-primary" %>
+                                        <%= link_to 'View Seat Occupancy', select_seats_path(sched_id: data.schedule.id, view: true, seats: data.selected_seats), class: "btn btn-primary" %>
                                     <% end %>
                                 <% end %>
                             <% end %>

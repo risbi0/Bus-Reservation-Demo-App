@@ -59,7 +59,7 @@
     <% end %>
 </div>
 <script>
-    var small = {
+    var conversions = {
         'zero': 0,
         'one': 1,
         'two': 2,
@@ -85,36 +85,36 @@
         'forty': 40
     }
 
-    var a, n, g;
+    var arr, result;
 
-    function feach(w) {
-        let x = small[w];
-        if (x != null) {
-            g = g + x;
+    function convertToNumeral(i) {
+        let append = conversions[i];
+        if (append != null) {
+            result += append;
         }
     }
     var selectedSeats = document.getElementsByClassName('selected_seats');
+    if (!selectedSeats[0].innerHTML.includes(',')) {
+        for (let i = 0; i < selectedSeats.length; i++) {
+            // spelled to number
+            var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
+                arr = s.toString().split(/[\s_]+/);
+                result = 0;
+                arr.forEach(convertToNumeral);
+                return result;
+            });
+            // remove zeros in array
+            array = array.filter(function(attr) {
+                return attr != 0;
+            });
+            // sort ascending
+            array = array.sort(function(a, b) {
+                return a - b;
+            });
 
-    for (let i = 0; i < selectedSeats.length; i++) {
-        // spelled to number
-        var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
-            a = s.toString().split(/[\s_]+/);
-            n = 0;
-            g = 0;
-            a.forEach(feach);
-            return (n + g).toString();
-        });
-        // remove zeros in array
-        array = array.filter(function(attr) {
-            return attr != 0;
-        });
-        // sort ascending
-        array = array.sort(function(a, b) {
-            return a - b;
-        });
+            array = array.join(', ');
 
-        array = array.join(', ');
-
-        selectedSeats[i].innerHTML = array;
+            selectedSeats[i].innerHTML = array;
+        }
     }
 </script>

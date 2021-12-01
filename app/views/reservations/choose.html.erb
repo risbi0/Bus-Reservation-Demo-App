@@ -50,10 +50,10 @@
 
     for (let i = 0; i < seats.length; i++) {
         seats[i].onclick = function() {
+            // prevent selecting more seats
             <% if params[:view] %>
             return false;
             <% else %>
-            // prevent selecting more seats
             let selectedSeats = document.querySelectorAll('input[type="checkbox"]:checked').length;
             if (selectedSeats > selectLimit) return false;
             <% end %>
@@ -69,6 +69,7 @@
             seatsSelected.value = seatsSelected.value.replace(/\s+/g,' ').trim();
         }
     }
+    //highlight selected seats on viewing
     <% if params[:view] %>
     function prepend(str) {
         return 'seating_' + str;

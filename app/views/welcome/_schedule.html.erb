@@ -60,14 +60,3 @@
 </div>
 
 <%= will_paginate schedule, previous_label: 'Previous', next_label: 'Next', inner_window: 1, outer_window: 0 %>
-
-<script src="https://momentjs.com/downloads/moment.js"></script>
-<script>
-    document.getElementById('count').textContent = document.getElementById('table').rows.length - 1;
-    var dateDropdown = document.getElementById('filterrific_by_date');
-    
-    for(let i = 1; i < dateDropdown.options.length; i++) {
-        var convertedDate = new Date(dateDropdown.options[i].textContent);
-        dateDropdown.options[i].textContent = moment(convertedDate).format('MM/DD/YYYY');
-    }
-</script>

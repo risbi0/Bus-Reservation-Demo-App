@@ -74,7 +74,6 @@
         return 'seating_' + str;
     }
     var selectedSeats = document.getElementsByName('seats')[0].defaultValue.split(' ').map(prepend);
-    
     //highlight selected seats on viewing
     for (let i = 0; i < selectedSeats.length; i++) {
         for (let j = 0; j < seats.length; j++) {

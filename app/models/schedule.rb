@@ -25,47 +25,19 @@ class Schedule < ApplicationRecord
         schedules = Schedule.arel_table
         case sort_option.to_s
         when /^id_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:id].send(direction))
-            else
-                order(schedules[:id].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("id", direction, schedules)
         when /^departure_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:departure].send(direction))
-            else
-                order(schedules[:departure].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("departure", direction, schedules)
         when /^destination_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:destination].send(direction))
-            else
-                order(schedules[:destination].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("destination", direction, schedules)
         when /^date_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:date].send(direction))
-            else
-                order(schedules[:date].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("date", direction, schedules)
         when /^time_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:time].send(direction))
-            else
-                order(schedules[:time].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("time", direction, schedules)
         when /^seats_available_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:seats_available].send(direction))
-            else
-                order(schedules[:seats_available].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("seats_available", direction, schedules)
         when /^price_/
-            if Current.user && Current.user.name == "ADMIN"
-                order(schedules[:price].send(direction))
-            else
-                order(schedules[:price].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
-            end
+            Schedule.arrange("price", direction, schedules)
         else
             raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
         end
@@ -94,12 +66,18 @@ class Schedule < ApplicationRecord
 
     def self.options_for_sorted_by
         [
-            ['Departure', 'departure_asc'],
-            ['Destination', 'destination_asc'],
-            ['Date', 'date_asc'],
-            ['Time', 'time_asc'],
-            ['Available Seats', 'seats_available_desc'],
-            ['Price', 'price_asc']
+            ['Departure (A - Z)', 'departure_asc'],
+            ['Departure (Z- A)', 'departure_desc'],
+            ['Destination (A - Z)', 'destination_asc'],
+            ['Destination (Z - A)', 'destination_desc'],
+            ['Date (earliest - latest)', 'date_asc'],
+            ['Date (latest - earliest)', 'date_desc'],
+            ['Time (earliest - latest)', 'time_asc'],
+            ['Time (latest - earliest)', 'time_desc'],
+            ['Available Seats (least - most)', 'seats_available_asc'],
+            ['Available Seats (most - least)', 'seats_available_desc'],
+            ['Price (least - most)', 'price_asc'],
+            ['Price (most - least)', 'price_desc']
         ]
     end
 
@@ -113,5 +91,15 @@ class Schedule < ApplicationRecord
 
     def formatted_time
         time.strftime('%l:%M %p')
+    end
+
+    private
+
+    def self.arrange(col, direction, schedules)
+        if Current.user && Current.user.name == "ADMIN"
+            order(schedules[col.to_sym].send(direction))
+        else
+            order(schedules[col.to_sym].send(direction)).where("seats_available != ? AND date > ?", 0, Date.today + 2)
+        end
     end
 end

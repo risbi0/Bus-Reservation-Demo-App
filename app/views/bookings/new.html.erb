@@ -1,9 +1,9 @@
-<div class="background padding-top w-500">
+<div class="booking margin-top">
     <div class="bg-dark mt-4 p-3 rounded">
         <h3>Booking Details</h3>
     </div>
     <%= form_for @booking, url: booking_path do |form| %>
-    <table class="table table-dark text-light mt-4">
+    <table class="booking-table table table-dark text-light mt-4 m-auto">
         <% @schedules.each do |data| %>
             <%= form.hidden_field :user_id, value: Current.user.id %>
             <%= form.hidden_field :schedule_id, value: params[:book_id] %>

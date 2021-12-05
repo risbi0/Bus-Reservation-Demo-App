@@ -1,20 +1,16 @@
-<div class="background">
-    <div class="bg-dark-c rounded p-3" style="margin-top: 20vh;">    
-        <h2 class="text-center pt-4">Edit Password</h2>
-        <div class="container justify-content-center" id="container-form">
-            <%= form_with model: Current.user, url: edit_password_path do |f| %>
-                <form>
-                    <div class="form-floating mb-4 mt-5 text-muted">
-                        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-                        <%= f.label :password %>
-                    </div>
-                    <div class="form-floating mb-4 mt-4 text-muted">
-                        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
-                        <%= f.label :confirm_password %>
-                    </div>
-                    <%= f.submit "Update", class: "btn btn-primary mb-2" %>
-                </form>
-            <% end %>
-        </div>
-    </div>
+<div class="bg-dark-c p-3 rounded justify-content-center" id="container-editpass">
+    <h2 class="text-center mt-2">Edit Password</h2>
+    <%= form_with model: Current.user, url: edit_password_path do |f| %>
+        <form>
+            <div class="form-floating mb-4 mt-3 text-muted">
+                <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+                <%= f.label :password %>
+            </div>
+            <div class="form-floating mb-4 mt-4 text-muted">
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+                <%= f.label :confirm_password %>
+            </div>
+            <%= f.submit "Update", class: "btn btn-primary mb-2" %>
+        </form>
+    <% end %>
 </div>

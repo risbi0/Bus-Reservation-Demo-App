@@ -24,10 +24,11 @@
 	.height {
 		height: auto !important;
 	}
-	.table {
+	#filterrific_results .table, .admin-table {
 		display: block;
 		table-layout: fixed;
         overflow-x: auto;
+		width: auto !important;
     }
 	.w-1000, #filterrific_results {
 		width: 95vw !important;
@@ -36,6 +37,20 @@
 	
 	.pagination {
 		margin-top: 10px;
+	}
+}
+@media only screen and (max-width: 750px) {
+	.seating-admin-view {
+		width: 95vw;
+	}
+	.seating-plan {
+		flex-direction: column;
+		margin: auto;
+		width: 338px;
+	}
+	.my-legend {
+		margin-top: 10px;
+		margin-left: 0 !important;
 	}
 }
 @media only screen and (max-width: 690px) {
@@ -50,15 +65,39 @@
 		flex-direction: column;
 		align-items: flex-start;
 	}
-	.padding-top .row {
+	.margin-top .row {
 		display: block;
+	}
+	.reservations {
+		width: 350px !important;
+	}
+	.bank-form {
+		flex-direction: column !important;
+	}
+	.bank-form .btn-success {
+		margin-bottom: 5px;
+		margin-right: 0 !important;
+	}
+	.bank-form .btn-warning {
+		margin-top: 5px;
 	}
 	.card-body .justify-content-end {
 		justify-content: flex-start !important;
 	}
 	.my-legend {
 		margin-top: 10px;
+		margin-bottom: 10px;
 		margin-left: 0 !important;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.booking {
+		width: 95vw !important;
+	}
+}
+@media only screen and (max-width: 400px) {
+	#container-signin, #container-signup, #container-editpass {
+		width: 95vw !important;
 	}
 }
 @media only screen and (max-height: 946px) {
@@ -66,7 +105,6 @@
 		height: 70vh;
 	}
 }
-
 body {
 	background-color: #6C757D !important;
 }
@@ -93,9 +131,6 @@ a:hover {
 	background-size: cover;
 	background-color: #6C757D;
 }
-.background {
-	min-height: 100vh;
-}
 .height {
 	min-height: 100vh;
 }
@@ -108,9 +143,6 @@ a:hover {
 }
 .margin-top {
 	margin-top: 80px;
-}
-.padding-top {
-	padding-top: 80px;
 }
 #alert {
     position: absolute;
@@ -134,12 +166,15 @@ a:hover {
 	color: #000;
 	opacity: 0.5;
 }
-#container-signin {
+#container-signin, #container-signup, #container-editpass {
 	width: 400px;
-	margin-top: 30vh;
+	margin-top: 20vh;
 }
-#container-form {
-	width: 350px;
+#container-signin, #container-editpass {
+	height: 290px;
+}
+#container-signup {
+	height: 470px;
 }
 #btn-signin {
 	width: 80px;
@@ -154,7 +189,7 @@ a:hover {
 .w-1000 {
 	width: 1000px;
 }
-.w-500 {
+.booking {
 	width: 500px;
 }
 th, td {
@@ -216,6 +251,13 @@ input[type="number"] {
 }
 .btn-close:focus {
 	box-shadow: none;
+}
+.confirm-cancel {
+	height:540px;
+	max-width:360px;
+}
+.admin-table {
+	width: 750px;
 }
 .my-legend {
 	width: 120px;

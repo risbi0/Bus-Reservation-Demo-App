@@ -1,49 +1,47 @@
-<div class="background padding-top">
-    <div class="bg-dark rounded p-3">
-        <h3>Confirm <%= if Current.user.name == "ADMIN" then "Booking" else "Cancellation" end %></h3>
-        <hr>
+<div class="confirm-cancel bg-dark rounded p-3 margin-top">
+    <h3>Confirm <%= if Current.user.name == "ADMIN" then "Booking" else "Cancellation" end %></h3>
+    <hr>
+    <% if Current.user.name == "ADMIN" %>
+        Confirm this booking?
+    <% else %> 
+        Are you sure you want to cancel this booking?
+    <% end %>   
+    <br><br>
+    <h5>Booking Details:</h5>
+    <% @reservations.each do |data| %>
+        <strong>Trip No: </strong><%= data.id %><br>
+        <strong>Booked on: </strong><%= data.formatted_created_at %><br>
+        <strong>Name: </strong><%= data.user.name %><br>
+        <strong>Email: </strong><%= data.user.email %><br>
+        <strong>Confirmation Code: </strong><%= data.confirmation %><br>
+        <strong>Departure: </strong><%= data.schedule.departure %><br>
+        <strong>Destination: </strong><%= data.schedule.destination %><br>
+        <strong>Date: </strong><%= data.schedule.formatted_date %><br>
+        <strong>Time: </strong><%= data.schedule.formatted_time %><br>
+        <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
+        <strong>Seats: </strong><%= data.seats %><br>
+        <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
+        <strong>Status: </strong><%= data.status %>
         <% if Current.user.name == "ADMIN" %>
-            Confirm this booking?
-        <% else %> 
-            Are you sure you want to cancel this booking?
-        <% end %>   
-        <br><br>
-        <h5>Booking Details:</h5>
-        <% @reservations.each do |data| %>
-            <strong>Trip No: </strong><%= data.id %><br>
-            <strong>Booked on: </strong><%= data.formatted_created_at %><br>
-            <strong>Name: </strong><%= data.user.name %><br>
-            <strong>Email: </strong><%= data.user.email %><br>
-            <strong>Confirmation Code: </strong><%= data.confirmation %><br>
-            <strong>Departure: </strong><%= data.schedule.departure %><br>
-            <strong>Destination: </strong><%= data.schedule.destination %><br>
-            <strong>Date: </strong><%= data.schedule.formatted_date %><br>
-            <strong>Time: </strong><%= data.schedule.formatted_time %><br>
-            <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
-            <strong>Seats: </strong><%= data.seats %><br>
-            <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
-            <strong>Status: </strong><%= data.status %>
-            <% if Current.user.name == "ADMIN" %>
-                <%= form_for @confirmation, url: confirm_reservation_path do |form| %>
-                    <%= form.hidden_field :id, value: data.id %>
-                    <%= form.hidden_field :schedule_id, value: data.schedule.id %>
-                    <%= form.hidden_field :seats, value: data.seats %>
-                    <%= form.hidden_field :seats_available, value: data.schedule.seats_available %>
-                    <div class="d-flex justify-content-between mt-3">
-                        <%= form.submit 'Confirm', class: "btn btn-danger" %>
-                        <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
-                    </div>
-                <% end %>
-            <% else %>
-                <%= form_for @confirmation, url: delete_reservation_path do |form| %>
-                    <%= form.hidden_field :id, value: data.id %>
-                    <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
-                    <div class="d-flex justify-content-between mt-3">
-                        <%= form.submit 'Confirm', class: "btn btn-danger" %>
-                        <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
-                    </div>
-                <% end %>
-            <%end%>
-        <% end %>
-    </div>
+            <%= form_for @confirmation, url: confirm_reservation_path do |form| %>
+                <%= form.hidden_field :id, value: data.id %>
+                <%= form.hidden_field :schedule_id, value: data.schedule.id %>
+                <%= form.hidden_field :seats, value: data.seats %>
+                <%= form.hidden_field :seats_available, value: data.schedule.seats_available %>
+                <div class="d-flex justify-content-between mt-3">
+                    <%= form.submit 'Confirm', class: "btn btn-danger" %>
+                    <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        <% else %>
+            <%= form_for @confirmation, url: delete_reservation_path do |form| %>
+                <%= form.hidden_field :id, value: data.id %>
+                <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
+                <div class="d-flex justify-content-between mt-3">
+                    <%= form.submit 'Confirm', class: "btn btn-danger" %>
+                    <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        <%end%>
+    <% end %>
 </div>

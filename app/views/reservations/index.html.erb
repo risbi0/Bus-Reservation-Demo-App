@@ -1,13 +1,13 @@
-<div class="background padding-top" style="width: 620px;">
+<div class="reservations margin-top" style="width: 620px;">
     <div class="bg-dark p-3 rounded d-flex align-items-center justify-content-between">
         <h2>Reservations</h2>
         <% if Current.user.name == "ADMIN" %>
-        <div class="d-flex">
+        <div class="bank-form d-flex">
             <form action="https://docs.google.com/spreadsheets/d/1JUe_vmlZnSrEAcZjuI8uVPTY4ZbB9udaCgtNSWozsl0/edit?fbclid=IwAR08Qjy8ySkp2kpongoJLNdbYtjbVucdKDr2NmKec4tE1Noead6fOTJDy74#gid=33817135" target="_blank">
-                <input type="submit" class="btn btn-success" value="Responses" style="margin-right: 15px;">
+                <input type="submit" class="btn btn-success" value="Responses" style="margin-right: 15px; width: 100px;">
             </form>
             <form action="https://docs.google.com/forms/d/1nEuQ3Fj_9G3Snse89evq_K2oDQLNVpqmLUXTSMxibaE/edit?fbclid=IwAR3WAMcEMBmdX0qz6t-ph2tY4P15EuJ2hWsfUpKJgeP9cO08S9wS12th7Hs" target="_blank">
-                <input type="submit" class="btn btn-warning" value="Edit Form">
+                <input type="submit" class="btn btn-warning" value="Edit Form" style="width: 100px;">
             </form>
         </div>
         <% else %>

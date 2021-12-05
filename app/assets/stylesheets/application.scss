@@ -50,9 +50,19 @@
 		flex-direction: column;
 		align-items: flex-start;
 	}
+	.padding-top .row {
+		display: block;
+	}
+	.card-body .justify-content-end {
+		justify-content: flex-start !important;
+	}
+	.my-legend {
+		margin-top: 10px;
+		margin-left: 0 !important;
+	}
 }
 @media only screen and (max-height: 946px) {
-	.table {
+	#filterrific_results .table {
 		height: 70vh;
 	}
 }

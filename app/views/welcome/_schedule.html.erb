@@ -1,18 +1,12 @@
 <% admin = Current.user && Current.user.name == "ADMIN" %>
-<% if admin %>
-    <% val_1, val_2 = "5", "7" %>
-    <% col = "12" %>
-<% else %>
-    <% val_1, val_2 = "10", "2" %>
-    <% col = "5" %>
-<% end %>
+<% col = admin ? "12" : "5" %>
 <div id="filterrific_results">
     <div class="bg-dark mt-4 p-3 border border-dark rounded">
         <div class="row">
-            <div class="col-<%= val_1 %> d-flex align-items-center">
+            <div class="col d-flex align-items-center">
                 <div><%= page_entries_info schedule %></div>
             </div>
-            <div class="col-<%= val_2 %> d-flex justify-content-end">
+            <div class="col d-flex justify-content-end align-items-center">
                 <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
                 <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
             </div>

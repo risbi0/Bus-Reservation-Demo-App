@@ -16,7 +16,6 @@ class Schedule < ApplicationRecord
     has_many :users, through: :bookings, dependent: :delete_all
 
     validates :departure, :destination, :date, :time, :seats_available, :price, presence: true
-    validates :time, format: { with: /\A([01]?[0-9]|2[0-3])\:[0-5][0-9]\z/ }, length: { is: 5 }
 
     scope :by_departure, -> (departure) { where(departure: [*departure]) }
     scope :by_destination, -> (destination) { where(destination: [*destination]) }

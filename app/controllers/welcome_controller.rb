@@ -28,19 +28,22 @@ class WelcomeController < ApplicationController
 
   def create
     @schedule = Schedule.new(sched_params)
-    if valid_date?(params[:schedule][:date])
+    @errs = []
+    if valid_date?(params[:schedule][:date]) && valid_time?(params[:schedule][:time])
       if @schedule.save
         Seating.make
         flash[:success] = 'Schedule created'
         redirect_to root_path
       else
         flash[:danger] = @schedule.errors.full_messages
-        redirect_to add_schedule_path
+        
       end
+    elsif !(valid_time?(params[:schedule][:time]))
+      flash[:danger] = 'Invalid time'
     else
       flash[:danger] = 'Invalid date'
-      redirect_to add_schedule_path
     end
+    redirect_to add_schedule_path
   end
 
   def show
@@ -53,6 +56,10 @@ class WelcomeController < ApplicationController
   end
 
   private
+
+  def valid_time?(str)
+    !!(str =~ /\A([0-1][0-9]|[2][0-3]):([0-5][0-9])\z/)
+  end
 
   def valid_date?(str)
     Date.parse(str) rescue false

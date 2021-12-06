@@ -141,6 +141,10 @@ input[type="number"] {
 	margin-top: 80px !important;
 	margin-left: 20px;
 }
+#form-link {
+	text-decoration: underline !important;
+	color: rgb(44, 143, 255) !important;
+}
 #admin-table {
 	width: 750px;
 }
@@ -205,13 +209,10 @@ input[type="number"] {
 	margin-top: 20vh;
 }
 #container-signin, #container-editpass {
-	height: 290px;
+	height: 300px;
 }
 #container-signup {
-	height: 470px;
-}
-#btn-signin {
-	width: 80px;
+	height: 480px;
 }
 /*****reservations page*****/
 .card-header {

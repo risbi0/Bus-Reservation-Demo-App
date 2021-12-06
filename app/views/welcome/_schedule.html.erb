@@ -1,12 +1,27 @@
 <% admin = Current.user && Current.user.name == "ADMIN" %>
 <% col = admin ? "12" : "5" %>
+<% width = admin ? "620px" : "500px" %>
+<style>
+    @media only screen and (max-width: <%= width %>) {
+        #dashboard {
+            flex-direction: column;
+            align-items: flex-start !important;
+        }
+        #dashboard #page-entries-info, #dashboard #dashboatd-btns {
+            width: auto;
+        }
+        #dashboard-btns {
+            margin-top: 10px;
+        }
+    }
+</style>
 <div id="filterrific_results">
     <div class="bg-dark mt-4 p-3 border border-dark rounded">
-        <div class="row">
-            <div class="col d-flex align-items-center">
+        <div class="d-flex justify-content-between align-items-center" id="dashboard">
+            <div id="page-entries-info">
                 <div><%= page_entries_info schedule %></div>
             </div>
-            <div class="col d-flex justify-content-end align-items-center">
+            <div id="dashboard-btns">
                 <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
                 <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
             </div>

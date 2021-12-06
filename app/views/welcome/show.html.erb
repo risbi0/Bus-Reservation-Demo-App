@@ -1,4 +1,4 @@
-<div class="seating-admin-view margin-top">
+<div class="margin-top" id="seating-admin-view">
     <div class="bg-dark p-3 rounded">
         <h3>Schedule Passengers</h3>
     </div>
@@ -8,7 +8,7 @@
             <div>There are no passengers booked in this schedule.</div>
         </div>
     <% else %>
-        <table class="admin-table table table-dark text-light mt-4">
+        <table class="table table-dark text-light mt-4" id="admin-table">
             <tr>
                 <th style="width: 25%;">Name</th>
                 <th style="width: 30%;">Email</th>
@@ -29,20 +29,18 @@
             <% end %>
         </table>
         <div class="seating-plan mt-5 d-flex justify-content-center">
-            <div class="d-flex justify-content-center">
-                <div class="bg-dark p-4 rounded">
-                    <div class="grid-container">
-                        <% @seatings.each do |data| %>
-                            <% @seatings.column_names.each_with_index do |col_name, i| %>
-                                <% if ['id', 'created_at', 'updated_at', 'schedule_id'].exclude?(col_name) %>
-                                    <div class="<%= col_name.tr('_', '-') %>">
-                                        <%= check_box_tag col_name.to_sym, nil, !(data.send("#{col_name}")) %>
-                                        <%= label_tag "#{i}" %>
-                                    </div>
-                                <% end %>
+            <div class="bg-dark p-4 rounded">
+                <div class="grid-container">
+                    <% @seatings.each do |data| %>
+                        <% @seatings.column_names.each_with_index do |col_name, i| %>
+                            <% if ['id', 'created_at', 'updated_at', 'schedule_id'].exclude?(col_name) %>
+                                <div class="<%= col_name.tr('_', '-') %>">
+                                    <%= check_box_tag col_name.to_sym, nil, !(data.send("#{col_name}")) %>
+                                    <%= label_tag "#{i}" %>
+                                </div>
                             <% end %>
                         <% end %>
-                    </div>
+                    <% end %>
                 </div>
             </div>
             <div class="my-legend bg-dark p-3 rounded" style="width: 140px; height: 120px;">

@@ -7,8 +7,8 @@
             <h3>Select Seats</h3>
         <% end %>
     </div>
-    <div class="mt-3 row">
-        <div class="bg-dark p-4 rounded col">
+    <div class="seating-plan mt-3 d-flex justify-content-center">
+        <div class="bg-dark p-4 rounded">
             <% @seatings.each do |data| %>
                 <%= form_for @book_seats, url: select_seats_path do |form| %>
                     <%= form.hidden_field :limit, value: params[:limit] %>
@@ -31,7 +31,7 @@
                 <% end %>
             <% end %>
         </div>
-        <div class='my-legend bg-dark p-3 rounded col'>
+        <div class='my-legend bg-dark p-3 rounded'>
             <h5>Legend</h5>
             <div class='legend-scale'>
                 <ul class='legend-labels'>

@@ -34,7 +34,7 @@ class WelcomeController < ApplicationController
         flash[:success] = 'Schedule created'
         redirect_to root_path
       else
-        flash[:danger] = @schedule.errors.full_messages.to_sentence
+        flash[:danger] = @schedule.errors.full_messages
         redirect_to add_schedule_path
       end
     else

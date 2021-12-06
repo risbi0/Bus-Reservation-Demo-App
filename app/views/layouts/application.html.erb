@@ -41,10 +41,24 @@
         </div>
       </div>
     </nav>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> alert-dismissible text-center" id="alert" role="alert">
-        <%= value %>
-        <a href="#" class="close text-right" id="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <% flash.each do |key, msg| %>
+      <div class="alert alert-<%= key %> alert-dismissible" id="alert" role="alert">
+        <% if msg.size > 1 && msg.is_a?(Array) %>
+          <div id="mult-err-msg">
+            <div class="d-flex justify-content-between">
+              You got the following errors:
+              <a href="#" class="close text-right" id="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+            <ul>
+              <% msg.each do |err| %>
+                <li><%= err %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <%= msg %>
+          <a href="#" class="close text-right" id="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <% end %>
       </div>
     <% end %>
     <div class="container-fluid text-light d-flex justify-content-center height" id="main-background">

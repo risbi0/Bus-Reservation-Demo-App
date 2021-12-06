@@ -17,7 +17,7 @@ class RegistrationsController < ApplicationController
             flash[:success] = 'Successfully created account. Log in to access your account'
             redirect_to root_path
         else
-            flash[:danger] = @user.errors.full_messages.to_sentence
+            flash[:danger] = @user.errors.full_messages
             redirect_to sign_up_path
         end
     end

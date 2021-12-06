@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
             flash[:success] = 'Booking Successful'
             redirect_to reservations_path
         else
-            flash[:danger] = @user.errors.full_messages.to_sentence
+            flash[:danger] = @user.errors.full_messages
             redirect_to root_path
         end
     end

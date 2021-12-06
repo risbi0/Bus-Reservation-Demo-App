@@ -10,7 +10,7 @@ class PasswordController < ApplicationController
             flash[:success] = 'Password Updated'
             redirect_to profile_path
         else
-            flash[:danger] = Current.user.errors.full_messages.to_sentence
+            flash[:danger] = Current.user.errors.full_messages
             redirect_to edit_password_path
         end
     end

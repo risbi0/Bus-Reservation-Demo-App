@@ -56,7 +56,11 @@
             </ul>
           </div>
         <% else %>
-          <%= msg %>
+          <% if msg.is_a?(Array) %>
+            <%= msg[0] %>
+          <% else %>
+            <%= msg %>
+          <% end %>
           <a href="#" class="close text-right" id="close" data-dismiss="alert" aria-label="close">&times;</a>
         <% end %>
       </div>

@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 
     def index
         @admin_table = Booking.where("date > ?", Date.today + 2).joins(:schedule).order(:date)
-        @user_table = Booking.where(user_id: Current.user.id).joins(:schedule).order(:date)
+        @user_table = Booking.where(user_id: Current.user.id).where("date > ?", Date.today + 2).joins(:schedule).order(:date)
         @confirmation = Booking.new
     end
     

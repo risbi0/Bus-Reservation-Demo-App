@@ -86,7 +86,7 @@
     var arr, result;
 
     function convertToNumeral(i) {
-        let append = conversions[i];
+        const append = conversions[i];
         if (append != null) {
             result += append;
         }
@@ -95,14 +95,14 @@
     
     if (!selectedSeats[0].innerHTML.includes(',')) {
         for (let i = 0; i < selectedSeats.length; i++) {
-            // spelled to number
-            var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
+            // spelled to numeral
+            let array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
                 arr = s.toString().split(/[\s_]+/);
                 result = 0;
                 arr.forEach(convertToNumeral);
                 return result;
             });
-            // remove zeros in array
+            // remove zeros
             array = array.filter(function(attr) {
                 return attr != 0;
             });

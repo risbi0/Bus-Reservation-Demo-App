@@ -1,5 +1,5 @@
 <% case status %>
-<% when "tbp" then status_str, nothing_msg = "Reserved (to be payed)", "There are no bookings made." %>
+<% when "tbp" then status_str, nothing_msg = "Reserved (to be paid)", "There are no bookings made." %>
 <% when "appr" then status_str, nothing_msg = "Booked", "There are no bookings that have been approved." %>
 <% when "ss" then status_str, nothing_msg = "Seats Reserved", "No seats have been selected." %>
 <% end %>
@@ -11,6 +11,7 @@
 <% else %>
 <div class="mb-4">
     <% reservations.each do |data| %>
+        <%# next if data.status == "Reserved (to be paid)" && data.schedule.seats_available <= data.seats %>
         <% if data.status == status_str %>
         <div class="card bg-dark">
             <a class="btn text-light card-header" data-bs-toggle="collapse" href="#id-<%= data.id %>">
@@ -48,12 +49,12 @@
                         </div>
                         <div class="col d-flex align-items-end justify-content-end button">
                             <% if Current.user.name == "ADMIN" %>
-                                <%= link_to 'Confirm Booking', confirm_path(rsrv_id: data.id), class: "btn btn-primary" if data.status == "Reserved (to be payed)" %>
+                                <%= link_to 'Confirm Booking', confirm_path(rsrv_id: data.id), class: "btn btn-primary" if data.status == "Reserved (to be paid)" %>
                             <% else %>
                                 <%= form_for @confirmation, url: delete_reservation_path do |form| %>
                                     <%= form.hidden_field :id, value: data.id %>
                                     <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
-                                    <% if data.status == "Reserved (to be payed)" %>
+                                    <% if data.status == "Reserved (to be paid)" %>
                                         <% if Date.parse(data.schedule.formatted_date_for_comparison) - 2 <= Date.parse(Date.current.strftime('%Y-%m-%d')) %>
                                             <%= form.submit 'Cancel Booking', class: "btn btn-danger" %>
                                         <% else %>
@@ -75,6 +76,7 @@
     <% end %>
 </div>
 <% end %>
+<% if status_str == "Seats Reserved" %>
 <script>
     var conversions = {
         'zero': 0,
@@ -105,7 +107,7 @@
     var arr, result;
 
     function convertToNumeral(i) {
-        let append = conversions[i];
+        const append = conversions[i];
         if (append != null) {
             result += append;
         }
@@ -116,13 +118,13 @@
     if (!selectedSeats[0].innerHTML.includes(',')) {
         for (let i = 0; i < selectedSeats.length; i++) {
             // spelled to numeral
-            var array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
+            let array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
                 arr = s.toString().split(/[\s_]+/);
                 result = 0;
                 arr.forEach(convertToNumeral);
                 return result;
             });
-            // remove zeros in array
+            // remove zeros
             array = array.filter(function(attr) {
                 return attr != 0;
             });
@@ -137,3 +139,4 @@
         }
     }
 </script>
+<% end %>

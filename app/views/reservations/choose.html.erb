@@ -54,18 +54,23 @@
             <% if params[:view] %>
             return false;
             <% else %>
-            let selectedSeats = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const selectedSeats = document.querySelectorAll('input[type="checkbox"]:checked').length;
             if (selectedSeats > selectLimit) return false;
             <% end %>
 
-            seatNumber = seats[i].id.substring('seating_'.indexOf('_') + 1);
+            const seatNumber = seats[i].id.substring('seating_'.indexOf('_') + 1);
             
             if (seats[i].checked) {
                 seatsSelected.value = seatsSelected.value + ' ' + seatNumber + '  ';
             } else {
-                seatsSelected.value = seatsSelected.value.replace(seatNumber, ' ');
+                const arr = seatsSelected.value.split(' ');
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] == seatNumber) {
+                        arr.splice(i, 1);
+                    }
+                }
+                seatsSelected.value = arr.join(' ');
             }
-
             seatsSelected.value = seatsSelected.value.replace(/\s+/g,' ').trim();
         }
     }
@@ -74,7 +79,7 @@
         return 'seating_' + str;
     }
     var selectedSeats = document.getElementsByName('seats')[0].defaultValue.split(' ').map(prepend);
-    //highlight selected seats on viewing
+    // highlight selected seats on viewing
     for (let i = 0; i < selectedSeats.length; i++) {
         for (let j = 0; j < seats.length; j++) {
             if (selectedSeats[i] == seats[j].id) {

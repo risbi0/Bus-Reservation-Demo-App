@@ -28,7 +28,7 @@ class Booking < ApplicationRecord
     private
 
     def ensure_status
-        self.status = 'Reserved (to be payed)'
+        self.status = 'Reserved (to be paid)'
     end
 
     def update_attr_one

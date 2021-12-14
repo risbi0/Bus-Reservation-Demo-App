@@ -61,7 +61,7 @@
             const seatNumber = seats[i].id.substring('seating_'.indexOf('_') + 1);
             
             if (seats[i].checked) {
-                seatsSelected.value = seatsSelected.value + ' ' + seatNumber + '  ';
+                seatsSelected.value = seatsSelected.value + ' ' + seatNumber;
             } else {
                 const arr = seatsSelected.value.split(' ');
                 for (let i = 0; i < arr.length; i++) {

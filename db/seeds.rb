@@ -11,7 +11,7 @@ puts 'Seeding...'
 puts 'Deleting old records...'
 
 Booking.delete_all
-Seating.delete_all
+Seating.destroy_all
 Schedule.delete_all
 
 puts 'Populating Schedule model...'

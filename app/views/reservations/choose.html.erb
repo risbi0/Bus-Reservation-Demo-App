@@ -13,7 +13,7 @@
                 <%= form_for @book_seats, url: select_seats_path do |form| %>
                     <%= form.hidden_field :limit, value: params[:limit] %>
                     <%= form.hidden_field :book_id, value: params[:book_id] %>
-                    <%= form.hidden_field :sched_id, value: data.id %>
+                    <%= form.hidden_field :sched_id, value: data.schedule.id %>
                     <%= form.hidden_field :selected_seats, value: '' %>
                     <div class="grid-container">
                         <% @seatings.column_names.each_with_index do |col_name, i| %>

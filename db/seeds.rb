@@ -20,7 +20,7 @@ start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
 STATIONS = ['Manila', 'Baguio', 'Baler', 'Malivares', 'Balanga', 'San Fernando', 'Cabanatuan', 'San Jose']
 TIMES = Array.new(96) { |i = 1| (Time.new(0, 1, 1) + i * 15.minutes).strftime('%H:%M') }
-start_date = Date.parse('2022-01-01')
+START_DATE = Date.parse('2022-01-01')
 ctr = 0
 
 15.times do |i|
@@ -56,7 +56,7 @@ ctr = 0
                 price = 365 if (departure == "San Fernando" && destination == "San Jose") || (departure == "San Jose" && destination == "San Fernando")
                 price = 345 if (departure == "Cabanatuan" && destination == "San Jose") || (departure == "San Jose" && destination == "Cabanatuan")
                 ctr += 1
-                Schedule.create(departure: departure, destination: destination, date: start_date + i, time: TIMES.sample, seats_available: 47, price: price).update_column(:id, ctr)
+                Schedule.create(departure: departure, destination: destination, date: START_DATE + i, time: TIMES.sample, seats_available: 47, price: price).update_column(:id, ctr)
             end
         end
     end

@@ -11,7 +11,7 @@
 # price             :integer
 
 class Schedule < ApplicationRecord
-    has_one :seating, dependent: :destroy_all
+    has_one :seating, dependent: :delete
     has_many :bookings, dependent: :delete_all
     has_many :users, through: :bookings, dependent: :delete_all
 

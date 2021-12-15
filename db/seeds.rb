@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Seeding...\n"
+puts 'Seeding...'
 
-puts "Deleting old records...\n"
+puts 'Deleting old records...'
 
 Booking.delete_all
 Seating.delete_all
 Schedule.delete_all
 
-puts "Populating Schedule model...\n"
+puts 'Populating Schedule model...'
 
 start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
@@ -56,7 +56,7 @@ ctr = 0
                 price = 365 if (departure == "San Fernando" && destination == "San Jose") || (departure == "San Jose" && destination == "San Fernando")
                 price = 345 if (departure == "Cabanatuan" && destination == "San Jose") || (departure == "San Jose" && destination == "Cabanatuan")
                 ctr += 1
-                Schedule.create(departure: departure, destination: destination, date: start_date + 1, time: TIMES.sample, seats_available: 47, price: price).update_column(:id, ctr)
+                Schedule.create(departure: departure, destination: destination, date: start_date + i, time: TIMES.sample, seats_available: 47, price: price).update_column(:id, ctr)
             end
         end
     end
@@ -64,10 +64,10 @@ end
 
 finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 diff = finish - start
-time_took = Time.at(diff).utc.strftime('%-M minute/s\n%-S seconds')
+time_took = Time.at(diff).utc.strftime("%-M minute/s\n%-S seconds")
 
 puts 'Done. Time took:'
-puts time_took, "\n"
+puts time_took
 
 puts 'Populating Seating model...'
 
@@ -83,9 +83,9 @@ end
 
 finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 diff = finish - start
-time_took = Time.at(diff).utc.strftime('%-M minute/s\n%-S seconds')
+time_took = Time.at(diff).utc.strftime("%-M minute/s\n%-S seconds")
 
 puts 'Done. Time took:'
-puts time_took, "\n"
+puts time_took
 
 puts 'Seeding done.'

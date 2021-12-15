@@ -48,7 +48,7 @@ class ReservationsController < ApplicationController
                                           book_id: params[:seating][:book_id],
                                           limit: params[:seating][:limit])
         else
-            Seating.find(params[:seating][:sched_id]).update(seat_params)
+            Seating.find_by(schedule_id: params[:seating][:sched_id]).update(seat_params)
             
             Booking.skip_callback(:save, :before, :ensure_status)
             Booking.skip_callback(:update, :before, :update_attr_one)

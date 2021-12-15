@@ -18,10 +18,8 @@
                 <div class="row" style="text-align: left;">
                     <div class="col">
                         <strong>Trip No: </strong><%= data.schedule.id %><br>
-                        <% if Current.user.name == "ADMIN" %>
-                        <strong>Name: </strong><%= data.user.name %><br>
-                        <% end %>
-                        <% unless Current.user.name == "ADMIN" %><br><% end %>
+                        <%= "<strong>Name: </strong> #{data.user.name} <br>".html_safe if Current.user.name == "ADMIN" %>
+                        <%= "<br>".html_safe unless Current.user.name == "ADMIN" %>
                         <strong>Booked on: </strong><%= data.formatted_created_at %>
                     </div>
                     <div class="col">
@@ -38,14 +36,10 @@
                             <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
                             <strong>Selected Seats: </strong><%= data.seats %><br>
                             <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
-                            <% if Current.user.name == "ADMIN" %>
-                            <strong>Email: </strong><%= data.user.email %><br>
-                            <% end %>
+                            <%= "<strong>Email: </strong> #{data.user.email} <br>".html_safe if Current.user.name == "ADMIN" %>
                             <strong>Confirmation Code: </strong><%= data.confirmation %><br>
                             <strong>Status: </strong><%= data.status %><br>
-                            <% if data.status == "Seats Reserved" %>
-                            <strong>Selected Seats: </strong><span class="selected_seats"><%= data.selected_seats %></span><br>
-                            <% end %>
+                            <%= "<strong>Selected Seats: </strong><span class=\"selected_seats\"> #{data.selected_seats} </span><br>".html_safe if data.status == "Seats Reserved" %>
                         </div>
                         <div class="col d-flex align-items-end justify-content-end button">
                             <% if Current.user.name == "ADMIN" %>
@@ -76,67 +70,4 @@
     <% end %>
 </div>
 <% end %>
-<% if status_str == "Seats Reserved" %>
-<script>
-    var conversions = {
-        'zero': 0,
-        'one': 1,
-        'two': 2,
-        'three': 3,
-        'four': 4,
-        'five': 5,
-        'six': 6,
-        'seven': 7,
-        'eight': 8,
-        'nine': 9,
-        'ten': 10,
-        'eleven': 11,
-        'twelve': 12,
-        'thirteen': 13,
-        'fourteen': 14,
-        'fifteen': 15,
-        'sixteen': 16,
-        'seventeen': 17,
-        'eighteen': 18,
-        'nineteen': 19,
-        'twenty': 20,
-        'thirty': 30,
-        'forty': 40
-    }
-
-    var arr, result;
-
-    function convertToNumeral(i) {
-        const append = conversions[i];
-        if (append != null) {
-            result += append;
-        }
-    }
-    
-    var selectedSeats = document.getElementsByClassName('selected_seats');
-
-    if (!selectedSeats[0].innerHTML.includes(',')) {
-        for (let i = 0; i < selectedSeats.length; i++) {
-            // spelled to numeral
-            let array = selectedSeats[i].innerHTML.split(' ').map(function (s) {
-                arr = s.toString().split(/[\s_]+/);
-                result = 0;
-                arr.forEach(convertToNumeral);
-                return result;
-            });
-            // remove zeros
-            array = array.filter(function(attr) {
-                return attr != 0;
-            });
-            // sort ascending
-            array = array.sort(function(a, b) {
-                return a - b;
-            });
-
-            array = array.join(', ');
-
-            selectedSeats[i].innerHTML = array;
-        }
-    }
-</script>
-<% end %>
+<%= javascript_include_tag 'spelled-to-numeral.js' if status_str == "Seats Reserved" %>

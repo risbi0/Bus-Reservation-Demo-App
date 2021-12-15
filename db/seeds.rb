@@ -11,7 +11,7 @@ puts 'Seeding...'
 puts 'Deleting old records...'
 
 Booking.delete_all
-Seating.delete_all
+ActiveRecord::Base.connection.execute("TRUNCATE seatings")
 Schedule.delete_all
 
 puts 'Populating Schedule model...'

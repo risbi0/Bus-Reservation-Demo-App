@@ -3,9 +3,10 @@
 <% when "appr" then status_str, nothing_msg = "Booked", "There are no bookings that have been approved." %>
 <% when "ss" then status_str, nothing_msg = "Seats Reserved", "No seats have been selected." %>
 <% end %>
-<% reservations = Current.user.name == "ADMIN" ? @admin_table : @user_table %>
+<% is_admin = Current.user.name == "ADMIN" %>
+<% reservations = is_admin ? @admin_table : @user_table %>
 <% if reservations.where(status: status_str).empty? %>
-<div class="bg-dark p-3 rounded-bottom d-flex align-items-center">
+<div class="d-flex align-items-center bg-dark p-3 rounded-bottom">
     <div><%= nothing_msg %></div>
 </div>
 <% else %>
@@ -18,8 +19,8 @@
                 <div class="row" style="text-align: left;">
                     <div class="col">
                         <strong>Trip No: </strong><%= data.schedule.id %><br>
-                        <%= "<strong>Name: </strong> #{data.user.name} <br>".html_safe if Current.user.name == "ADMIN" %>
-                        <%= "<br>".html_safe unless Current.user.name == "ADMIN" %>
+                        <%= "<strong>Name: </strong> #{data.user.name} <br>".html_safe if is_admin %>
+                        <%= "<br>".html_safe unless is_admin %>
                         <strong>Booked on: </strong><%= data.formatted_created_at %>
                     </div>
                     <div class="col">
@@ -36,13 +37,13 @@
                             <strong>Base Price (&#8369;): </strong><%= data.schedule.price %><br>
                             <strong>Selected Seats: </strong><%= data.seats %><br>
                             <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
-                            <%= "<strong>Email: </strong> #{data.user.email} <br>".html_safe if Current.user.name == "ADMIN" %>
+                            <%= "<strong>Email: </strong> #{data.user.email} <br>".html_safe if is_admin %>
                             <strong>Confirmation Code: </strong><%= data.confirmation %><br>
                             <strong>Status: </strong><%= data.status %><br>
                             <%= "<strong>Selected Seats: </strong><span class=\"selected_seats\"> #{data.selected_seats} </span><br>".html_safe if data.status == "Seats Reserved" %>
                         </div>
-                        <div class="col d-flex align-items-end justify-content-end button">
-                            <% if Current.user.name == "ADMIN" %>
+                        <div class="d-flex justify-content-end align-items-end col button">
+                            <% if is_admin %>
                                 <%= link_to 'Confirm Booking', confirm_path(rsrv_id: data.id), class: "btn btn-primary" if data.status == "Reserved (to be paid)" %>
                             <% else %>
                                 <%= form_for @confirmation, url: delete_reservation_path do |form| %>

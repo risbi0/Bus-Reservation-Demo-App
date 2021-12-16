@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items-center height">
     <%= form_for_filterrific @filterrific do |f| %>
-        <div class="margin-top row d-flex justify-content-center bg-dark p-3 border border-dark rounded w-1000" id="filter-sort-options">    
+        <div class="d-flex justify-content-center bg-dark p-3 rounded border border-dark row w-1000 margin-top" id="filter-sort-options">    
             <div class="form-group form-dropdown col">
                 <%= f.label :departure, class: "h5 heading" %>
                 <%= f.select(:by_departure,

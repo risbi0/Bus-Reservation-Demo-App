@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand bg-dark navbar-dark" id="top-nav">
+    <nav class="navbar navbar-expand navbar-dark bg-dark" id="top-nav">
       <div class="container-fluid">
         <div class="navbar-header" id="navcon" style="margin-left: 10px;">
           <%= link_to 'J-STAR', root_path, class: "navbar-brand text-secondary" %>
@@ -64,7 +64,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="container-fluid text-light d-flex justify-content-center height" id="main-background">
+    <div class="d-flex justify-content-center container-fluid text-light height" id="main-background">
       <%= yield %>
     </div>
   </body>

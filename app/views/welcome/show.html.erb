@@ -4,7 +4,7 @@
     </div>
     <% if @bookings.empty? || (Booking.where(schedule_id: params[:book_id]).where(status: "Seats Reserved").empty? &&
         Booking.where(schedule_id: params[:book_id]).where(status: "Booked").empty?) %>
-        <div class="bg-dark mt-3 p-3 rounded d-flex align-items-center">
+        <div class="d-flex align-items-center bg-dark mt-3 p-3 rounded">
             <div>There are no passengers booked in this schedule.</div>
         </div>
     <% else %>
@@ -28,7 +28,7 @@
                 <% end %>
             <% end %>
         </table>
-        <div class="seating-plan mt-5 d-flex justify-content-center">
+        <div class="d-flex justify-content-center mt-5 seating-plan">
             <div class="bg-dark p-4 rounded">
                 <div class="grid-container">
                     <% @seatings.each do |data| %>
@@ -43,7 +43,7 @@
                     <% end %>
                 </div>
             </div>
-            <div class="my-legend bg-dark p-3 rounded" style="width: 140px; height: 120px;">
+            <div class="bg-dark p-3 rounded my-legend" style="width: 140px; height: 120px;">
                 <h5>Legend</h5>
                 <div class='legend-scale'>
                     <ul class='legend-labels'>

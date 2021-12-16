@@ -7,7 +7,7 @@
             <h3>Select Seats</h3>
         <% end %>
     </div>
-    <div class="seating-plan mt-3 d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-3 seating-plan">
         <div class="bg-dark p-4 rounded">
             <% @seatings.each do |data| %>
                 <%= form_for @book_seats, url: select_seats_path do |form| %>

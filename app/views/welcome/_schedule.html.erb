@@ -1,6 +1,6 @@
-<% admin = Current.user && Current.user.name == "ADMIN" %>
-<% col = admin ? "12" : "5" %>
-<% width = admin ? "620px" : "500px" %>
+<% is_admin = Current.user && Current.user.name == "ADMIN" %>
+<% col = is_admin ? "12" : "5" %>
+<% width = is_admin ? "620px" : "500px" %>
 <style>
     @media only screen and (max-width: <%= width %>) {
         #dashboard {
@@ -16,13 +16,13 @@
     }
 </style>
 <div id="filterrific_results">
-    <div class="bg-dark mt-4 p-3 border border-dark rounded">
+    <div class="bg-dark mt-4 p-3 rounded border border-dark">
         <div class="d-flex justify-content-between align-items-center" id="dashboard">
             <div id="page-entries-info">
                 <div><%= page_entries_info schedule %></div>
             </div>
             <div id="dashboard-btns">
-                <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if Current.user && Current.user.name == "ADMIN" %>
+                <%= link_to 'Add Records', add_schedule_path, class: "btn btn-success", style: "margin-right: 10px;" if is_admin %>
                 <%= link_to 'Reset Filters', reset_filterrific_url, class: "btn btn-primary" %>
             </div>
         </div>
@@ -41,11 +41,7 @@
             <th style="width: <%= col %>%;"></th>
         </tr>
         <% schedule.each do |data| %>
-            <% if admin %>
-                <% view = true %>
-            <% else %>
-                <% view = (Date.parse(data.formatted_date_for_comparison) - 2).future? && data.seats_available != 0 %>
-            <% end %>
+            <% view = is_admin ? true : (Date.parse(data.formatted_date_for_comparison) - 2).future? && data.seats_available != 0 %>
             <% if view %>
             <tr>
                 <td style="padding-left: 20px !important;" class="text-center"><%= data.id %></td>
@@ -56,7 +52,7 @@
                 <td class="text-center"><%= data.seats_available %></td>
                 <td class="text-center"><%= data.price %></td>
                 <td style="padding-right: 20px !important;">
-                    <% if admin %>
+                    <% if is_admin %>
                         <%= link_to 'View Details', schedule_bookings_path(book_id: data.id), class: "btn btn-primary float-end" %>
                     <% else %>
                         <%= link_to 'Book', booking_path(book_id: data.id), class: "btn btn-primary float-end" %>
@@ -67,5 +63,4 @@
         <% end %>
     </table>
 </div>
-
 <%= will_paginate schedule, previous_label: 'Previous', next_label: 'Next', inner_window: 1, outer_window: 0 %>

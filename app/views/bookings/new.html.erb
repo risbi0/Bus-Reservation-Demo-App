@@ -5,8 +5,10 @@
     <%= form_for @booking, url: booking_path do |form| %>
     <table class="booking-table table table-dark text-light mt-4 m-auto">
         <% @schedules.each do |data| %>
+            <% limit = data.seats_available >= 5 ? 5 : data.seats_available %>
             <%= form.hidden_field :user_id, value: Current.user.id %>
             <%= form.hidden_field :schedule_id, value: params[:book_id] %>
+            <%= form.hidden_field :total_price, value: data.price %>
             <tr>
                 <td style="width: 50%;">Departure</td>
                 <td style="width: 50%;"><%= data.departure %></td>
@@ -33,12 +35,11 @@
             </tr>
             <tr>
                 <td>Seats</td>
-                <td><%= form.number_field :seats, value: 1, min: 1, max: data.seats_available %></td>
+                <td><%= form.number_field :seats, value: 1, min: 1, max: limit %></td>
             </tr>
             <tr>
                 <td>Total Price (&#8369;)</td>
                 <td><%= form.label :total_price, value: data.price, id: "total_price" %></td>
-                <%= form.hidden_field :total_price, value: data.price %>
             </tr>
             <tr>
                 <td>Name</td>

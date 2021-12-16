@@ -7,7 +7,7 @@ numberSlider.addEventListener('keydown', function(e) {
     e.preventDefault();
 });
 
-numberSlider.addEventListener('input', function(e) {
+numberSlider.addEventListener('input', function() {
     priceField.innerHTML = numberSlider.value * basePrice;
     hiddenPriceField.value = numberSlider.value * basePrice;
 });

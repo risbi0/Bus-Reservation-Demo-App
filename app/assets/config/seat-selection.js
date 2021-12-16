@@ -9,7 +9,7 @@ for (let i = 0; i < seats.length; i++) {
         if (selectedSeats > selectLimit) return false;
         
         const seatNumber = seats[i].id.substring('seating_'.indexOf('_') + 1);
-        
+        // add or remove seat values
         if (seats[i].checked) {
             seatsSelected.value = seatsSelected.value + ' ' + seatNumber;
         } else {

@@ -1,12 +1,9 @@
-<div class="confirm-cancel bg-dark rounded p-3 margin-top">
-    <h3>Confirm <%= if Current.user.name == "ADMIN" then "Booking" else "Cancellation" end %></h3>
+<% is_admin = Current.user.name == "ADMIN" %>
+<% path = is_admin ? confirm_reservation_path : delete_reservation_path %>
+<div class="bg-dark p-3 rounded margin-top confirm-cancel">
+    <h3>Confirm <%= if is_admin then "Booking" else "Cancellation" end %></h3>
     <hr>
-    <% if Current.user.name == "ADMIN" %>
-        Confirm this booking?
-    <% else %> 
-        Are you sure you want to cancel this booking?
-    <% end %>   
-    <br><br>
+    <% if is_admin then "Confirm this booking?" else "Are you sure you want to cancel this booking?" end %>  
     <h5>Booking Details:</h5>
     <% @reservations.each do |data| %>
         <strong>Trip No: </strong><%= data.id %><br>
@@ -22,26 +19,19 @@
         <strong>Seats: </strong><%= data.seats %><br>
         <strong>Total Price (&#8369;): </strong><%= data.total_price %><br>
         <strong>Status: </strong><%= data.status %>
-        <% if Current.user.name == "ADMIN" %>
-            <%= form_for @confirmation, url: confirm_reservation_path do |form| %>
-                <%= form.hidden_field :id, value: data.id %>
+        <%= form_for @confirmation, url: path do |form| %>
+            <%= form.hidden_field :id, value: data.id %>
+            <% if is_admin %>
                 <%= form.hidden_field :schedule_id, value: data.schedule.id %>
                 <%= form.hidden_field :seats, value: data.seats %>
                 <%= form.hidden_field :seats_available, value: data.schedule.seats_available %>
-                <div class="d-flex justify-content-between mt-3">
-                    <%= form.submit 'Confirm', class: "btn btn-danger" %>
-                    <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
-                </div>
-            <% end %>
-        <% else %>
-            <%= form_for @confirmation, url: delete_reservation_path do |form| %>
-                <%= form.hidden_field :id, value: data.id %>
+            <% else %>
                 <%= form.hidden_field :date, value: data.schedule.formatted_date_for_comparison %>
-                <div class="d-flex justify-content-between mt-3">
-                    <%= form.submit 'Confirm', class: "btn btn-danger" %>
-                    <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
-                </div>
             <% end %>
+            <div class="d-flex justify-content-between mt-3">
+                <%= form.submit 'Confirm', class: "btn btn-danger" %>
+                <%= link_to 'Go Back', reservations_path, class: "btn btn-primary" %>
+            </div>
         <% end %>
     <% end %>
 </div>

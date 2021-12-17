@@ -14,10 +14,6 @@ Rails.application.routes.draw do
 
   get 'edit_password', to: 'password#edit'
   patch 'edit_password', to: 'password#update'
-  get 'password/reset', to: 'password_reset#new'
-  post 'password/reset', to: 'password_reset#create'
-  get 'password/reset/edit', to: 'password_reset#edit'
-  patch 'password/reset/edit', to: 'password_reset#update'
 
   get 'profile', to: 'profile#index'
   delete 'account', to: 'profile#destroy', as: 'del_acc'

@@ -56,6 +56,18 @@ class Schedule < ApplicationRecord
 
     @schedule_table = Schedule.arel_table
 
+    def formatted_date_for_comparison
+        date.strftime('%Y-%m-%d')
+    end
+
+    def formatted_date
+        date.strftime('%m/%d/%Y')
+    end
+
+    def formatted_time
+        time.strftime('%l:%M %p')
+    end
+
     def self.options(var)
         if Current.user && Current.user.name == "ADMIN"
             order(@schedule_table[var.to_sym]).distinct.pluck(var.to_sym)
@@ -79,18 +91,6 @@ class Schedule < ApplicationRecord
             ['Price (least - most)', 'price_asc'],
             ['Price (most - least)', 'price_desc']
         ]
-    end
-
-    def formatted_date_for_comparison
-        date.strftime('%Y-%m-%d')
-    end
-
-    def formatted_date
-        date.strftime('%m/%d/%Y')
-    end
-
-    def formatted_time
-        time.strftime('%l:%M %p')
     end
 
     private

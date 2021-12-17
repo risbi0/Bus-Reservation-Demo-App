@@ -3,7 +3,7 @@
         <h3>Add Booking</h3>
     </div>
     <%= form_for @schedule, url: add_schedule_path do |form| %>
-        <%= form.hidden_field :id, value: Schedule.all.count + 1 %>
+        <%= form.hidden_field :id, value: Schedule.count + 1 %>
         <%= form.hidden_field :seats_available, value: 47 %>
         <table class="table table-dark text-light mt-4">
             <tr>

@@ -11,7 +11,6 @@ class RegistrationsController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            # WelcomeMailer.with(user: @user).welcome_email.deliver_now
             # stores saved user id in a session
             session[:user_id] = @user_id
             flash[:success] = 'Successfully created account. Log in to access your account'

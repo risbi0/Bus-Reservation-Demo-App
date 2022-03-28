@@ -20,7 +20,7 @@ start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
 STATIONS = ['Manila', 'Baguio', 'Baler', 'Malivares', 'Balanga', 'San Fernando', 'Cabanatuan', 'San Jose']
 TIMES = Array.new(96) { |i = 1| (Time.new(0, 1, 1) + i * 15.minutes).strftime('%H:%M') }
-START_DATE = Date.parse('2022-01-01')
+START_DATE = Date.parse('2030-01-01')
 ctr = 0
 
 15.times do |i|
